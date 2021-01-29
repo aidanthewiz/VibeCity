@@ -10,7 +10,7 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - Aidan Artherton
 - Matthew Cooper
 - Timothy Ford
-- Alexandra French
+- Alexandra French (xar-tol)
 - Jason Masri
 
 
