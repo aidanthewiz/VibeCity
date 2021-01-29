@@ -2,7 +2,7 @@
 
 # Product Vision
 
-For friends, hobbists, and acquaintances who want to listen to music together while commenting, rating, and sharing via a new social media platform, the product VibeCity is a web-based service providing musical social media capabilities. Music can be listened to in groups, shared, and rated. Leaderboards can be formed from ratings to the various music tracks. This web-based format offers a real-time sense of community while social distancing. Unlike other services, such as SoundCloud, Facebook, Instagram, and Spotify which all offer separate capabilities for either music or social media, VibeCity offers an all-in-one package for real-time musical social media.
+For friends, hobbists, and acquaintances who want to listen to music together while commenting, rating, and sharing via a new social media platform, the product VibeCity is a web-based service providing musical social media capabilities. VibeCity leads to the ability to listen to music in groups, share music, and rate tracks. Leaderboards can be formed from ratings to the various music tracks. The web-based format offers a real-time sense of community while social distancing. Unlike other services, such as SoundCloud, Facebook, Instagram, and Spotify, which all offer separate capabilities for either music or social media, VibeCity offers an all-in-one package for real-time musical social media.
 
 
 ## Team Members
