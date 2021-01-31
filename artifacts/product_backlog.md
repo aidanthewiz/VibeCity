@@ -1,3 +1,11 @@
 | ID | User Story | Effort | Priority | Validation Criteria | Status |
 |----|------------|--------|----------|---------------------|--------|
-| 000 | As a customer, I want an animated logo on the index, so that it will attract new customers. | x | x | Given a user, when that user goes to the index page, then they can see an animation of the VibeCity logo. | backlog |
+| 000 | As the product owner, I want a visually appealing login and register page, so that customers will want to register. | 3 | 1 | Given a user, when that user goes to the home page, they can see the register and login | Not started |
+| 001 | As the product owner, I want a visually appealing logo, so that customers will find the page appealing. | 5 | 8 | Given a user, when that user goes to the home page, they see an animated appealing logo | Not started |
+| 002 | As the product owner, I want a register page that stores the users data in a database, so that customers will be able to login at a future time. | 3 | 2 | Given a user, when the user registers they have an account| Not started |
+| 003 | As the product owner, I want the user to be able to link a spotify account, so that customers will be able to listen to music. | 5 | 3 | Given a user, they can have a spotify account linked to their account | Not started |
+| 004 | As a user I want to be able to reset my password, so that I do not get locked out of my account. | 1 | 4 | Given a user, if they forget their password they shall be able to reset it | Not started |
+| 005 | As a user, I want the ability to create a party, so that I can share a code or link to people, or share my party on social media for people to join. | 5 | 5 | Given a user, they can create a party to share and listen to music with friends | Not started |
+| 006 | As a product owner, I want a visually appealing account hub page, so that customers can see their profile information and adjust it. | 5 | 6 | Given a user, they have the ability to adjust their information, so that they can manage their profile information | Not started |
+| 007 | As a product owner, I want leader board, so that customers can find new music to listen to that is highly rated. | 5 | 7 | Given a user, they have the ability see new vibes/genres of music on the front page, so that they can find new music to listen to | Not started |
+
