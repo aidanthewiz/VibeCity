@@ -14,3 +14,5 @@ The priority of each requirement should be either Necessary, Important, or Desir
 |            006 |           00x | There user should be able to join a party            | The user is able to join a party | x | Necessary | Not Started |
 |            007 |           00x | There should be a sharable join code for each party            | The user is able to copy their join code | x | Necessary | Not Started |
 |            008 |           00x | The join code should be sharable to relevant social medias            | The user is able to share a join code to Facebook, Twitter, etc. | x | Desirable | Not Started |
+|            009 |           00x | There should be an action that registers the user's account            | The user's account is registered | x | Necessary | Not Started |
+|            010 |           00x | There should be an action that logs in the user            | The user is able to log in | x | Necessary | Not Started |
