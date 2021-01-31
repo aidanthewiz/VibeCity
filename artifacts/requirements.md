@@ -1,20 +1,21 @@
 # Requirements
 
-The priority of each requirement should be either Necessary, Important, or Desirable.
+The priority of each requirement shall be either Necessary, Important, or Desirable.
 
 | Requirement ID | User Story ID | Requirement | Acceptance Criteria | Effort | Priority | Status |
 |----------------|---------------|-------------|---------------------|--------|----------|--------|
-|            000 |           00x | The index page shall have a login segment             | The index page has a login segment | x | Necessary | Not Started |
-|            001 |           00x | The index page shall have an animation of the logo             | The index page has an animation of the logo | x | Necessary | Not Started |
-|            002 |           00x | The index page shall have a register segment with a username, password, and email             | There is a segment on the index where users can register for an account | x | Necessary | Not Started |
-|            003 |           00x | There should be a user in the database             | There is a user in the database | x | Necessary | Not Started |
-|            004 |           00x | There user should be able to link a spotify account            | The user is able to link a spotify account | x | Necessary | Not Started |
-|            004 |           00x | There user should be able to reset their password            | The user is able to reset their password | x | Necessary | Not Started |
-|            005 |           00x | There user should be able to create a party           | The user is able to create a party | x | Necessary | Not Started |
-|            006 |           00x | There user should be able to join a party            | The user is able to join a party | x | Necessary | Not Started |
-|            007 |           00x | There should be a sharable join code for each party            | The user is able to copy their join code | x | Necessary | Not Started |
-|            008 |           00x | The join code should be sharable to relevant social medias            | The user is able to share a join code to Facebook, Twitter, etc. | x | Desirable | Not Started |
-|            009 |           00x | There should be an action that registers the user's account            | The user's account is registered | x | Necessary | Not Started |
-|            010 |           00x | There should be an action that logs in the user            | The user is able to log in | x | Necessary | Not Started |
-|            010 |           00x | There should be a frontend user authentication action that reaches the backend         | The user is able to be authenticated on the frontend | x | Necessary | Not Started |
-|            011 |           00x | There should be an user authentication action on the backend           | The user is able to be authenticated through a backend action| x | Necessary | Not Started |
+|            000 |           00x | The home page shall have a login and register view | The home page has a login and register view | 3 | Necessary | Not Started |
+|            001 |           00x | The home page shall have an animation of the logo | The home page has an animation of the logo | 5 | Necessary | Not Started |
+|            002 |           00x | There shall be a register page with a username, password, and email | There is a page where users can register for an account | 3 | Necessary | Not Started |
+|            003 |           00x | The register page shall insert a user into the database | After registration user is persisted and user can sign in | 3 | Necessary | Not Started |
+|            004 |           00x | There shall be a user in the database | There user gets successfully inserted into the database | 1 | Necessary | Not Started |
+|            005 |           00x | The user shall be able to link a spotify account | The user is able to link a spotify account | 5 | Necessary | Not Started |
+|            006 |           00x | The user shall be able to reset their password | The user is able to reset their password | 1 | Necessary | Not Started |
+|            007 |           00x | The user shall be able to create and manage a party | The user is able to create and manage their party | 5 | Necessary | Not Started |
+|            008 |           00x | The user shall be able to join a party | The user is able to join a party | 3 | Necessary | Not Started |
+|            009 |           00x | There shall be a sharable join code for each party | The user is able to copy their join code | 3 | Necessary | Not Started |
+|            010 |           00x | The join code shall be sharable to relevant social medias | The user is able to share a join code to Facebook, Twitter, etc. | 3 | Desirable | Not Started |
+|            011 |           00x | There shall be an action that registers the user's account | The user's account is registered | 1 | Necessary | Not Started |
+|            012 |           00x | There shall be an action that signs in the user | The user is able to sign in | 1 | Necessary | Not Started |
+|            013 |           00x | There shall be an account hub page that shows profile information and allows adjustments | The user is able to adjust account information | 5 | Necessary | Not Started |
+|            014 |           00x | There shall be a leaderboard for different music "vibes/genres" on the front page | The user signs in and sees the leaderboards | 5 | Necessary | Not Started |
