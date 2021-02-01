@@ -9,9 +9,9 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 - Aidan Artherton
 - Matthew Cooper
-- Timothy Ford
+- Timothy Ford (CarriedCoin)
 - Alexandra French (xar-tol)
-- Jason Masri
+- Jason Masri (A90Jason)
 
 
 # Sprint 1
