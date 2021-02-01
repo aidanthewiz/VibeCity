@@ -7,8 +7,8 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 ## Team Members
 
-- Aidan Artherton
-- Matthew Cooper
+- Aidan Artherton (aidanthewiz)
+- Matthew Cooper (GTMcooper)
 - Timothy Ford (CarriedCoin)
 - Alexandra French (xar-tol)
 - Jason Masri (A90Jason)
