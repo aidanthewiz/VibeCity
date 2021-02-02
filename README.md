@@ -18,10 +18,9 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 Each item should link to the actual product, be it a google spreadsheet, google doc, github markdown file, etc. Do not link to a markdown file that contains only a link to another location - link directly from the appropriate item below. Failure to adhere to this criteria wil result in the associated artifact not being graded. Add any additional items required for the specific sprint submission.
 
-- [Product Backlog](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/product_backlog.md)
-- [Sprint Backlog](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/sprint1_backlog.md)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Burndown Chart]()
 - [Velocity Chart]()
 - System Architecture
@@ -31,20 +30,21 @@ Each item should link to the actual product, be it a google spreadsheet, google 
 
 ## Task Allocation
 
-Member 1 - main tasking
-
-Member 2 - main tasking
+- Aidan Artherton (aidanthewiz) - Setup dev environment, github, database and server
+- Matthew Cooper (GTMcooper) - Setup dev environment, github, and pipeline
+- Timothy Ford (CarriedCoin) - Setup dev environment, github, and pipeline
+- Alexandra French (xar-tol) - Setup dev environment, github, and splash screen
+- Jason Masri (A90Jason) - Setup dev environment, github, and get site domain
 
 
 # Sprint 2
 
-- [Product Backlog](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/product_backlog.md)
-- [Sprint Backlog]()
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
+- Burndown Chart
+- Velocity Chart
+- System Architecture
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -57,16 +57,15 @@ Member 2 - main tasking
 
 # Sprint 3
 
-- [Product Backlog](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/product_backlog.md)
-- [Sprint Backlog]()
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
@@ -77,14 +76,15 @@ Member 2 - main tasking
 
 # Sprint 4
 
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
@@ -95,14 +95,15 @@ Member 2 - main tasking
 
 # Sprint 5
 
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- [Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
@@ -113,14 +114,15 @@ Member 2 - main tasking
 
 # Sprint 6
 
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
@@ -131,14 +133,15 @@ Member 2 - main tasking
 
 # Sprint 7
 
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- [Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
@@ -149,14 +152,15 @@ Member 2 - main tasking
 
 # Sprint 8
 
-- [Trello Board](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
-- [System Architecture]()
-- [Source Code]()
-- [Automated Tests]()
-- [Product Demonstration]()
+- [Burndown Chart
+- Velocity Chart
+- System Architecture
+- Source Code
+- Automated Tests
+- Product Demonstration
 
 ## Task Allocation
 
