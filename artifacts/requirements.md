@@ -6,7 +6,6 @@ The priority of each requirement shall be either Necessary, Important, or Desira
 |----------------|---------------|-------------|---------------------|--------|----------|--------|
 |            000 |           000 | Users shall be able to register with the site | The user is able to create an account | 5 | Necessary | Not Started |
 |            001 |           001 | Users shall be able to sign in to the site | The user is able to sign in to an account | 3 | Necessary | Not Started |
-
 |            002 |           002 | The user shall be able to link a Spotify account | The user is able to link a spotify account | 5 | Necessary | Not Started |
 |            003 |           003 | The home page shall an animation of the towers going up and down near the logo | The user is able to see an moving animation of towers near the logo | 5 | Desirable | Not Started |
 |            004 |           004 | The user shall be able to reset their password | The user is able to reset their password | 5 | Necessary | Not Started |
