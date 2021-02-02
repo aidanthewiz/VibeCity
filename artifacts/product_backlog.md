@@ -1,11 +1,25 @@
 | ID | User Story | Effort | Priority | Validation Criteria | Status |
 |----|------------|--------|----------|---------------------|--------|
-| 000 | As the product owner, I want to create the  development environment, so developers can get started on the site | 3 | 1 | Given a user, when that user goes to the home page, they can see something | Not started |
-| 001 | As the product owner, I want a visually appealing login and register page, so that customers will want to register. | 3 | 2 | Given a user, when that user goes to the home page, they can see the register and login | Not started |
-| 002 | As the product owner, I want a visually appealing logo, so that customers will find the page appealing. | 5 | 6 | Given a user, when that user goes to the home page, they see an animated appealing logo | Not started |
-| 003 | As the product owner, I want a register page that stores the users data in a database, so that customers will be able to login at a future time. | 3 | 3 | Given a user, when the user registers they have an account| Not started |
-| 004 | As the product owner, I want the user to be able to link a spotify account, so that customers will be able to listen to music. | 5 | 4 | Given a user, they can have a spotify account linked to their account | Not started |
-| 005 | As a user I want to be able to reset my password, so that I do not get locked out of my account. | 1 | 7 | Given a user, if they forget their password they shall be able to reset it | Not started |
-| 006 | As a user, I want the ability to create a party, so that I can share a code or link to people, or share my party on social media for people to join. | 5 | 8 | Given a user, they can create a party to share and listen to music with friends | Not started |
-| 007 | As a product owner, I want a visually appealing account hub page, so that customers can see their profile information and adjust it. | 5 | 4 | Given a user, they have the ability to adjust their information, so that they can manage their profile information | Not started |
-| 008 | As a product owner, I want leader board, so that customers can find new music to listen to that is highly rated. | 5 | 9 | Given a user, they have the ability see new vibes/genres of music on the front page, so that they can find new music to listen to | Not started |
+| 000 | As the product owner, I want users be able to register, so that customers can create an account on the site. | 5 | 1 | Given a user, when that user goes to the home page, they can see the option to register| Not started |
+| 001 | As the product owner, I want users be able to login, so that users can access their accounts on the site. | 3 | 2 | Given a user, when that user goes to the home page, they can see where to login | Not started |
+| 002 | As the product owner, I want users be able to link their Spotify account to their account on our website, so that users can access their Spotify music on the site. | 3 | 3 | Given a user, when that user links their Spotify account they can play their music | Not started |
+| 003 | As the product owner, I want an animated logo, so that customers will see moving towers. | 5 | 4 | Given a user, when that user goes to the home page, they see an animated logo of towers | Not started |
+| 004 | As the product owner, I want customers have the ability to reset their passwords, so that customers will be able to access their accounts if they forget their info. | 5 | 5 | Given a user, when the user forgets their password they can reset it| Not started |
+| 000 | As the product owner, I want users be able to register, so that customers can create an account on the site. | 5 | 1 | Given a user, when that user goes to the home page, they can see the option to register| Not started |
+| 006 | As the product owner, I want the user have the ability to adjust their profile information. | 3 | 7 | Given a user, if they want to change information on their profile they can | Not started |
+| 007 | As the product owner, I want leaderboards for music on our website, so that customer can see what is trending. | 5 | 8 | Given a user, they can view leaderboards for music | Not started |
+| 008 | As the product owner, I want leaderboard for VibeCity users voted rankings, so that customers can vote on what music they like. | 3 | 9 | Given a user, they have the ability to view and vote on what music they like | Not started |
+| 009 | As the product owner, I want leaderboard for Spotify rankings, so that users can view Spotify rankings. | 3 | 10 | Given a user, they have the ability to view Spotify music rankings | Not started |
+| 010 | As the product owner, I want users be able to create a party, so that customers can create a party. | 5 | 11 | Given a user, they can create a music listening party| Not started |
+| 011 | As the product owner, I want users be able to create a join code for their parties, so that customers can share their parties join code. | 5 | 12 | Given a user, they can create a join code for their party| Not started |
+| 012 | As the product owner, I want users be able to join a party, so that customers can join a friends party. | 3 | 13 | Given a user, they can join their friends party| Not started |
+| 013 | As the product owner, I want users be able to manage their party, so that user can control their party. | 5 | 14 | Given a user, they can kick, lock, open, and share their parties information| Not started |
+| 014 | As the product owner, I want users be able to share their parties join code via social media, so that customers can share their parties code via social media. | 2 | 15 | Given a user, they can share their party on social media| Not started |
+| 015 | As the product owner, I want users have the ability to comment on the music, so that customers can comment on the music. | 5 | 16 | Given a user, they can comment on music| Not started |
+
+
+
+
+
+
+
