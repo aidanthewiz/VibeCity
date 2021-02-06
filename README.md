@@ -20,9 +20,9 @@ Each item should link to the actual product, be it a google spreadsheet, google 
 
 - [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
 - [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Requirements](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/requirements.md)
-- [Burndown Chart]()
-- [Velocity Chart]()
+- [Requirements](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
+- [Burndown Chart](https://drive.google.com/file/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/view?usp=sharing)
+- [Velocity Chart](https://drive.google.com/file/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/view?usp=sharing)
 - System Architecture
 - Source Code
 - Automated Tests
