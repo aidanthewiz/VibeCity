@@ -18,11 +18,11 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 Each item should link to the actual product, be it a google spreadsheet, google doc, github markdown file, etc. Do not link to a markdown file that contains only a link to another location - link directly from the appropriate item below. Failure to adhere to this criteria wil result in the associated artifact not being graded. Add any additional items required for the specific sprint submission.
 
-- [Product Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Sprint Backlog](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Requirements](https://trello.com/invite/vibecity/e3c716541a3e60229a7b31bcac522b93)
-- [Burndown Chart](https://drive.google.com/file/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/view?usp=sharing)
-- [Velocity Chart](https://drive.google.com/file/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/view?usp=sharing)
+- [Product Backlog](https://trello.com/invite/b/kGzEyCXd/eb7f7a37c19f1087f3acb636b1ea4826/agile-sprint-board)
+- [Sprint Backlog](https://trello.com/invite/b/kGzEyCXd/eb7f7a37c19f1087f3acb636b1ea4826/agile-sprint-board)
+- [Requirements](https://trello.com/invite/b/kGzEyCXd/eb7f7a37c19f1087f3acb636b1ea4826/agile-sprint-board)
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=67228042)
+- [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - System Architecture
 - Source Code
 - Automated Tests
