@@ -16,17 +16,12 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 # Sprint 1
 
-Each item should link to the actual product, be it a google spreadsheet, google doc, github markdown file, etc. Do not link to a markdown file that contains only a link to another location - link directly from the appropriate item below. Failure to adhere to this criteria wil result in the associated artifact not being graded. Add any additional items required for the specific sprint submission.
-
 - [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=67228042)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
-- Source Code
-- Automated Tests
-- Product Demonstration
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 
 ## Task Allocation
 
