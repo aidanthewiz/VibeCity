@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /project/
+    destination: /var/www/temp/
+hooks:
+  BeforeInstall:
+    - location: /project/scripts/before-install.sh
+      timeout: 60
+      runas: ubuntu
+  AfterInstall:
+    - location: /project/scripts/after-install.sh
+      timeout: 180
+      runas: ubuntu
