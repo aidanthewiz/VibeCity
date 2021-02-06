@@ -2,7 +2,7 @@
 
 temp=/var/www/temp
 case $DEPLOYMENT_GROUP_NAME in
-	Development)
+	developmentVibeCity)
 		folder=/var/www/vibecity.us
 		;;
 	*)
