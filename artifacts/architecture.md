@@ -5,7 +5,7 @@ Populate each section with information as it applies to your project. If a secti
 
 ## System Context Diagram
 
-![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.png)
+![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.PNG)
 
 This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users as well as software.
 
@@ -18,7 +18,7 @@ This diagram shows the VibeCity System in scope of the interactions between it, 
 
 ## Container Diagram
 
-![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.png)
+![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.PNG)
 
 This diagram shows the VibeCity System in more depth, showing how it functions internally to retrieve music and relevant data as well as how it displays such music/data to the user through the Web Application and connects to Spotify through the relevant API.
 
@@ -32,7 +32,7 @@ This diagram shows the VibeCity System in more depth, showing how it functions i
 
 ## Component Diagram
 
-![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.png)
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.PNG)
 
 This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions between the Web Application and the database, as well as connect to the database and Spotify's system for the music management actions.
 
@@ -45,8 +45,6 @@ This diagram shows how the VibeCity API uses various components to accomplish si
 | Security Component | 000, 001, 002, 003 |
 |  Email Component  | 000, 001, 002, 003  |
 |     Database      |      000 - 014      |
-
-See Code Complete, Chapter 3 and https://c4model.com/
 
 # Code Design UML Diagram
 
