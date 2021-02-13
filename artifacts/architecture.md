@@ -87,7 +87,12 @@ This is the flow of a normal user throughout the website pages.
 
 # Resource Management
 
-See Code Complete, Chapter 3
+The resources needed to host the PHP 8 server are linearly correlated to the number of users that access the website.
+For the most part, PHP and NGINX handles RAM and CPU allocations for the requests that are received from the client.
+Our PHP framework and the mysqli PHP extension handle database connection pooling to efficiently route requests to
+database connections. Currently, only vertical scaling of the web server and database is supported, vertical scaling
+is not supported by the infrastructure but can be easily added. Our code will be written to be executed within a
+reasonable period of time based on the task based on Big O algorithm analysis so resources are not wasted on a request.
 
 # Security
 
