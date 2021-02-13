@@ -3,6 +3,42 @@ Populate each section with information as it applies to your project. If a secti
 
 # Program Organization
 
+![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.png)
+
+This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users as well as software.
+
+|     Context       |     User Story ID   |
+|-------------------|:-------------------:|
+|   VibeCity User   |      000 - 015      |
+|  VibeCity Party   | 005, 006, 007, 014  |
+|  VibeCity System  |      000 - 015      |
+|  Spotify Webapp   |       002, 013      |
+
+![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.png)
+
+This diagram shows the VibeCity System in more depth, showing how it functions internally to retrieve music and relevant data as well as how it displays such music/data to the user through the Web Application and connects to Spotify through the relevant API.
+
+|     Container       |     User Story ID   |
+|-------------------|:-------------------:|
+|   VibeCity User   |      000 - 015      |
+|  Web Application  | 004, 005 - 011, 013 |
+|     Database      | 000 - 003, 008 - 013 |
+|  Spotify System   |       002, 013      |
+|    API System     |    002, 008, 013    |
+
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.png)
+
+This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions between the Web Application and the database, as well as connect to the database and Spotify's system for the music management actions.
+
+|     Context       |     User Story ID   |
+|-------------------|:-------------------:|
+|  Web Application  |      000 - 015      |
+| Sign-In Controller | 000, 001, 002, 011 |
+| Reset Password Controller |     003     |
+| Account Summary Controller |  011, 012  |
+| Security Component | 000, 001, 002, 003 |
+|  Email Component  | 000, 001, 002, 003  |
+|     Database      |      000 - 014      |
 You should have your context, container, and component (c4model.com) diagrams in this section, along with a description and explanation of each diagram and a table that relates each block to one or more user stories. 
 
 See Code Complete, Chapter 3 and https://c4model.com/
