@@ -7,11 +7,10 @@ You should have your context, container, and component (c4model.com) diagrams in
 
 See Code Complete, Chapter 3 and https://c4model.com/
 
-# Code Design
+# Code Design UML Diagram
+![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UMLDiagram.png)
 
-You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
-
-See Code Complete, Chapter 3 and https://c4model.com/
+The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify account link. The user shall be able to modify there information. The users should be able to create private parties that have a party ID, party passcode, party members, and assign a party leader. In the party class the user can create, close, share the party information, and set the song to listen to. Users can vote on tracks that they like. The tracks are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened. In the comment class the user can write content, give a rating, list who made the comment, and show what song these comments were applied to.
 
 # Data Design
 
