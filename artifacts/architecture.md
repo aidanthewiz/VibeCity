@@ -3,6 +3,8 @@ Populate each section with information as it applies to your project. If a secti
 
 # Program Organization
 
+## System Context Diagram
+
 ![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.png)
 
 This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users as well as software.
@@ -13,6 +15,8 @@ This diagram shows the VibeCity System in scope of the interactions between it, 
 |  VibeCity Party   | 005, 006, 007, 014  |
 |  VibeCity System  |      000 - 015      |
 |  Spotify Webapp   |       002, 013      |
+
+## Container Diagram
 
 ![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.png)
 
@@ -25,6 +29,8 @@ This diagram shows the VibeCity System in more depth, showing how it functions i
 |     Database      | 000 - 003, 008 - 013 |
 |  Spotify System   |       002, 013      |
 |    API System     |    002, 008, 013    |
+
+## Component Diagram
 
 ![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.png)
 
@@ -39,7 +45,6 @@ This diagram shows how the VibeCity API uses various components to accomplish si
 | Security Component | 000, 001, 002, 003 |
 |  Email Component  | 000, 001, 002, 003  |
 |     Database      |      000 - 014      |
-You should have your context, container, and component (c4model.com) diagrams in this section, along with a description and explanation of each diagram and a table that relates each block to one or more user stories. 
 
 See Code Complete, Chapter 3 and https://c4model.com/
 
