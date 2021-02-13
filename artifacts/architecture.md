@@ -61,6 +61,7 @@ The user in the class diagram should hold the users ID, the users Password, the 
 ## Activity Diagram
 
 ![Activity Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/activitydiagramdone.png)
+
 This diagram shows the flow of activities for a given user in the system. It shows the user login and authentication section, then all of the actions the user can perform once logged into the site. These include viewing the party page, party actions, viewing the profile page, profile actions, and viewing the leaderboard page, as well as leaderboard actions. Finally, the system ends with the user logging out.
 
 # Data Design
