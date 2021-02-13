@@ -34,31 +34,29 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 # Sprint 2
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- Burndown Chart
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=2144323158)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
-- Product Demonstration
+- [Product Demonstration](https://youtu.be/bf_643xOR8g)
 
 ## Task Allocation
 
-Member 1 - main tasking
-
-Member 2 - main tasking
+- Aidan Artherton (aidanthewiz) - Create system design document
+- Matthew Cooper (GTMcooper) - Create high level UML diagrams
+- Timothy Ford (CarriedCoin) - Create database ER diagrams
+- Alexandra French (xar-tol) - Create UI mockup and diagrams
+- Jason Masri (A90Jason) - Create low level UML diagrams
 
 # Sprint 3
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
@@ -71,13 +69,11 @@ Member 2 - main tasking
 
 # Sprint 4
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
@@ -90,13 +86,11 @@ Member 2 - main tasking
 
 # Sprint 5
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
@@ -109,13 +103,11 @@ Member 2 - main tasking
 
 # Sprint 6
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
@@ -128,13 +120,11 @@ Member 2 - main tasking
 
 # Sprint 7
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
@@ -147,13 +137,11 @@ Member 2 - main tasking
 
 # Sprint 8
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
-- Source Code
+- [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
 - Product Demonstration
 
