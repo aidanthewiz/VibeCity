@@ -20,7 +20,7 @@ The user in the class diagram should hold the users ID, the users Password, the 
 | Comment           | 010                     |
 | LeaderBoard       | 008, 009, 013           |
 ##Activity Diagram
-
+![Activity Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/activitydiagramdone.png)
 
 # Data Design
 
