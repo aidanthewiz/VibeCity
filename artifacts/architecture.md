@@ -12,6 +12,14 @@ See Code Complete, Chapter 3 and https://c4model.com/
 
 The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify account link. The user shall be able to modify there information. The users should be able to create private parties that have a party ID, party passcode, party members, and assign a party leader. In the party class the user can create, close, share the party information, and set the song to listen to. Users can vote on tracks that they like. The tracks are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened. In the comment class the user can write content, give a rating, list who made the comment, and show what song these comments were applied to.
 
+| Classes           |     User Story ID       |
+|-------------------|:-----------------------:|
+| Users             | 000, 001, 002, 003      |
+| Parties           | 004, 005, 006, 007, 014 |
+| Comment           | 010                     |
+| LeaderBoard       | 008, 009, 013           |
+
+
 # Data Design
 
 If you are using a database, you should have a basic Entity Relationship Diagram (ERD) in this section. This diagram should describe the tables in your database and their relationship to one another (especially primary/foreign keys), including the columns within each table. 
