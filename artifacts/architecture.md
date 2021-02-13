@@ -14,9 +14,9 @@ The user in the class diagram should hold the users ID, the users Password, the 
 
 # Data Design
 
-If you are using a database, you should have a basic Entity Relationship Diagram (ERD) in this section. This diagram should describe the tables in your database and their relationship to one another (especially primary/foreign keys), including the columns within each table. 
+![Database ER Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/Database%20ER%20Diagram.png)
 
-See Code Complete, Chapter 3
+The user should be able to join a party and add comments to tracks. Partys should be able to listen to tracks. Tracks should be able to have comments on them and have rankings on the leaderboards.
 
 # Business Rules
 
