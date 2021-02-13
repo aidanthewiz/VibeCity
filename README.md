@@ -57,7 +57,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -76,7 +76,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -95,7 +95,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -114,7 +114,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -133,7 +133,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
@@ -152,7 +152,7 @@ Member 2 - main tasking
 - [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
 - Burndown Chart
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
-- System Architecture
+- [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
