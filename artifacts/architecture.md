@@ -64,6 +64,7 @@ The user in the class diagram should hold the users ID, the users Password, the 
 ## Activity Diagram
 
 ![Activity Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/activitydiagramdone.png)
+This diagram shows the flow of activities for a given user in the system. It shows the user login and authentication section, then all of the actions the user can perform once logged into the site. These include viewing the party page, party actions, viewing the profile page, profile actions, and viewing the leaderboard page, as well as leaderboard actions. Finally, the system ends with the user logging out.
 
 # Data Design
 
@@ -81,35 +82,43 @@ See Code Complete, Chapter 3
 
 ## Sign-In Page
 ![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/signInPage.png)
+
 This is the sign on page and the first page the user would see on visiting the site. It allows existing users to login. On login, it leads to the home page. The register button leads to the register page for new users. The forgot password link leads to the forgot password page.
 
 ## Forgot Password Page
 ![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPasswordPage.png)
+
 This is the forgot password page for existing users who forgot their password. If the user exists, a forgot password link will be sent to their email, and the page will redirect to sign in.
 
 ## Register Page
 ![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registerPage.png)
+
 This page allows new users to register. On clicking register, if all fields are valid, an account will be created for the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login page by clicking login.
 
 ## Home Page
 ![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/homePage.png)
+
 This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users. Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join parties through the party button. They can view their profile through the profile button.
 
 ## Profile Page
 ![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userProfilePage.png)
+
 This is the user profile page. It has all the user's information. It also has the user's linked spotify account. This page can go to the home page through the home button. It can also go to the party page through the party button.
 
 ## Party Page
 ![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
+
 The party page contains the song the party is listening to and a join code to join/invite to the party. The home page button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for joining and inviting to a party through a popup.
 
 ## Join Code Popup
 ![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodePage.png)
+
 The join code popup can be used to enter or retrieve the party join code. The join code popup has an exit button to close the popup.
 
 ## UI Flow Chart
 ![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uiDiagram.png)
-This is the flow of a normal user throughout the website pages.
+
+This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login, register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options to view either their profile, their party, or go back to the homepage.
 
 ## Page / User Story Table
 
