@@ -4,7 +4,8 @@
 
 ![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.PNG)
 
-This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users as well as software.
+This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users
+as well as software.
 
 |     Context       |     User Story ID   |
 |-------------------|:-------------------:|
@@ -17,7 +18,9 @@ This diagram shows the VibeCity System in scope of the interactions between it, 
 
 ![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.PNG)
 
-This diagram shows the VibeCity System in more depth, showing how it functions internally to retrieve music and relevant data as well as how it displays such music/data to the user through the Web Application and connects to Spotify through the relevant API.
+This diagram shows the VibeCity System in more depth, showing how it functions internally to retrieve music and relevant
+data as well as how it displays such music/data to the user through the Web Application and connects to Spotify through
+the relevant API.
 
 |     Container       |     User Story ID   |
 |-------------------|:-------------------:|
@@ -31,7 +34,9 @@ This diagram shows the VibeCity System in more depth, showing how it functions i
 
 ![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.PNG)
 
-This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions between the Web Application and the database, as well as connect to the database and Spotify's system for the music management actions.
+This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions
+between the Web Application and the database, as well as connect to the database and Spotify's system for the music
+management actions.
 
 |     Context       |     User Story ID   |
 |-------------------|:-------------------:|
@@ -49,7 +54,13 @@ This diagram shows how the VibeCity API uses various components to accomplish si
 
 ![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UMLDiagram.png)
 
-The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify account link. The user shall be able to modify there information. The users should be able to create private parties that have a party ID, party passcode, party members, and assign a party leader. In the party class the user can create, close, share the party information, and set the song to listen to. Users can vote on tracks that they like. The tracks are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened. In the comment class the user can write content, give a rating, list who made the comment, and show what song these comments were applied to.
+The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify
+account link. The user shall be able to modify there information. The users should be able to create private parties
+that have a party ID, party passcode, party members, and assign a party leader. In the party class the user can create,
+close, share the party information, and set the song to listen to. Users can vote on tracks that they like. The tracks
+are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened. In
+the comment class the user can write content, give a rating, list who made the comment, and show what song these
+comments were applied to.
 
 | Classes           |     User Story ID       |
 |-------------------|:-----------------------:|
@@ -62,61 +73,86 @@ The user in the class diagram should hold the users ID, the users Password, the 
 
 ![Activity Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/activitydiagramdone.png)
 
-This diagram shows the flow of activities for a given user in the system. It shows the user login and authentication section, then all of the actions the user can perform once logged into the site. These include viewing the party page, party actions, viewing the profile page, profile actions, and viewing the leaderboard page, as well as leaderboard actions. Finally, the system ends with the user logging out.
+This diagram shows the flow of activities for a given user in the system. It shows the user login and authentication
+section, then all of the actions the user can perform once logged into the site. These include viewing the party page,
+party actions, viewing the profile page, profile actions, and viewing the leaderboard page, as well as leaderboard
+actions. Finally, the system ends with the user logging out.
 
 # Data Design
 
 ![Database ER Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/Database%20ER%20Diagram.png)
 
-The user should be able to join a party and add comments to tracks. Partys should be able to listen to tracks. Tracks should be able to have comments on them and have rankings on the leaderboards.
+The user should be able to join a party and add comments to tracks. Partys should be able to listen to tracks. Tracks
+should be able to have comments on them and have rankings on the leaderboards.
 
 # Business Rules
 
-You should list the assumptions, rules, and guidelines from external sources that are impacting your program design. 
+You should list the assumptions, rules, and guidelines from external sources that are impacting your program design.
 
 See Code Complete, Chapter 3
 
 # User Interface Design
 
 ## Sign-In Page
+
 ![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/signInPage.png)
 
-This is the sign on page and the first page the user would see on visiting the site. It allows existing users to login. On login, it leads to the home page. The register button leads to the register page for new users. The forgot password link leads to the forgot password page.
+This is the sign on page and the first page the user would see on visiting the site. It allows existing users to login.
+On login, it leads to the home page. The register button leads to the register page for new users. The forgot password
+link leads to the forgot password page.
 
 ## Forgot Password Page
+
 ![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPasswordPage.png)
 
-This is the forgot password page for existing users who forgot their password. If the user exists, a forgot password link will be sent to their email, and the page will redirect to sign in.
+This is the forgot password page for existing users who forgot their password. If the user exists, a forgot password
+link will be sent to their email, and the page will redirect to sign in.
 
 ## Register Page
+
 ![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registerPage.png)
 
-This page allows new users to register. On clicking register, if all fields are valid, an account will be created for the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login page by clicking login.
+This page allows new users to register. On clicking register, if all fields are valid, an account will be created for
+the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login
+page by clicking login.
 
 ## Home Page
+
 ![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/homePage.png)
 
-This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users. Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join parties through the party button. They can view their profile through the profile button.
+This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
+Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join
+parties through the party button. They can view their profile through the profile button.
 
 ## Profile Page
+
 ![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userProfilePage.png)
 
-This is the user profile page. It has all the user's information. It also has the user's linked spotify account. This page can go to the home page through the home button. It can also go to the party page through the party button.
+This is the user profile page. It has all the user's information. It also has the user's linked spotify account. This
+page can go to the home page through the home button. It can also go to the party page through the party button.
 
 ## Party Page
+
 ![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
 
-The party page contains the song the party is listening to and a join code to join/invite to the party. The home page button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for joining and inviting to a party through a popup.
+The party page contains the song the party is listening to and a join code to join/invite to the party. The home page
+button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for
+joining and inviting to a party through a popup.
 
 ## Join Code Popup
+
 ![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodePage.png)
 
-The join code popup can be used to enter or retrieve the party join code. The join code popup has an exit button to close the popup.
+The join code popup can be used to enter or retrieve the party join code. The join code popup has an exit button to
+close the popup.
 
 ## UI Flow Chart
+
 ![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uiDiagram.png)
 
-This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login, register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options to view either their profile, their party, or go back to the homepage.
+This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
+register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options
+to view either their profile, their party, or go back to the homepage.
 
 ## Page / User Story Table
 
@@ -130,39 +166,71 @@ This is the flow of a normal user throughout the website pages. At the start, th
 |     Party Page    |    004, 006, 007    |
 |    Join Code Page |      005, 014       |
 
-
 # Resource Management
 
 The resources needed to host the PHP 8 server are linearly correlated to the number of users that access the website.
-For the most part, PHP and NGINX handles RAM and CPU allocations for the requests that are received from the client.
-Our PHP framework and the mysqli PHP extension handle database connection pooling to efficiently route requests to
-database connections. Currently, only vertical scaling of the web server and database is supported, vertical scaling
-is not supported by the infrastructure but can be easily added. Our code will be written to be executed within a
-reasonable period of time based on the task based on Big O algorithm analysis so resources are not wasted on a request.
+For the most part, PHP and NGINX handles RAM and CPU allocations for the requests that are received from the client. Our
+PHP framework and the mysqli PHP extension handle database connection pooling to efficiently route requests to database
+connections. Currently, only vertical scaling of the web server and database is supported, vertical scaling is not
+supported by the infrastructure but can be easily added. Our code will be written to be executed within a reasonable
+period of time based on the task based on Big O algorithm analysis so resources are not wasted on a request.
 
 # Security
 
-See Code Complete, Chapter 3
+The Laravel framework provides a very good starting point for code security. It provides the infrastructure for some of
+the most important security concepts in web development including form validation, CSRF tokens, encrypted sessions, and
+a solid foundation of open source, peer reviewed code for many aspects of a web application such as the request router,
+output class, MVC framework concepts, database query builder using eloquent ORM, and much more. User authentication is
+handled by the framework as well using Laravel Sanctum with passwords encrypted by the standardized bcrypt algorithm. In
+terms of server security, LTS releases are being used for every piece of third party software used including Ubuntu
+Server, NGINX, PHP, NPM, NodeJS, among other technologies. TLS is also being used for every request between the server,
+and the client with standard recommended ciphers and DH parameters. The SSL/TLS security is independently confirmed by
+SSL labs with an A+ overall rating.
 
 # Performance
 
-See Code Complete, Chapter 3
+Web applications are, for the most part, meant to receive data from the client, and then decide what to do with that
+data while communicating with a database. When the server receives data, it will usually either store that data in the
+database, or decided what information to pull from the database and send back to the client. These operations, in our
+case, are going to use very little resources on the server and will be very performant with the infrastructure we have
+set up with AWS. The most concerning part of our applications performance will be the latency in-between our clients
+group listening sessions, however most of the hard work will be done by Spotify's immense infrastructure, with our job
+being to simply connect the users together. In terms of our specific code performance and optimizations, we will be
+using a tool called blackfire that allows us to measure the performance of specific functions and operations on the
+server in order to find what needs improving, and confirm that there is no performance bottleneck in our application.
 
 # Scalability
 
-See Code Complete, Chapter 3
+As the scope of this project will simply be meant as an application to be graded, used, and tested by a minimal number
+of people, scalability is not too much of a concern. However, the way that our AWS infrastructure is set up will allow
+for an easy transition of both vertical and horizontal scaling of web servers and databases depending on the current and
+estimated future demand of our application. Also, outside the scope of this class is the possibility of using serverless
+technologies to allow for virtually unlimited scaling of our applications database and API endpoint. Static assets are
+not a concern as we will be using AWS Cloudfront CDN to deliver frontend assets to the client.
 
 # Interoperability
 
-See Code Complete, Chapter 3
+Websites, for the most part, are inherently interoperable between any device with an internet connection and a browser.
+Our compatibility with browsers will be the same as the compatibility of our frontend framework, TailwindCSS. Which is
+defined as being "designed for and tested on the latest stable versions of Chrome, Firefox, Edge, and Safari." The
+backend does not need to be interoperable as it is does not depend on the clients hardware or software. However, in
+terms of interoperability of the backend, if AWS is no longer required, our software can be easily moved and built on
+any infrastructure the supports PHP and MySQL software.
 
 # Internationalization/Localization
 
-See Code Complete, Chapter 3
+Only english will be supported at this time. Cloudfront CDN will ensure our static assets are available globally with a
+quick response time, while our main server is located in North Virginia which might cause some delay for non-US
+countries in terms of API response latency.
 
 # Input/Output
 
-See Code Complete, Chapter 3
+VibeCity will be using CRUD operations through Laravel resource controllers. The possible actions of a CRUD resource are
+index, create, store, show, edit, update, and destroy. Depending on the action, the frontend will make either a GET,
+POST, PUT/PATCH, or DELETE HTTP/2 requests to the server, the server will then receive the data sent by the client and
+choose what to send back based on the request. The I/O from the server to the database will be handled by the Laravel
+and PHP database connection pooling. The backend will make requests in compliance to the CRUD operations to the database
+in order to manage the sites stored data.
 
 # Error Processing
 
@@ -182,7 +250,8 @@ See Code Complete, Chapter 3
 
 # Build-vs-Buy Decisions
 
-This section should list the third party libraries your system is using and describe what those libraries are being used for.
+This section should list the third party libraries your system is using and describe what those libraries are being used
+for.
 
 See Code Complete, Chapter 3
 
