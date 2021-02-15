@@ -68,6 +68,7 @@ comments were applied to.
 | Parties           | 004, 005, 006, 007, 014 |
 | Comment           | 010                     |
 | LeaderBoard       | 008, 009, 013           |
+| Track       | 008, 009, 013           |
 
 ## Activity Diagram
 
