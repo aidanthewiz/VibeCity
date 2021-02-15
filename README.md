@@ -40,7 +40,7 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - Automated Tests
-- [Product Demonstration](https://youtu.be/bf_643xOR8g)
+- [Product Demonstration](https://youtu.be/7zH_z3WHtcA)
 
 ## Task Allocation
 
