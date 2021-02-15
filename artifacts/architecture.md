@@ -145,8 +145,16 @@ joining and inviting to a party through a popup.
 
 ![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodePage.png)
 
-The join code popup can be used to enter or retrieve the party join code. The join code popup has an exit button to
+The join code popup can be used to enter or retrieve the party join code. The join code popup alos has an exit button to
 close the popup.
+
+### Manage Party Popup
+
+![Manage Party Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/managePartyPopup.png)
+
+The manage party popup can be used to leave the party, open a party, and kick members. Leaving leads back to the homepage, 
+opening redirects back to the party page, and kick also leads back to the party page to select members. There is an exit 
+button to close the popup.
 
 ## UI Flow Chart with Images
 
