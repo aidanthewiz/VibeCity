@@ -75,7 +75,7 @@ comments were applied to.
 ![Activity Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/activitydiagramdone.png)
 
 This diagram shows the flow of activities for a given user in the system. It shows the user login and authentication
-section, then all of the actions the user can perform once logged into the site. These include viewing the party page,
+section, then all the actions the user can perform once logged into the site. These include viewing the party page,
 party actions, viewing the profile page, profile actions, and viewing the leaderboard page, as well as leaderboard
 actions. Finally, the system ends with the user logging out.
 
@@ -88,9 +88,9 @@ should be able to have comments on them and have rankings on the leaderboards.
 
 # Business Rules
 
-You should list the assumptions, rules, and guidelines from external sources that are impacting your program design.
-
-See Code Complete, Chapter 3
+In the present, the architecture does not depend on any business logic, however in the future, we will ensure GDPR, and
+other compliance of the like which will need to be taken into consideration when designing the architecture to ensure
+proper compliance to anything we deem necessary.
 
 # User Interface Design
 
