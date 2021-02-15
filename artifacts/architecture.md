@@ -234,31 +234,56 @@ in order to manage the sites stored data.
 
 # Error Processing
 
-See Code Complete, Chapter 3
+There are two methods of error processing that will need to be taken into account. The first is backend errors, when
+something unexpected happens, and the PHP throws an error, we will need to do a couple of things. The first will be
+letting the client know that there was an error and inform them of what they need to do, if anything, elegantly. The
+second will be to handle the error in the backend. If the error comes after previous methods that changed data, those
+changes may need to be reversed in order to keep the system stable. If the error is immediately recoverable, it should
+be recovered from in a reasonable amount of time to allow the client to continue with what they were doing. In case of a
+fatal error that causes operational issues across multiple clients, the affected clients should all be informed, and it
+should either be automatically recovered from as soon as possible, or the developers/creators of the application should
+be notified of such issue as soon as possible.
 
 # Fault Tolerance
 
-See Code Complete, Chapter 3
+Similarly to error processing, if there is a fatal error that is non-recoverable, the developers will be notified. The
+software will be build to the best of our abilities to automatically recover from errors as soon as possible, if
+possible. The web services are also set to automatically restart in case of a critical error that halts the web server
+process, or relating processes. In the case of an API that the application is dependent on being down, if it is possible
+to continue without it, it will be done. If it is not possible to continue without it, or if the feature will have
+limited functionality, the client will be notified, and the feature will be limited or disabled until the dependency
+works again.
 
 # Architectural Feasibility
 
-See Code Complete, Chapter 3
+As the project is using AWS, we can scale as far as we want when needed, the architecture is set up to scale at any time
+as mentioned in scalability. As more features are added, or different approaches are taken, this can be easily expanded
+upon or scaled differently as the flexibility of AWS is true and tested among multiple production workloads.
 
 # Overengineering
 
-See Code Complete, Chapter 3
+VibeCity will initially strive to be the minimal viable product for the timespan given for the project. However, it will
+be built in mind of a possible future production grade application. In order to ensure that some portions of the
+application are less or more robust than others, we will strive to build the minimal viable code to get the task
+completed, but leave room to expand later. This approach will allow for quick and effective testing, expandability, and
+a smooth experience for the client. We will also have to take into consideration all the API changes that may need to be
+done in the future, and make sure that external dependencies are robust enough to be easily changed in the future using
+an interface for them.
 
 # Build-vs-Buy Decisions
 
-This section should list the third party libraries your system is using and describe what those libraries are being used
-for.
-
-See Code Complete, Chapter 3
+The third party libraries we will be using will be the Spotify API for group listening, AWS API for sending emails and
+other miscellaneous AWS services we need, the Laravel Framework, and Laravel Jetstream as a starting point for user
+authentication and user profiles. Our frontend framework will be TailwindCSS, which is supported and provides a good
+place to start with the frontend development.
 
 # Reuse
 
-See Code Complete, Chapter 3
+Other than our frontend and backend frameworks and libraries, our code will not be reusing any pre-existing software.
 
 # Change Strategy
 
-See Code Complete, Chapter 3
+Our strategy for planned or sporadic changes in strategy or code processes will be to consider the consequences of such
+a change, refactor as necessary, but also have the code originally built to avoid issues while making such changes. We
+will stick to standardized practices as close as possible to avoid needing to change things later, such as encryption
+algorithms, object types, code methods, etc.
