@@ -150,7 +150,7 @@ close the popup.
 
 ## UI Flow Chart with Images
 
-![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uIFlowChart.png)
+![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UIFlowChartScreenshots.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
 register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options
