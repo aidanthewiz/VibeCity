@@ -54,7 +54,7 @@ Our system component diagram splits up the VibeCity system into vital components
 
 ## Class Diagram
 
-![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/newumldiagram.png)
+![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/thisumldiagram.png)
 
 The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify
 account link. The user shall be able to modify there information. The users should be able to create private parties
@@ -68,7 +68,6 @@ comments were applied to.
 |-------------------|:-----------------------:|
 | Users             | 000, 001, 002, 003      |
 | Parties           | 004, 005, 006, 007, 014 |
-| Comment           | 010                     |
 | LeaderBoard       | 008, 009, 013           |
 | Profile           | 011, 012                |
 
