@@ -84,7 +84,8 @@ actions. Finally, the system ends with the user logging out.
 ![Database ER Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/Database%20ER%20Diagram.png)
 
 The user should be able to join a party and add comments to tracks. Partys should be able to listen to tracks. Tracks
-should be able to have comments on them and have rankings on the leaderboards.
+should be able to have comments on them and have rankings on the leaderboards. The Party should leader should be able to kick people from the party.
+The party leader is able to select which strong can be played. The leaderboard gives users the options to see which songs are trending and to vote songs to get on the leaderboard.
 
 # Business Rules
 
