@@ -32,7 +32,7 @@ the relevant API.
 
 ## Component Diagram
 
-![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ComponentDiag.PNG)
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/componentDiagram.png)
 
 This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions
 between the Web Application and the database, as well as connect to the database and Spotify's system for the music
