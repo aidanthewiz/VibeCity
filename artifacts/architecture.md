@@ -4,8 +4,11 @@
 
 ![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.PNG)
 
-This diagram shows the VibeCity System in scope of the interactions between it, internal processes, and external users
-as well as software.
+This diagram shows the VibeCity System, users, and the interactions between them. At a high level, users interact with the
+VibeCity system to form parties of users that listen to music together and to rate songs. The VibeCity system is where all
+of our software is maintained, such as our application, the backend behind parties and ratings, and the server we use to
+transfer all the data to/from the application. Our database system includes the data needed for our app to have users,
+parties, and track ratings.
 
 |     Context       |     User Story ID   |
 |-------------------|:-------------------:|
@@ -32,11 +35,10 @@ the relevant API.
 
 ## Component Diagram
 
-![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/componentDiagram.png)
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/compDiagram.png)
 
-This diagram shows how the VibeCity API uses various components to accomplish sign-in and account summary actions
-between the Web Application and the database, as well as connect to the database and Spotify's system for the music
-management actions.
+Our system component diagram splits up the VibeCity system into vital components. First there is the application layer, which lalows users to interact with our party and rating systems, hosted on our backend server. The application will communicate with the server through API calls and it interacts with controllers for each task needed. For example, it interacts with the user controlled to achieve registration and login for users, while the party controller achieves placing a group of users together to listen to music. The respective models that the controllers access will give any information needed to process the request. The models communicate with the database system or expernel APIs to retrieve information necessary, such as a spotify song or user password. The external APIs for this system are an email server, AWS SES, our database system (MySQL), and the Spotify API.
+
 
 |     Context       |     User Story ID   |
 |-------------------|:-------------------:|
