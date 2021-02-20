@@ -16,9 +16,7 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 
 # Sprint 1
 
-- [Product Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Sprint Backlog](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
-- [Requirements](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board)
+- [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=67228042)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
@@ -53,11 +51,11 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 # Sprint 3
 
 - [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
-- Burndown Chart
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=352950783)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
-- Automated Tests
+- [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
 - Product Demonstration
 
 ## Task Allocation

@@ -2,7 +2,7 @@
 
 ## System Context Diagram
 
-![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/SystemContextDiag.PNG)
+![System Context Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/contextDiagram.png)
 
 This diagram shows the VibeCity System, users, and the interactions between them. At a high level, users interact with the
 VibeCity system to form parties of users that listen to music together and to rate songs. The VibeCity system is where all
@@ -18,7 +18,7 @@ parties, and track ratings.
 
 ## Container Diagram
 
-![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ContainerDiag.PNG)
+![Container Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/containerDiagram.png)
 
 This diagram shows the VibeCity System in more depth, showing the system and its inner containers. The system hosts our application and
 our backend which provides the capabilities for parties, users, rating, and comment systems. The system also communicated with our database
