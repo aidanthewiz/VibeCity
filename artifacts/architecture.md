@@ -52,7 +52,7 @@ management actions.
 
 ## Class Diagram
 
-![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/newumldiagram.png)
+![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/thisumldiagram.png)
 
 The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify
 account link. The user shall be able to modify there information. The users should be able to create private parties
