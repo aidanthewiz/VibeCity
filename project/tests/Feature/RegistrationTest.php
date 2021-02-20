@@ -47,7 +47,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testEmailTooLong()
@@ -63,7 +62,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testNameTooLong()
@@ -79,7 +77,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testDifferentPasswordConfirmation()
@@ -95,7 +92,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testPasswordTooShort()
@@ -111,7 +107,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testPasswordTooLong()
@@ -127,7 +122,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testPasswordNoUppercase()
@@ -143,7 +137,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testPasswordNoLowercase()
@@ -159,7 +152,6 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 
     public function testPasswordNoSymbol()
@@ -175,6 +167,5 @@ class RegistrationTest extends TestCase
 
         // assert not authenticated as a user and that a redirect to the homepage didnt happen
         $this->assertGuest();
-        $response->assertNotRedirect(RouteServiceProvider::HOME);
     }
 }
