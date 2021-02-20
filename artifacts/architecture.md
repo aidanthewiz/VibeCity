@@ -66,7 +66,6 @@ comments were applied to.
 |-------------------|:-----------------------:|
 | Users             | 000, 001, 002, 003      |
 | Parties           | 004, 005, 006, 007, 014 |
-| Comment           | 010                     |
 | LeaderBoard       | 008, 009, 013           |
 | Profile           | 011, 012                |
 
