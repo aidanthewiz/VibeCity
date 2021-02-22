@@ -15,6 +15,7 @@ class RegisterTest extends DuskTestCase
      */
     public function testRegisterPresent()
     {
+        // assert the word 'register' is on the page
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                     ->assertSee('Register');
@@ -23,6 +24,7 @@ class RegisterTest extends DuskTestCase
 
     public function testTowersPresent()
     {
+        // assert that the towers class is present, representing the tower logo
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertVisible('.towers');
@@ -31,6 +33,7 @@ class RegisterTest extends DuskTestCase
 
     public function testEmailInputPresent()
     {
+        // assert that the email input box id is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertPresent('#email_input');
@@ -39,6 +42,7 @@ class RegisterTest extends DuskTestCase
 
     public function testNameInputPresent()
     {
+        // assert that the name input box id is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertPresent('#name_input');
@@ -47,6 +51,7 @@ class RegisterTest extends DuskTestCase
 
     public function testPasswordInputPresent()
     {
+        // assert that the password input box is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertPresent('#password_input');
@@ -55,6 +60,7 @@ class RegisterTest extends DuskTestCase
 
     public function testConfirmPasswordInputPresent()
     {
+        // assert that the password confirmation box id is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertPresent('#password_confirmation');
@@ -63,6 +69,7 @@ class RegisterTest extends DuskTestCase
 
     public function testRegisterButtonPresent()
     {
+        // assert that the register button is present and can be clicked
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->click('@register-button')
@@ -72,6 +79,7 @@ class RegisterTest extends DuskTestCase
 
     public function testLoginLinkPresent()
     {
+        // assert that the login link is visible
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertVisible('@login-link');
@@ -80,6 +88,7 @@ class RegisterTest extends DuskTestCase
 
     public function testHomeLinkPresent()
     {
+        // assert that the home link is visible
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertVisible('@home-link');

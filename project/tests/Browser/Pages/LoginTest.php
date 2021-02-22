@@ -15,6 +15,7 @@ class LoginTest extends DuskTestCase
      */
     public function testLoginPresent()
     {
+        // assert the word 'login' is on the page
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                     ->assertSee('LOGIN');
@@ -23,6 +24,7 @@ class LoginTest extends DuskTestCase
 
     public function testTowersPresent()
     {
+        // assert that the towers class is present, representing the tower logo
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertVisible('.towers');
@@ -31,6 +33,7 @@ class LoginTest extends DuskTestCase
 
     public function testEmailInputPresent()
     {
+        // assert that the email input box id is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertPresent('#email_input');
@@ -39,6 +42,7 @@ class LoginTest extends DuskTestCase
 
     public function testPasswordInputPresent()
     {
+        // assert that the password input box is present
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertPresent('#password_input');
@@ -47,6 +51,7 @@ class LoginTest extends DuskTestCase
 
     public function testLoginButtonPresent()
     {
+        // assert that the login button is present and can be clicked
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->click('@login-button')
@@ -54,8 +59,9 @@ class LoginTest extends DuskTestCase
         });
     }
 
-    public function testRegisterLinkPresent()
+    public function testPasswordLinkPresent()
     {
+        // assert that the password link is visible
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertVisible('@password-link');
@@ -64,6 +70,7 @@ class LoginTest extends DuskTestCase
 
     public function testHomeLinkPresent()
     {
+        // assert that the home link is visible
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertVisible('@home-link');

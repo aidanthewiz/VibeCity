@@ -7,7 +7,7 @@
                         <div class="text-2xl font-bold pb-2">SOCIALLY DISTANCED</div>
                         <div class="text-2xl font-bold">MUSICAL LISTENING</div>
                     </div>
-                    <!-- Towers screen -->
+                    <!-- Towers logo -->
                     <div class="tower-logo flex justify-around">
                         <div class="font-mono text-white text-4xl font-bold z-20 justify-center items-center text-center absolute mt-2"><a href="/" dusk="home-link">VibeCity</a></div>
                         <div class="towers flex items-end z-0 relative">
