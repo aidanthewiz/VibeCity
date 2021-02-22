@@ -114,26 +114,25 @@ proper compliance to anything we deem necessary.
 ## Individual Pages
 ### Sign-In Page
 
-![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/signInPage.png)
+![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/loginPage.png)
 
 This is the sign on page and the first page the user would see on visiting the site. It allows existing users to login.
-On login, it leads to the home page. The register button leads to the register page for new users. The forgot password
-link leads to the forgot password page.
+On login, it leads to the home page. The forgot password link leads to the forgot password page.
 
 ### Forgot Password Page
 
-![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPasswordPage.png)
+![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPassPage.png)
 
 This is the forgot password page for existing users who forgot their password. If the user exists, a forgot password
 link will be sent to their email, and the page will redirect to sign in.
 
 ### Register Page
 
-![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registerPage.png)
+![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registrationPage.png")
 
 This page allows new users to register. On clicking register, if all fields are valid, an account will be created for
 the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login
-page by clicking login.
+page by clicking "already registered".
 
 ### Home Page
 
@@ -175,7 +174,7 @@ button to close the popup.
 
 ## UI Flow Chart with Images
 
-![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UIFlowChartScreenshots.png)
+![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UIFlowChart.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
 register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options
