@@ -24,15 +24,15 @@
         }
 
         .btn {
-            @apply font-bold py-5 px-5 rounded;
+            @apply  font-bold py-5 px-5 rounded;
         }
 
         .btn-background {
-            @apply bg-black text-black;
+            @apply  bg-black text-black;
         }
 
         .btn-black:hover {
-            @apply bg-black;
+            @apply  bg-black;
         }
     </style>
 </head>

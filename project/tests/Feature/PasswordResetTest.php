@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -73,5 +74,27 @@ class PasswordResetTest extends TestCase
 
             return true;
         });
+    }
+
+    public function test_if_valid_email()
+    {
+        $response = $this->post('/forgot-password', [
+            'email' => 'example@example.com',
+        ]);
+        $response->assertRedirect(RouteServiceProvider::ROOT);
+    }
+
+    public function test_invalid_email()
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+
+        $response = $this->post('/forgot-password', [
+            'email' => "email",
+        ]);
+
+        Notification::assertNothingSent();
+
     }
 }
