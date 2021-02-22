@@ -128,7 +128,7 @@ link will be sent to their email, and the page will redirect to sign in.
 
 ### Register Page
 
-![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registrationPage.png")
+![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registrationPage.png)
 
 This page allows new users to register. On clicking register, if all fields are valid, an account will be created for
 the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login
