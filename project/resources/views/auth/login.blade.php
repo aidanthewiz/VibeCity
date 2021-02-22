@@ -9,7 +9,7 @@
                 </div>
                 <!-- Towers screen -->
                 <div class="tower-logo flex justify-around">
-                    <div class="font-mono text-white text-4xl font-bold z-20 justify-center items-center text-center absolute mt-2"><a href="/">VibeCity</a></div>
+                    <div class="font-mono text-white text-4xl font-bold z-20 justify-center items-center text-center absolute mt-2"><a href="/" dusk="home-link">VibeCity</a></div>
                     <div class="towers flex items-end z-0 relative">
                         <div id="tower-1" class="w-5 h-4 bg-gradient-to-t to-red-600 from-yellow-200 border-2 border-yellow-100"></div>
                         <div id="tower-2" class="w-5 h-10 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
@@ -57,12 +57,12 @@
                 <!-- login, register buttons -->
                 <div class="flex items-center justify-end mt-4">
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm text-yellow-600 hover:text-white" href="{{ route('password.request') }}">
+                        <a dusk="password-link" class="underline text-sm text-yellow-600 hover:text-white" href="{{ route('password.request') }}">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
 
-                    <button class="ml-2 bg-gray-100 hover:bg-gray-400 text-black font-bold py-1 px-4 rounded">
+                    <button dusk="login-button" class="ml-2 bg-gray-100 hover:bg-gray-400 text-black font-bold py-1 px-4 rounded">
                         {{ __('Login') }}
                     </button>
                 </div>
