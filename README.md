@@ -56,13 +56,15 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
-- Product Demonstration
+- [Product Demonstration](https://youtu.be/2H9SonBN81c)
 
 ## Task Allocation
 
-Member 1 - main tasking
-
-Member 2 - main tasking
+- Aidan Artherton (aidanthewiz) - Setup testing environment, setup linking users' spotify
+- Matthew Cooper (GTMcooper) - Setup testing environment, setup leaderboard
+- Timothy Ford (CarriedCoin) - Setup testing environment, setup parties
+- Alexandra French (xar-tol) - Setup testing environment, setup login, setup register, fix high level diagrams
+- Jason Masri (A90Jason) - Setup testing environment, update class diagram, setup password reset email
 
 
 # Sprint 4

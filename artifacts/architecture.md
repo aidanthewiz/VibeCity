@@ -73,12 +73,18 @@ are listed on a leaderboard. The comment class allows the users to comment on ce
 the comment class the user can write content, give a rating, list who made the comment, and show what song these
 comments were applied to.
 
-| Classes           |     User Story ID       |
-|-------------------|:-----------------------:|
-| Users             | 000, 001, 002, 003      |
-| Parties           | 004, 005, 006, 007, 014 |
-| LeaderBoard       | 008, 009, 013           |
-| Profile           | 011, 012                |
+| Classes                   |      User Story ID       |
+|---------------------------|:------------------------:|
+| User Controller           |  000, 001, 002, 015      |
+| Profile Controller        |     002, 011, 012        |
+| Leaderboard Controller    |  008, 009, 010, 013      |
+| Party Controller          |  004, 006, 007           |
+| Email Model               |  003, 015                |
+| User Model                |  000, 001, 002           |
+| Leaderboard Model         |  008, 009, 010, 013      |
+| Track Model               |  008, 009, 010, 013      |
+| Comment Model             |  008, 009, 010, 013      |
+| Party Model               |  004, 005, 006, 007, 014 |
 
 ## Activity Diagram
 
