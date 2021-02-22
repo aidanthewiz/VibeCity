@@ -28,7 +28,7 @@
                 </div>
             </div>
             <!-- login form -->
-            <form method="POST" action="{{ route('register') }}" class="p-4 m-2 content-center justify-center">
+            <form method="POST" action="{{ route('login') }}" class="p-4 m-2 content-center justify-center">
             @csrf
             <!-- prompt -->
                 <div class="content-center flex justify-between gap-0 items-center mb-3 mt-2">
