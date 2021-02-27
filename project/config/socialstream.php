@@ -75,6 +75,6 @@ return [
     */
 
     'features' => [
-        // Features::createAccountOnFirstLogin(),
+         Features::createAccountOnFirstLogin(),
     ],
 ];
