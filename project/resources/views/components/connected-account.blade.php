@@ -25,6 +25,9 @@
                 @case('bitbucket')
                     <x-bitbucket-icon class="h-6 w-6 mr-2" />
                     @break
+                @case('spotify')
+                    <x-spotify-icon class="h-6 w-6 mr-2" />
+                    @break
                 @default
             @endswitch
 

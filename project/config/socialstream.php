@@ -60,7 +60,7 @@ return [
     */
 
     'providers' => [
-        'github'
+        'spotify'
     ],
 
     /*
