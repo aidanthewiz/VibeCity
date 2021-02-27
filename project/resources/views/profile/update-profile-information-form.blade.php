@@ -1,79 +1,49 @@
 <x-jet-form-section submit="updateProfileInformation">
-    <x-slot name="title">
-        {{ __('Profile Information') }}
-    </x-slot>
-
-    <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
-    </x-slot>
-
-    <x-slot name="form">
-        <!-- Profile Photo -->
-        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
-                <!-- Profile Photo File Input -->
-                <input type="file" class="hidden"
-                            wire:model="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            " />
-
-                <x-jet-label for="photo" value="{{ __('Photo') }}" />
-
-                <!-- Current Profile Photo -->
-                <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+    <div class="min-h-screen md:min-h-0 lg:min-w-full sm:max-w-4xl sm:p-8 md:p-4 md:grid md:grid-cols-3 gap-2">
+        <div class="p-4 text-center md:text-left md:justify-items-start min-w-full min-h-full">
+            <!-- title to the card -->
+            <x-slot name="title">
+                <div class="pl-4 pt-4 text-black font-bold text-lg">
+                    {{ __('Profile Information') }}
+                </div>
+            </x-slot>
+            <!-- card description -->
+            <x-slot name="description">
+                <div class="pl-4 pt-4 pb-4 text-gray-800 font-bold text-md">
+                {{ __('Here you can view and update your account\'s profile information and email address.') }}
+                </div>
+            </x-slot>
+        </div>
+        <!-- password change form -->
+        <x-slot name="form" >
+            <div class="min-w-full col-span-6 h-full mb-2 content-center justify-center rounded bg-gray-900 shadow-md">
+                <!-- Name -->
+                <div class="col-span-6 m-4 sm:col-span-4 grid md:grid-cols-2 gap-1">
+                    <div class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">
+                        {{ Auth::user()->name }}
+                    </div>
+                    <label for="name" class="sr-only">Name</label>
+                    <input id="name" type="text" class="block mt-1 w-full bg-transparent border-0 border-b-2 border-white text-gray-200" placeholder="New Name*" wire:model.defer="state.name" autocomplete="name" />
                 </div>
 
-                <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview">
-                    <span class="block rounded-full w-20 h-20"
-                          x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
-                    </span>
+                <!-- Email -->
+                <div class="col-span-6 m-4 sm:col-span-4 grid md:grid-cols-2 gap-1">
+                    <div class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">
+                        {{ Auth::user()->email }}
+                    </div>
+                    <label for="email" class="sr-only">Email</label>
+                    <input id="email" type="email" class="block mt-1 w-full bg-transparent border-0 border-b-2 border-white text-gray-200" placeholder="New Email*" wire:model.defer="state.email" />
                 </div>
 
-                <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
-                </x-jet-secondary-button>
+                <!-- save button -->
+                <button dusk="save-info-btn" wire:loading.attr="disabled" wire:target="photo" class="bg-gray-100 hover:bg-gray-400 text-black font-bold py-1 px-4 rounded float-right mb-2 mr-3">
+                    {{ __('Save') }}
+                </button>
 
-                @if ($this->user->profile_photo_path)
-                    <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
-                    </x-jet-secondary-button>
-                @endif
-
-                <x-jet-input-error for="photo" class="mt-2" />
+                <!-- potential errors -->
+                <x-jet-input-error for="name" class="mt-2" />
+                <x-jet-input-error for="email" class="mt-2" />
             </div>
-        @endif
-
-        <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-jet-input-error for="name" class="mt-2" />
-        </div>
-
-        <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-jet-input-error for="email" class="mt-2" />
-        </div>
-    </x-slot>
-
-    <x-slot name="actions">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
-        </x-jet-action-message>
-
-        <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
-        </x-jet-button>
-    </x-slot>
+        </x-slot>
+    </div>
 </x-jet-form-section>

@@ -8,6 +8,7 @@ use Tests\DuskTestCase;
 
 class RegisterTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     /**
      * A Dusk test example.
      *
