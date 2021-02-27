@@ -134,7 +134,25 @@ class UpdatePasswordTest extends TestCase
             ->set('state', [
                 'current_password' => 'password',
                 'password' => 'impenetrableA1',
-                'password_confirmation' => 'impenetrableA1!',
+                'password_confirmation' => 'impenetrableA1',
+            ])
+            ->call('updatePassword');
+
+        // assert the password has not changed
+        $this->assertTrue(Hash::check('password', $user->fresh()->password));
+    }
+
+    public function test_password_no_number()
+    {
+        // assemble a user
+        $this->actingAs($user = User::factory()->create());
+
+        // call update user password with a password with no numbers
+        Livewire::test(UpdatePasswordForm::class)
+            ->set('state', [
+                'current_password' => 'password',
+                'password' => 'impenetrableA!',
+                'password_confirmation' => 'impenetrableA!',
             ])
             ->call('updatePassword');
 
