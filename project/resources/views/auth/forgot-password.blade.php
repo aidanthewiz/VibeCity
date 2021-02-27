@@ -46,7 +46,8 @@
             class="bg-gradient-to-t from-red-700 to-yellow-400 p-4 justify-center align-content content-center items-center rounded-tl-lg rounded-bl-lg rounded-tr-lg rounded-br-lg mt-2 mb-20">
             <div class="social-text text-center">
                 <div class="text-xl font-bold pb-2 social-text text-center grid grid-row-2">Reset Your Password</div>
-                <form>
+                <form method="POST" action="{{route('password.email')}}">
+                    @csrf
                     <label for="email" class="sr-only">Email</label>
                     <input class="placeholder-white" type="email" id="email" name="email" placeholder="Email*">
                     <button dusk="reset-button" class="bg-gray-900 hover:bg-gray-800 text-gray-400 font-bold py-2 px-4 rounded-full">
