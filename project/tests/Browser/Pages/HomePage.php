@@ -2,10 +2,12 @@
 
 namespace Tests\Browser\Pages;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 
 class HomePage extends Page
 {
+    use DatabaseMigrations;
     /**
      * Get the URL for the page.
      *

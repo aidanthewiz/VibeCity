@@ -8,6 +8,7 @@ use Tests\DuskTestCase;
 
 class ResetPasswordPageEmailTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     /**
      * A Dusk test example.
      *

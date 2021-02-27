@@ -102,8 +102,8 @@ class RegistrationTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Testing Testerson',
             'email' => 'testymcnotanemail@example.com',
-            'password' => 'short',
-            'password_confirmation' => 'short',
+            'password' => 'Pa1!',
+            'password_confirmation' => 'Pa1!',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
 
@@ -117,8 +117,8 @@ class RegistrationTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Testing Testerson',
             'email' => 'testymcnotanemail@example.com',
-            'password' => 'impenetrableA1!isthepasswordthatneverendsitgoesonandonandonandonandonandonandonandonandonandonandonandonandonandonandonuntilitistoolong',
-            'password_confirmation' => 'impenetrableA1!isthepasswordthatneverendsitgoesonandonandonandonandonandonandonandonandonandandonandononandonandonandonuntilitistoolong',
+            'password' => 'impenetrableA1!isthepasswordthatneverendsitgoesonandonandonandonandonandonandonandonandonandonandonandonandonandonandonandonandonuntilitistoolong',
+            'password_confirmation' => 'impenetrableA1!isthepasswordthatneverendsitgoesonandonandonandonandonandonandonandonandonandandonandonandonandononandonandonandonuntilitistoolong',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
 

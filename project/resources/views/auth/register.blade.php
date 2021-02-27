@@ -85,6 +85,9 @@
                     </div>
                     <!-- error notifiers for incorrect fields -->
                     <x-jet-validation-errors class="mb-4" />
+                    @if (JoelButcher\Socialstream\Socialstream::show())
+                        <x-socialstream-providers />
+                    @endif
                 </form>
             </div>
         </div>
