@@ -27,7 +27,7 @@ if [ -n "$folder" ]; then
 	php ${folder:?}/artisan cache:clear --no-ansi --no-interaction
 	npm install --prefix ${folder:?}/ --quiet
 	npm run --prefix ${folder:?}/ development --quiet
-	php ${folder:?}/artisan migrate:fresh --no-ansi --no-interaction
+	php ${folder:?}/artisan migrate --no-ansi --no-interaction
 	php ${folder:?}/artisan storage:link --no-ansi --no-interaction
     sudo php ${folder:?}/artisan optimize:clear --no-ansi --no-interaction
 	sudo php ${folder:?}/artisan config:clear --no-ansi --no-interaction
