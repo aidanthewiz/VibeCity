@@ -24,3 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('reset-password-testpage', function () {
     return view('auth/reset-password-testpage');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/party', function () {
+    return view('party');
+})->name('party');

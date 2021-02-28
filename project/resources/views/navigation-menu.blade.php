@@ -17,6 +17,11 @@
                             {{ __('Dashboard') }}
                         </div>
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('party') }}" :active="request()->routeIs('party')">
+                        <div class="text-white hover:text-yellow-500">
+                            {{ __('Party') }}
+                        </div>
+                    </x-jet-nav-link>
                 </div>
             </div>
 
