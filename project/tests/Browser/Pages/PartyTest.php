@@ -71,7 +71,7 @@ class PartyTest extends DuskTestCase
         // assert that the Create Party button is present
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
-                ->visit('/user/profile')
+                ->visit('/party')
                 ->assertPresent('@party-button');
         });
     }
