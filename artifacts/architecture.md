@@ -234,16 +234,21 @@ which returns them to the register screen.
 
 ## Page / User Story Table
 
-| UI Screen         |     User Story ID   |
-|-------------------|:-------------------:|
-|    Login Page     |     001, 015        |
-|  Forgot Password  |       003, 015      |
-|  Register Page    |     000, 015        |
-|     Home Page     | 008, 009, 010, 013  |
-| User Profile Page |    002, 011, 012    |
-|     Party Page    |    004, 006, 007    |
-|    Join Code Page |      005, 014       |
-|    Manage Page    |        007          |
+| UI Screen                 |     User Story ID   |
+|---------------------------|:-------------------:|
+|    Login Page             |     001, 015, 002   |
+|  TFA Login Page           |     012             |
+|  Forgot Password          |       003, 015      |
+|  Reset Password           |      017            |
+|  Register Page            |     000, 015, 002   |
+|     Home Page             | 008, 009, 010, 013  |
+| User Profile Page         |    002, 011, 012    |
+| Confirm TFA Popup         |     012             |
+| Confirm Sess Logout Popup |    012              |
+| Confirm Act Delete Popup  |    012              |
+|     Party Page            |    004, 006, 007    |
+|   Join Code Popup         |      005, 014       |
+| Manage Party Popup        |        007          |
 
 # Resource Management
 
