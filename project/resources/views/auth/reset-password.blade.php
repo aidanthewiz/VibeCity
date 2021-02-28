@@ -42,7 +42,7 @@
 <div class="font-sans text gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-4 sm:pt-0 bg-gray-800">
         <div name="logo justify-center align-content">
-            <a href="/" dusk="vibecity-logo" class="w-full"><img src="img/VibeCity-150.png"/></a>
+            <a href="/" dusk="vibecity-logo" class="w-full"><img src="../img/VibeCity-150.png"/></a>
         </div>
         <div
             class="bg-gradient-to-t from-red-700 to-yellow-400 p-4 justify-center align-content content-center items-center rounded-tl-lg rounded-bl-lg rounded-tr-lg rounded-br-lg mt-2 mb-20">
