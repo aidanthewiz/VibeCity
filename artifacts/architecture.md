@@ -199,7 +199,7 @@ enter the password and press delete account, then they are rerouted to the regis
 
 ### Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userPartyPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
 
 The party page contains the song the party is listening to and a join code to join/invite to the party. The home page
 button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for
