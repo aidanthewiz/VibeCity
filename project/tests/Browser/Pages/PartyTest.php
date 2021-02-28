@@ -75,8 +75,4 @@ class PartyTest extends DuskTestCase
                 ->assertPresent('@party-button');
         });
     }
-
-
-
-
 }
