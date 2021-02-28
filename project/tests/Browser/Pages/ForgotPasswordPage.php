@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ResetPasswordPageEmailTest extends DuskTestCase
+class ForgotPasswordPage extends DuskTestCase
 {
     use DatabaseMigrations;
     /**
