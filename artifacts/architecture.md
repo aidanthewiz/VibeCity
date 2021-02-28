@@ -114,29 +114,46 @@ proper compliance to anything we deem necessary.
 ## Individual Pages
 ### Sign-In Page
 
-![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/loginPage.png)
+![Sign-In Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userLoginPage.png)
 
 This is the sign on page and the first page the user would see on visiting the site. It allows existing users to login.
-On login, it leads to the home page. The forgot password link leads to the forgot password page.
+On login, it leads to the home page if the user does not have TFA.
+If the user does have TFA, login leads to the TFA login screen. The user can also login with spotify.
+The forgot password link leads to the forgot password page.
+
+### TFA Login Page
+
+![TFA Login Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/tfaLoginPage.png)
+
+This is the TFA login page. This is reached if a user has TFA and tries to sign in.
+When the user enters the TFA code from their device or their recovery code and logs in, they are redirected to the home page.
 
 ### Forgot Password Page
 
-![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPassPage.png)
+![Forgot Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/forgotPasswordPage.png)
 
 This is the forgot password page for existing users who forgot their password. If the user exists, a forgot password
-link will be sent to their email, and the page will redirect to sign in.
+link will be sent to their email, and the page will redirect to reset password.
+
+### Reset Password Page
+
+![Reset Password Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/resetPasswordPage.png)
+
+This is the reset password page for existing users to reset their password. If a user recieves a reset password email, then
+they are redirected here. They are able to enter a valid password and their email, and are then redirected to login with
+that new password.
 
 ### Register Page
 
-![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registrationPage.png)
+![Register Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/registerPage.png)
 
 This page allows new users to register. On clicking register, if all fields are valid, an account will be created for
 the user and they will be redirected to the homepage. If the user already has an account, they can go back to the login
-page by clicking "already registered".
+page by clicking "already registered". The user can also register with spotify.
 
 ### Home Page
 
-![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/homePage.png)
+![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/dashboardPage.png)
 
 This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
 Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join
@@ -144,14 +161,45 @@ parties through the party button. They can view their profile through the profil
 
 ### Profile Page
 
-![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userProfilePage.png)
+![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/newProfilePage.png)
 
-This is the user profile page. It has all the user's information. It also has the user's linked spotify account. This
-page can go to the home page through the home button. It can also go to the party page through the party button.
+This is the user profile page. It has all the user's information. The user can update their name and email.
+The user can also update their password. The user is able to sign up to TFA through the TFA area, which opens
+a TFA confirmation pop. On signing up, they are given a QR code to enable tfa on their own device. The user is
+able to logout of other browser sessions through the browser session area. This opens a popup to confirm.
+The user is able to permanently delete their account through the delete account button, which opens a confirmation
+popup. Finally the user is able to link spotify to their account through the connected accounts area, which redirects
+to spotify.
+
+
+### TFA Confirmation Popup
+
+![TFA Confirmation Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/TFAConfirmPopup.png)
+
+The TFA confirmation popup appears when a user enabled TFA through their profile. It asks the user for their password.
+If they press nevermind, they go back to the profile and do not enable TFA. If they enter their password and confirm
+they are given a QR code and taken back to their profile.
+
+
+### Logout Browser Sessions Popup
+![Logout Browser Sessions Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/logoutSessionsConfirmPopup.png)
+
+The logout browser session popup appears when a user tries to logout their other browser sessiosn through their profile.
+It asks the user for their password. If they enter it and press nevermind, they go back to the profile and do not logout
+other sessions. If they enter their password and press logout other sessions, they logout other sessions can go back
+to the profile
+
+### Delete Account Popup
+
+![Delete Account Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/deleteAccountConfirmPopup.png)
+
+The delete account popup appears when a user tries to delete their account on their profile. It asks the user for their password.
+If they enter it and press nevermind, they go back to the profile and do not delete their account. Alternatively, if they
+enter the password and press delete account, then they are rerouted to the register screen and their account is removed.
 
 ### Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/userPartyPage.png)
 
 The party page contains the song the party is listening to and a join code to join/invite to the party. The home page
 button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for
@@ -159,14 +207,14 @@ joining and inviting to a party through a popup.
 
 ### Join Code Popup
 
-![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodePage.png)
+![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodesPage.png)
 
 The join code popup can be used to enter or retrieve the party join code. The join code popup alos has an exit button to
 close the popup.
 
 ### Manage Party Popup
 
-![Manage Party Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/managePartyPopup.png)
+![Manage Party Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/managePartyPopupPage.png)
 
 The manage party popup can be used to leave the party, open a party, and kick members. Leaving leads back to the homepage, 
 opening redirects back to the party page, and kick also leads back to the party page to select members. There is an exit 
@@ -177,8 +225,12 @@ button to close the popup.
 ![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UIFlowChart.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
-register, or reset their password through the first screens. Then, the user is directed to the homepage, and has options
-to view either their profile, their party, or go back to the homepage.
+register, or reset their password through the first screens. Then, the user is directed to the homepage which shows tracks.
+The homepage allows user to view and vote on the tracks. It also has options to view either their profile, their party, 
+or go back to the homepage. The party page allows users to create, manage, and use join codes for their party, and they can go
+back to the homepage or the profile from here. The profile page allows users to edit their name, email, and password. They
+can also enable TFA, connect spotify, logout other sessions, and delete their account. Finally, users can always logout, 
+which returns them to the register screen.
 
 ## Page / User Story Table
 
