@@ -77,12 +77,22 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
 - Product Demonstration
 
-## Task Allocation
+## Task Allocation / Responsibilities
 
-Member 1 - main tasking
-
-Member 2 - main tasking
-
+- Aidan Artherton (aidanthewiz):
+    - Set up the AWS emails, which allows for email confirmations of signup, password reset, and otherwise.
+    - Setup linking users' spotify for login/register and linking capabilities in the profile. This gives the main integration for our app.
+- Matthew Cooper (GTMcooper)
+    - Working on seting up leaderboard, which would allow for viewing musical tracks. This will give the leaderboard capability for the app.
+    - Working on testing environment issues.
+- Timothy Ford (CarriedCoin)
+    - Set up the party page, which would allow for users to have a page to go to view their parties. This gives a page for the musical parties app portion to be added to.
+    - Fixed class diagram to give an accurate representation of our architecture.
+- Alexandra French (xar-tol)
+   - Setup view/edit profile page, which shows the users' name and email and allows for editing the TFA status, password, browser session, and deleting the account. This gives necessary user functionalities.
+   - Fixed ui diagram to give an accurate representation of our architecture.
+- Jason Masri (A90Jason)
+    - Setup password reset after mail screen to allow for users who have recieved a forgot password email after using the forgot password screen to actually reset their password. This gives necessary user password reset via email functionalities.
 
 # Sprint 5
 
