@@ -67,10 +67,12 @@
                     </button>
                 </div>
                 <!-- error notifiers for incorrect fields -->
-                <x-jet-validation-errors class="mb-4" />
-                @if (JoelButcher\Socialstream\Socialstream::show())
-                    <x-socialstream-providers />
-                @endif
+                <div dusk="spotify-link" />
+                    <x-jet-validation-errors class="mb-4" />
+                    @if (JoelButcher\Socialstream\Socialstream::show())
+                        <x-socialstream-providers />
+                    @endif
+                </div>
             </form>
         </div>
     </div>
