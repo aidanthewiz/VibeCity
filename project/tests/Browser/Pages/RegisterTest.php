@@ -95,4 +95,13 @@ class RegisterTest extends DuskTestCase
                 ->assertVisible('@home-link');
         });
     }
+
+    public function testSpotifyLinkPresent()
+    {
+        // assert that the spotify link is visible
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->seeLink('/oauth/spotify');
+        });
+    }
 }

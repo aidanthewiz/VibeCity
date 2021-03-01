@@ -83,6 +83,22 @@ class ProfileTest extends DuskTestCase
                 ->assertSee('Two Factor Authentication');
         });
     }
+        public function testSeeConnectedAccounts()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the connected accounts section is present
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/user/profile')
+                ->assertSee('Connected Accounts');
+        });
+    }
+
 
     public function testSeesBrowserSession()
     {
@@ -247,6 +263,22 @@ class ProfileTest extends DuskTestCase
                 ->pressAndWaitFor('@enable-tfa-btn')
                 ->type('conf-password-modal-input', 'test2WEB!')
                 ->assertPresent('@confirm-password-nevermind-btn');
+        });
+    }
+
+    public function testConnectedAccountsConnectButton()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the connect button is in the Connected Accounts panel
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/user/profile')
+                ->assertPresent('@connect-account-link');
         });
     }
 
