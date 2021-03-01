@@ -83,7 +83,8 @@ class ProfileTest extends DuskTestCase
                 ->assertSee('Two Factor Authentication');
         });
     }
-        public function testSeeConnectedAccounts()
+
+    public function testSeeConnectedAccounts()
     {
         // assemble a user
         $user = User::factory(User::class)->create([

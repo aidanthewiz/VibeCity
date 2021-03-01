@@ -83,7 +83,7 @@ class LoginTest extends DuskTestCase
         // assert that the spotify link is visible
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->seeLink('/oauth/spotify');
+                ->assertSeeLink('/oauth/spotify');
         });
     }
 }
