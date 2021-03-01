@@ -161,7 +161,7 @@ parties through the party button. They can view their profile through the profil
 
 ### Profile Page
 
-![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/newProfilePage.png)
+![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/profilePage.png)
 
 This is the user profile page. It has all the user's information. The user can update their name and email.
 The user can also update their password. The user is able to sign up to TFA through the TFA area, which opens
@@ -222,7 +222,7 @@ button to close the popup.
 
 ## UI Flow Chart with Images
 
-![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UIFlowChart.png)
+![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/userInterfaceFlowChart.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
 register, or reset their password through the first screens. Then, the user is directed to the homepage which shows tracks.
