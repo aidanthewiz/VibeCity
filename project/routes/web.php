@@ -23,6 +23,12 @@ Route::get('reset-password-testpage', function () {
     return view('auth/reset-password-testpage');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/party', function () {
-    return view('party');
-})->name('party');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/party', function () {
+//    return view('party');
+//})->name('party');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/party', 'App\Http\Controllers\PartyController@show')->name('party');
+
+// Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty');
+
+Route::get('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('party/createParty');

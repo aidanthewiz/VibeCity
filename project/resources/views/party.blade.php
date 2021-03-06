@@ -1,11 +1,15 @@
 <x-app-layout>
     <div class="flex min-w-full min-h-full p-4 justify-center items-center content-center align-content justify-self-center align-center self-center">
         <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
+            @if (!$party)
             <div class="border-b-2 border-white">
-                <button dusk="party-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                    {{ __('Create Party') }}
-                </button>
+                <form method="GET" action="{{'/party/createParty'}}">
+                    <button dusk="party-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                        {{ __('Create Party') }}
+                    </button>
+                </form>
             </div>
+            @endif
             <div class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
                 <!-- Grid for song and party -->
                 <div class="min-w-full min-h-full">
@@ -33,9 +37,11 @@
                                 </div>
                             </div>
                             <div class="row-span-3 text-yellow-600 border-l-2 border-white">
+                                @if ($party)
                                 <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
-                                    {{ Auth::user()->name }}
+                                    {{Auth::user()->name}}
                                 </div>
+                                @endif
                             </div>
                         </div>
 
