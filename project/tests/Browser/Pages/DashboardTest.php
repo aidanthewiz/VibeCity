@@ -19,11 +19,11 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the page header exists
+        // assert that track is on the page
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
-                ->assertSee('Dashboard');
+                ->assertSee('Track');
         });
     }
 
@@ -35,7 +35,7 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the page header exists
+        // assert that the track name column exists
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
@@ -51,43 +51,11 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the page header exists
+        // assert that the artist name column exists
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
                 ->assertSee('Artist');
-        });
-    }
-
-    public function testRedBorderPresent()
-    {
-        // assemble a user
-        $user = User::factory(User::class)->create([
-            'email' => 'testduskuser@dusk.com',
-            'password' => bcrypt('test2WEB!'),
-        ]);
-
-        // assert that the page header exists
-        $this->browse(function (Browser $browser) use($user) {
-            $browser->loginAs($user)
-                ->visit('/dashboard')
-                ->assertVisible('.border-red-500');
-        });
-    }
-
-    public function testOrangeBorderPresent()
-    {
-        // assemble a user
-        $user = User::factory(User::class)->create([
-            'email' => 'testduskuser@dusk.com',
-            'password' => bcrypt('test2WEB!'),
-        ]);
-
-        // assert that the page header exists
-        $this->browse(function (Browser $browser) use($user) {
-            $browser->loginAs($user)
-                ->visit('/dashboard')
-                ->assertVisible('.border-yellow-600');
         });
     }
 }
