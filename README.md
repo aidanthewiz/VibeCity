@@ -102,13 +102,13 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
-- Product Demonstration
+- [Product Demonstration](https://www.youtube.com/watch?v=OYJQmVHskkM)
 
 ## Task Allocation / Responsibilities
 
 - Aidan Artherton (aidanthewiz):
-    - Fix profile in that when a spotify user signs up with email, both name and email are ambiguously the same. This makes the app less ambiguous to use.
-    - Add ability to listen to music with friends in a party. This adds one of the apps 2 main functionalities.
+    - Fixed profile in that when a spotify user signs up with email, both name and email are ambiguously the same. This makes the app less ambiguous to use.
+    - Adding ability to listen to music with friends in a party. This adds one of the apps 2 main functionalities.
 - Matthew Cooper (GTMcooper)
     - Added join codes for parties, which helped makes parties distinct and will be used for sharing and adding users to parties in the future.
     - Working on testing environment issues.
