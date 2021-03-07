@@ -46,6 +46,8 @@ class ProfileTest extends DuskTestCase
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/user/profile')
+                ->assertSee('Name')
+                ->assertSee('Email')
                 ->assertSee('Profile Information');
         });
 
