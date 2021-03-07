@@ -153,7 +153,7 @@ page by clicking "already registered". The user can also register with spotify.
 
 ### Home Page
 
-![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/dashboardPage.png)
+![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/leaderboardPage.png)
 
 This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
 Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join
