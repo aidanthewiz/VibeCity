@@ -248,7 +248,6 @@ which returns them to the register screen.
 | Confirm Sess Logout Popup |    012              |
 | Confirm Act Delete Popup  |    012              |
 |     Party Page            | 004, 006, 007, 005, 014, 019  |
-|   Join Code Popup         |      005, 014       |
 | Manage Party Popup        |        007          |
 
 # Resource Management
