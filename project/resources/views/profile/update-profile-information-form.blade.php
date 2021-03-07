@@ -19,19 +19,13 @@
             <div class="min-w-full col-span-6 h-full mb-2 content-center justify-center rounded bg-gray-900 shadow-md">
                 <!-- Name -->
                 <div class="col-span-6 m-4 sm:col-span-4 grid md:grid-cols-2 gap-1">
-                    <div class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">
-                        {{ Auth::user()->name }}
-                    </div>
-                    <label for="name" class="sr-only">Name</label>
+                    <label for="name" class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">Name</label>
                     <input id="name" type="text" class="block mt-1 w-full bg-transparent border-0 border-b-2 border-white text-gray-200" placeholder="New Name*" wire:model.defer="state.name" autocomplete="name" />
                 </div>
 
                 <!-- Email -->
                 <div class="col-span-6 m-4 sm:col-span-4 grid md:grid-cols-2 gap-1">
-                    <div class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">
-                        {{ Auth::user()->email }}
-                    </div>
-                    <label for="email" class="sr-only">Email</label>
+                    <label for="name" class="block mt-4 sm: ml-2 md:ml-0 text-white font-bold text-md h-full text-left md:text-center">Email</label>
                     <input id="email" type="email" class="block mt-1 w-full bg-transparent border-0 border-b-2 border-white text-gray-200" placeholder="New Email*" wire:model.defer="state.email" />
                 </div>
 
