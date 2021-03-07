@@ -13,8 +13,8 @@ parties, and track ratings.
 |     Context       |     User Story ID         |
 |-------------------|:-------------------------:|
 |   VibeCity User   |      000 - 001, 002, 015  |
-|  VibeCity System  |      000 - 015            |
-|  Database System  |      000-010, 013-014     |
+|  VibeCity System  |      000 - 019            |
+|  Database System  |      000-010, 013-019     |
 
 ## Container Diagram
 
@@ -25,18 +25,18 @@ our backend which provides the capabilities for parties, users, rating, and comm
 to get all of the attributes needed for parties, users, ratings, etc; the spotify api, which gives users spotify account info and music, and
 the amazon email server, which is used to send emails like reset password.
 
-|     Container               |     User Story ID    |
-|-----------------------------|:--------------------:|
-|   VibeCity User             |      000 - 015       |
-|   Application               | 004, 005 - 011, 013  |
-|    VibeCity API Application | 000 - 003, 008 - 013 |
-| Email System                |  003,                |
-| Database System             |  000-010, 013-014    |
-| Spotify System              |  004, 007, 013       | 
+|     Container               |     User Story ID        |
+|-----------------------------|:------------------------:|
+|   VibeCity User             |      000 - 015           |
+|   Application               | 004, 005 - 011, 013-019  |
+|    VibeCity API Application | 000 - 003, 008 - 019     |
+| Email System                |  003,                    |
+| Database System             |  000-010, 013-019        |
+| Spotify System              |  004, 007, 013, 019      | 
 
 ## Component Diagram
 
-![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/compDiagram.png)
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/componentDiagram.png)
 
 Our system component diagram splits up the VibeCity system into vital components. First there is the application layer, which lalows users to interact with our party and rating systems, hosted on our backend server. The application will communicate with the server through API calls and it interacts with controllers for each task needed. For example, it interacts with the user controlled to achieve registration and login for users, while the party controller achieves placing a group of users together to listen to music. The respective models that the controllers access will give any information needed to process the request. The models communicate with the database system or expernel APIs to retrieve information necessary, such as a spotify song or user password. The external APIs for this system are an email server, AWS SES, our database system (MySQL), and the Spotify API.
 
@@ -45,16 +45,16 @@ Our system component diagram splits up the VibeCity system into vital components
 |---------------------------|:------------------------:|
 |    Application            |      000 - 015           |
 | User Controller           |  000, 001, 002, 015      |
-| Profile Controller        |     002, 011, 012        |
+| Profile Controller        |     002, 011, 012, 018   |
 | Leaderboard Controller    |  008, 009, 010, 013      |
-| Party Controller          |  004, 006, 007           |
+| Party Controller          |  004, 006, 007, 019      |
 | Email Model               |  003, 015                |
 | User Model                |  000, 001, 002           |
 | Leaderboard Model         |  008, 009, 010, 013      |
 | Track Model               |  008, 009, 010, 013      |
 | Comment Model             |  008, 009, 010, 013      |
 | Party Model               |  004, 005, 006, 007, 014 |
-| Email System              |  003,                    |
+| Email System              |  003, 017                |
 | Database System           |  000-010, 013-014        |
 | Spotify System (API)      |  004, 007, 013           | 
 
@@ -76,10 +76,10 @@ comments were applied to.
 | Classes                   |      User Story ID       |
 |---------------------------|:------------------------:|
 | User Controller           |  000, 001, 002, 015      |
-| Profile Controller        |     002, 011, 012        |
+| Profile Controller        |     002, 011, 012, 018   |
 | Leaderboard Controller    |  008, 009, 010, 013      |
-| Party Controller          |  004, 006, 007           |
-| Email Model               |  003, 015                |
+| Party Controller          |  004, 006, 007, 019      |
+| Email Model               |  003, 015, 17            |
 | User Model                |  000, 001, 002           |
 | Leaderboard Model         |  008, 009, 010, 013      |
 | Track Model               |  008, 009, 010, 013      |
@@ -156,7 +156,7 @@ page by clicking "already registered". The user can also register with spotify.
 ![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/leaderboardPage.png)
 
 This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
-Users can press the rating buttons to rate up and down the tracks. They can go to the party page to host and join
+Users will be able to press the rating buttons to rate up and down the tracks. They can go to the party page to host and join
 parties through the party button. They can view their profile through the profile button.
 
 ### Profile Page
@@ -197,20 +197,21 @@ The delete account popup appears when a user tries to delete their account on th
 If they enter it and press nevermind, they go back to the profile and do not delete their account. Alternatively, if they
 enter the password and press delete account, then they are rerouted to the register screen and their account is removed.
 
+### Create Party Page
+
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyNotCreatedPage.png)
+
+The party page contains the ability to create a party using the create party button. This leads to the party page. The home page
+button goes to the home page. The profile button goes to the user's profile.
+
+
 ### Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyCreatedPage.png)
 
-The party page contains the song the party is listening to and a join code to join/invite to the party. The home page
-button goes to the home page. The profile button goes to the user's profile. Finally, the join code button allows for
-joining and inviting to a party through a popup.
-
-### Join Code Popup
-
-![Join Code Popup](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/joinCodesPage.png)
-
-The join code popup can be used to enter or retrieve the party join code. The join code popup alos has an exit button to
-close the popup.
+The party page contains the song the party is listening to and a join code button to get a code to join/invite to the party. 
+The home page button goes to the home page. The profile button goes to the user's profile. The manage party button will open
+up a popup for managing the party. Finally, the join code button will generate a join code for the party.
 
 ### Manage Party Popup
 
@@ -222,7 +223,7 @@ button to close the popup.
 
 ## UI Flow Chart with Images
 
-![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/userInterfaceFlowChart.png)
+![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uiFlowChart.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
 register, or reset their password through the first screens. Then, the user is directed to the homepage which shows tracks.
