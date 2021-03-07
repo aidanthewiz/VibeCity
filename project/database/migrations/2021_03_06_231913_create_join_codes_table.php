@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartiesTable extends Migration
+class CreateJoinCodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePartiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('parties', function (Blueprint $table) {
+        Schema::create('join_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('partyCreator');
-            $table->foreignId('joinCode')->nullable();
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreatePartiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parties');
+        Schema::dropIfExists('join_codes');
     }
 }
