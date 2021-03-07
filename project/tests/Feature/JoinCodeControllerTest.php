@@ -24,6 +24,7 @@ class JoinCodeControllerTest extends TestCase
         $this->actingAs($user = User::factory()->create());
 
         // get the page for the party, when the user has created a party
+        $response = $this->get('/party/createParty');
         $response = $this->get('/party/createJoinCode');
 
         // get the party for the user
