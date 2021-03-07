@@ -101,14 +101,25 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
-- [Automated Tests]](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
+- [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
 - Product Demonstration
 
-## Task Allocation
+## Task Allocation / Responsibilities
 
-Member 1 - main tasking
-
-Member 2 - main tasking
+- Aidan Artherton (aidanthewiz):
+    - Fix profile in that when a spotify user signs up with email, both name and email are ambiguously the same. This makes the app less ambiguous to use.
+    - Add ability to listen to music with friends in a party. This adds one of the apps 2 main functionalities.
+- Matthew Cooper (GTMcooper)
+    - Added join codes for parties, which helped makes parties distinct and will be used for sharing and adding users to parties in the future.
+    - Working on testing environment issues.
+- Timothy Ford (CarriedCoin)
+    - Added backend to user party page, allowing users to form parties. This adds the backend for user party formation functionalities.
+    - Updated class diagram to give an accurate representation of our architecture.
+- Alexandra French (xar-tol)
+   - Added leaderboard, which allows for viewing musical tracks on VibeCity, including autofilling track database with top 50 songs from Spotify when empty. This adds 1 of 2 main app functionalities and will be used for rating tracks in the future.
+   - Updated UI diagrams to give an accurate representation of our architecture.
+- Jason Masri (A90Jason)
+    - Added join codes for parties, which helped makes parties distinct and will be used for sharing and adding users to parties in the future.
 
 
 # Sprint 6

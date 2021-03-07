@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LeaderboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('auth/register');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\LeaderboardController@showAll')->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [LeaderboardController::class, 'showAll'])->name('dashboard');
 
 Route::get('reset-password-testpage', function () {
     return view('auth/reset-password-testpage');
