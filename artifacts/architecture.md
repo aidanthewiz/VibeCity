@@ -207,7 +207,7 @@ button goes to the home page. The profile button goes to the user's profile.
 
 ### Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyCreatedPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/partyPage.png)
 
 The party page contains the song the party is listening to and a join code button to get a code to join/invite to the party. 
 The home page button goes to the home page. The profile button goes to the user's profile. The manage party button will open
@@ -243,11 +243,11 @@ which returns them to the register screen.
 |  Reset Password           |      017            |
 |  Register Page            |     000, 015, 002   |
 |     Home Page             | 008, 009, 010, 013  |
-| User Profile Page         |    002, 011, 012    |
+| User Profile Page         | 002, 011, 012, 018  |
 | Confirm TFA Popup         |     012             |
 | Confirm Sess Logout Popup |    012              |
 | Confirm Act Delete Popup  |    012              |
-|     Party Page            |    004, 006, 007    |
+|     Party Page            | 004, 006, 007, 005, 014, 019  |
 |   Join Code Popup         |      005, 014       |
 | Manage Party Popup        |        007          |
 
