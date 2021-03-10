@@ -17,7 +17,7 @@ class LeaderboardController extends Controller
     public function showAll()
     {
         // ensure DB is populated if empty
-        $this->populatePredetermined50();
+        $this->populateTop50();
 
         // order the tracks by their names, then sort by descending rating so highest track with first name is at top
         $tracks = Track::all()->sortby('name')->sortByDesc('rating');
