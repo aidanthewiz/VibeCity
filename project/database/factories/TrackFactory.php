@@ -24,6 +24,7 @@ class TrackFactory extends Factory
         return [
             'name' => $this->faker->name,
             'artist' => $this->faker->firstName,
+            'rating' => $this->faker->randomNumber(),
         ];
     }
 }

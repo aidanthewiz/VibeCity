@@ -17,6 +17,7 @@ class CreateTracksTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('artist');
+            $table->bigInteger('rating')->default(0);
             $table->timestamps();
         });
     }
