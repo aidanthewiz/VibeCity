@@ -21,6 +21,7 @@ class TrackTest extends TestCase
         Track::create([
             'name' => 'TestyMcTestTract',
             'artist' => 'TestyMcTestRapper',
+            'rating' => 0,
         ]);
 
         // assert track is in the databasse
@@ -38,6 +39,7 @@ class TrackTest extends TestCase
         $track = Track::create([
             'name' => 'TestyMcTestTract',
             'artist' => 'TestyMcTestRapper',
+            'rating' => 0,
         ]);
 
         // delete the track
@@ -48,16 +50,17 @@ class TrackTest extends TestCase
     }
 
     /**
-     * Tests that tracks can be updated
+     * Tests that track names can be updated
      *
      * @return void
      */
-    public function test_track_update()
+    public function test_track_update_name()
     {
         // create a track
         $track = Track::create([
             'name' => 'TestyMcTestTract',
             'artist' => 'TestyMcTestRapper',
+            'rating' => 0,
         ]);
 
         // update the track
@@ -65,5 +68,26 @@ class TrackTest extends TestCase
 
         // assert track is updated in the database
         $this->assertDatabaseHas('tracks', ['name' => 'TestTheBesty']);
+    }
+
+    /**
+     * Tests that tracks ratings can be updated
+     *
+     * @return void
+     */
+    public function test_track_update_rating()
+    {
+        // create a track
+        $track = Track::create([
+            'name' => 'TestyMcTestTract',
+            'artist' => 'TestyMcTestRapper',
+            'rating' => 0,
+        ]);
+
+        // update the track
+        $track->update(['rating' => 3]);
+
+        // assert track is updated in the database
+        $this->assertDatabaseHas('tracks', ['rating' => 3]);
     }
 }

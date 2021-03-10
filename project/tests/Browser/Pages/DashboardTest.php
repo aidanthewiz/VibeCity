@@ -27,6 +27,22 @@ class DashboardTest extends DuskTestCase
         });
     }
 
+    public function testRatingColumnPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the artist name column exists
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertSee('Rating');
+        });
+    }
+
     public function testNameColumnPresent()
     {
         // assemble a user
@@ -56,6 +72,54 @@ class DashboardTest extends DuskTestCase
             $browser->loginAs($user)
                 ->visit('/dashboard')
                 ->assertSee('Artist');
+        });
+    }
+
+    public function testArtistOrangeSectionPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the artist name column exists
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertVisible('@orange');
+        });
+    }
+
+    public function testArtistRedSectionPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the artist name column exists
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertVisible('@red');
+        });
+    }
+
+    public function testRateButtonPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the artist name column exists
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertVisible('@rate-track-btn');
         });
     }
 }
