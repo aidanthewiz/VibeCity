@@ -35,7 +35,7 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the artist name column exists
+        // assert that the rating column exists
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
@@ -83,7 +83,7 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the artist name column exists
+        // assert that the orange section is visible
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
@@ -99,7 +99,7 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the artist name column exists
+        // assert that the red section is visible
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
@@ -115,11 +115,43 @@ class DashboardTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the artist name column exists
+        // assert that the rate button is visible
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/dashboard')
                 ->assertVisible('@rate-track-btn');
+        });
+    }
+
+    public function testLeaderboardLinkPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the leaderboard link is visible
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertSee('Leaderboard');
+        });
+    }
+
+    public function testSpotifyLeaderboardLinkPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the spotify leaderboard link is visible
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertSee('Spotify Leaderboard');
         });
     }
 }

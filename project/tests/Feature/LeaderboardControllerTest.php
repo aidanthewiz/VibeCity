@@ -49,6 +49,54 @@ class LeaderboardControllerTest extends TestCase
         $response->assertRedirect('/login');
     }
 
+    /**
+     * Tests that the spotify leaderboard page will load
+     *
+     * @return void
+     */
+    public function test_spotify_leaderboard_loads()
+    {
+        // assemble a user
+        $this->actingAs($user = User::factory()->create());
+
+        // get the page
+        $response = $this->get('/spotifyDashboard');
+
+        // assert page loads
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Tests that the spotify leaderboard page will redirect to login without an authorized user
+     *
+     * @return void
+     */
+    public function test_spotify_leaderboard_doesnt_load()
+    {
+        // assemble a user then logout
+        $this->actingAs($user = User::factory()->create());
+        Auth::logout();
+
+        // get the page
+        $response = $this->get('/spotifyDashboard');
+
+        // assert page redirects to login page
+        $response->assertRedirect('/login');
+    }
+
+    /**
+     * Tests that the top 50 tracks can be populated from spotify
+     *
+     * @return void
+     */
+    public function test_get_spotify_tracks()
+    {
+        // run function to get spotify tracks
+        $tracks = LeaderboardController::getSpotifyTracks();
+
+        // assert that there are 50 tracks from spotify
+        $this->assertEquals(50, count($tracks['items']));
+    }
 
     /**
      * Tests that the top 50 tracks can be populated from spotify
