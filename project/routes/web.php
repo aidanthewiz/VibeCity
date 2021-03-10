@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('auth/register');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [LeaderboardController::class, 'showAll'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [LeaderboardController::class, 'showDashboard'])->name('dashboard');
 
 Route::get('reset-password-testpage', function () {
     return view('auth/reset-password-testpage');
@@ -34,3 +34,5 @@ Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createPa
 Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
 
 Route::post('/dashboard/rateTrack/{track_id}', [LeaderboardController::class, 'rate'])->name('rateTrack');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/spotifyDashboard', [LeaderboardController::class, 'showSpotify'])->name('spotifyDashboard');

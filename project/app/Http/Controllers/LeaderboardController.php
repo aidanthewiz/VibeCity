@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Aerni\Spotify\Facades\SpotifyFacade;
 use App\Models\Rating;
 use App\Models\Track;
 use Database\Seeders\SeedTracks;
@@ -10,14 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class LeaderboardController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Displays a database populated leaderboard
      *
      *  @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function showAll()
+    public function showDashboard()
     {
         // ensure DB is populated if empty
-        $this->populateTop50();
+        $this->populatePredetermined50();
 
         // order the tracks by their names, then sort by descending rating so highest track with first name is at top
         $tracks = Track::all()->sortby('name')->sortByDesc('rating');
@@ -27,6 +28,23 @@ class LeaderboardController extends Controller
 
         // show the dashboard page with the tracks
         return view('dashboard', ['tracks' => $tracks, 'count' => $count]);
+    }
+
+    /**
+     * Displays a spotify populated leaderboard
+     *
+     *  @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function showSpotify()
+    {
+        // grab the top 50 tracks for the US from spotify
+        $tracks = $this->getSpotifyTracks();
+
+        // counter to help keep track of color swapping
+        $count = 0;
+
+        // show the dashboard page with the tracks
+        return view('spotifyDashboard', ['tracks' => $tracks['items'], 'count' => $count]);
     }
 
     /**
@@ -61,6 +79,16 @@ class LeaderboardController extends Controller
             $seeder = new SeedTracks();
             $seeder->seedWithPredetermined();
         }
+    }
+
+    /**
+     * Grabs the spotify top 50 tracks
+     *
+     */
+    public static function getSpotifyTracks()
+    {
+        // grab the top 50 tracks for the US from spotify and return
+        return SpotifyFacade::playlistTracks('37i9dQZEVXbMDoHDwVN2tF')->market('US')->get();
     }
 
     /**

@@ -48,7 +48,7 @@ class SeedTracks extends Seeder
                 Track::create([
                     'name' => $tracks[$idx]['Track Name'],
                     'artist' => $tracks[$idx]['Artist'],
-                    'rating' => $tracks[$idx]['Streams']
+                    'rating' => 0
                 ]);
             }
         }
