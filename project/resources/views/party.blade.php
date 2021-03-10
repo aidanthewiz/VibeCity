@@ -3,7 +3,8 @@
     <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
         <div class="border-b-2 border-white">
         @if (!$party)
-            <form method="GET" action="{{'/party/createParty'}}">
+            <form method="POST" action="{{'/party/createParty'}}">
+                @csrf
                 <button dusk="party-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                     {{ __('Create Party') }}
                 </button>
@@ -13,15 +14,14 @@
             @if ($party[0]['joinCode'] == null)
                 @if ($party[0]['partyCreator'] == Auth::user()->id)
                         <form method="GET" action="{{'/party/createJoinCode'}}">
-                            <button dusk="party-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                            <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                 {{ __('Create Join Code') }}
                             </button>
                         </form>
                 @endif
             @endif
             @if ($party[0]['joinCode'] != null)
-                    <input class="sr-only" id="copy_joinCode" value="join Code" id="copy_joinCode">
-                    <button dusk="copy-button" onclick="copyToClipboard()" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                    <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                         {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                     </button>
             @endif
@@ -61,18 +61,9 @@
                             @endif
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 </x-app-layout>
-
-<script>
-    function copyToClipboard() {
-        var copyText = document.getElementById("copy_joinCode");
-        copyText.copy();
-        document.execCommand('copy');
-    }
-</script>

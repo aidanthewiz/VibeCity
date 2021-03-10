@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Rating;
+use App\Models\Track;
 use Illuminate\Support\Facades\Route;
 
 use app\Http\Controllers\JoinCodeController;
@@ -27,7 +29,8 @@ Route::get('reset-password-testpage', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/party', 'App\Http\Controllers\PartyController@show')->name('party');
 
-Route::get('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('party/createParty');
+Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('/party/createParty');
 
-Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('party/createJoinCode');
+Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
 
+Route::post('/dashboard/rateTrack/{track_id}', [LeaderboardController::class, 'rate'])->name('rateTrack');

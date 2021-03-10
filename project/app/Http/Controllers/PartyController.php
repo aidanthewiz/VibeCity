@@ -19,12 +19,8 @@ class PartyController extends Controller
             'partyCreator' => Auth::user()->id,
         ]);
 
-        // retrieve the user's party
-        $usersParty = Party::where('partyCreator', Auth::user()->id)->get()->toArray();
-
-
         // show the party page
-        return view('/party', ['party' => $usersParty]);
+        return back()->withInput();
     }
 
     /**

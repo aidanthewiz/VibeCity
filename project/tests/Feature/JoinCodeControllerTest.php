@@ -23,14 +23,18 @@ class JoinCodeControllerTest extends TestCase
         // assemble a user
         $this->actingAs($user = User::factory()->create());
 
-        // get the page for the party, when the user has created a party
-        $response = $this->get('/party/createParty');
+        // give the user a party
+        Party::create([
+           'partyCreator' => $user->id,
+        ]);
+
+        // get the page for the party, when the user has created a party, then get the join code
         $response = $this->get('/party/createJoinCode');
 
         // get the party for the user
         $usersParty = Party::where('partyCreator', $user->id)->get()->toArray();
 
-
+        // assert the party has a join code
         $this->assertNotEmpty($usersParty[0]['joinCode']);
     }
 }

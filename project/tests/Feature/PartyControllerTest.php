@@ -59,7 +59,7 @@ class PartyControllerTest extends TestCase
         $this->actingAs($user = User::factory()->create());
 
         // get the page for the party, when the user has created a party
-        $response = $this->get('/party/createParty');
+        $response = $this->post('/party/createParty');
 
         // get the party for the user
         $usersParty = Party::where('partyCreator', $user->id)->get()->toArray();

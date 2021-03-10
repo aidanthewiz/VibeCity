@@ -37,6 +37,6 @@ class JoinCodeController extends Controller
         $usersParty = Party::where('partyCreator', Auth::user()->id)->get()->toArray();
 
         // show the party page
-        return view('/party', ['party' => $usersParty]);
+        return back()->withInput();
     }
 }
