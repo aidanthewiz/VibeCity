@@ -15,6 +15,7 @@ class Track extends Model
     protected $fillable = [
         'name',
         'artist',
+        'rating'
     ];
 
     /**
@@ -24,4 +25,22 @@ class Track extends Model
         'name' => 'required',
         'artist' => 'required',
     ];
+
+    /**
+     * Gives the track many rantings
+     *
+     */
+    public function ratings()
+    {
+        // ensures tracks have many ratings
+        return $this->hasMany(Rating::class);
+    }
+
+    /**
+     * Calculates the sum of all the ratings for that track
+     *
+     */
+    public function getSumRating() {
+        return $this->ratings()->sum('rating');
+    }
 }
