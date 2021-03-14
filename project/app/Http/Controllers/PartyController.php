@@ -33,16 +33,14 @@ class PartyController extends Controller
     }
 
     /**
-     * Close the party the user leads
+     * Delete the party the user leads
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function closeParty()
+    public static function deleteParty($partyID)
     {
-        // create a party
-        Party::updateOrCreate([
-            'partyCreator' => Auth::user()->id,
-            'partyOpen' => false,
-        ]);
+        // retrieve user's party
+        $usersParty = Party::where('id', '=', $partyID)->first();
+        $usersParty->delete();
 
         // show the party page
         return back()->withInput();
@@ -88,7 +86,7 @@ class PartyController extends Controller
             }
 
             // show the party page
-            return back()->withInput();
+            return view('/party', ['party' => $usersParty->toArray()]);
         }
 
         // failed to find a party with the specified code

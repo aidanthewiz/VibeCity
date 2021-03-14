@@ -108,4 +108,26 @@ class PartyControllerTest extends TestCase
         $this->assertNotNull($user2->party_id);
 
     }
+
+    /**
+     * Tests that a user can delete their party after it is created
+     *
+     * @return void
+     */
+    public function test_delete_party()
+    {
+        // create a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a party
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+        ]);
+        
+        // delete the party
+        PartyController::deleteParty($party->id);
+        
+        // check that the party does not exist
+        $this->assertDatabaseMissing('parties', ['id'=>$party->id]);
+    }
 }

@@ -34,7 +34,7 @@ Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createPa
 
 Route::post('/party/joinWithCode', 'App\Http\Controllers\PartyController@joinWithCode')->name('/party/joinWithCode');
 
-Route::post('/party/closeParty', 'App\Http\Controllers\PartyController@closeParty')->name('/party/closeParty');
+Route::post('/party/deleteParty/{partyID}', 'App\Http\Controllers\PartyController@deleteParty')->name('/party/deleteParty');
 
 Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
 

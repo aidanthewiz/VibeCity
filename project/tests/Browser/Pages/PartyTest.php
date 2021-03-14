@@ -126,4 +126,21 @@ class PartyTest extends DuskTestCase
                 ->assertPresent('@join-with-code-button');
         });
     }
+
+    public function testDeletePartyPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+        
+        // assert that the Delete Party button is present once a party is created
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/party')
+                ->press('@party-button')
+                ->assertPresent('@delete-party-button');
+        });
+    }
 }

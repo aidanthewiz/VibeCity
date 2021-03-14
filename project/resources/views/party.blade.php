@@ -9,14 +9,12 @@
         <div class="border-b-2 border-white">
         @if (!$party)
             <div class="grid grid-cols-10">
-                <div>
-                    <form method="POST" action="{{'/party/createParty'}}">
-                        @csrf
-                        <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                            {{ __('Create Party') }}
-                        </button>
-                    </form>
-                </div>
+                <form method="POST" action="{{'/party/createParty'}}">
+                    @csrf
+                    <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                        {{ __('Create Party') }}
+                    </button>
+                </form>
                 <div class="col-start-2 col-end-5">
                     <form method="POST" action="{{ route('/party/joinWithCode') }}">
                         @csrf
@@ -36,10 +34,19 @@
             </div>
         @endif
         @if ($party)
+            <!-- Delete party button --> 
+            @if($party[0]['partyCreator'] == Auth::user()->id)
+            <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
+                    @csrf
+                    <button dusk="delete-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                        {{ __('Delete Party') }}
+                    </button>                    
+                </form>
+            @endif
             @if ($party[0]['joinCode'] == null)
                 @if ($party[0]['partyCreator'] == Auth::user()->id)
                     <div>
-                        <form method="GET" action="{{'/party/createJoinCode'}}">
+                        <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">
                             <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                 {{ __('Create Join Code') }}
                             </button>
@@ -51,6 +58,7 @@
                     <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                         {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                     </button>
+                    
                     @if($party[0]['partyOpen'] == true)
                     <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                         {{ __('Close Party') }}
