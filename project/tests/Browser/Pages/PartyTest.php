@@ -76,6 +76,7 @@ class PartyTest extends DuskTestCase
         });
     }
 
+
     public function testClosePartyPresent()
     {
         // assemble a user
@@ -122,7 +123,6 @@ class PartyTest extends DuskTestCase
             $browser->loginAs($user)
                 ->visit('/party')
                 ->assertPresent('@join-with-code-button');
-
         });
     }
 }
