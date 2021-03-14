@@ -3,6 +3,7 @@
 use App\Models\Rating;
 use App\Models\Track;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PartyController;
 
 use app\Http\Controllers\JoinCodeController;
 use App\Http\Controllers\LeaderboardController;

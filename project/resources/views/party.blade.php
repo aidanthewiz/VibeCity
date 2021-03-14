@@ -91,9 +91,11 @@
                         </div>
                         <div class="row-span-3 text-yellow-600 border-l-2 border-white">
                             @if ($party)
-                            <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
-                                {{Auth::user()->name}}
-                            </div>
+                                @foreach ($party[0]['users'] as $user)
+                                    <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
+                                        {{$user['name']}}
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                     </div>

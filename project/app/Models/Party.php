@@ -15,5 +15,16 @@ class Party extends Model
         'partyCreator',
         'joinCode',
         'partyOpen',
+        'users',
     ];
+
+    /**
+     * Gives the party many users
+     *
+     */
+    public function users()
+    {
+        // ensures tracks have many ratings
+        return $this->hasMany(User::class);
+    }
 }

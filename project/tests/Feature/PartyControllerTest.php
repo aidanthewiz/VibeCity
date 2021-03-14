@@ -2,6 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Http\Controllers\JoinCodeController;
+use App\Http\Controllers\PartyController;
+use App\Models\JoinCode;
 use App\Models\Party;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -66,5 +69,43 @@ class PartyControllerTest extends TestCase
 
 
         $this->assertNotEmpty($usersParty);
+    }
+
+    /**
+     * Tests that a user can join another user's party after it is created
+     *
+     * @return void
+     */
+    public function test_join_party()
+    {
+        // create a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+           'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+            'joinCode' => $joinCode->id,
+        ]);
+
+        // create a second user
+        $this->actingAs($user2 = User::factory()->create());
+
+        // create a request to pass the party code as input
+        $request = request();
+        $request->merge([
+            'party_join_code' => $joinCode->code,
+        ]);
+
+        // join the party
+        PartyController::joinWithCode($request);
+
+        // check user 2 has joined the party
+        $this->assertNotNull($user2->party_id);
+
     }
 }

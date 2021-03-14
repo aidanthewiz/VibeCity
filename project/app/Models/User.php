@@ -75,4 +75,9 @@ class User extends Authenticatable
 
         return $this->getPhotoUrl();
     }
+
+    public function party()
+    {
+        return $this->belongsTo(Party::class);
+    }
 }
