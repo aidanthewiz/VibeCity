@@ -8,21 +8,43 @@
     <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
         <div class="border-b-2 border-white">
         @if (!$party)
-            <form method="POST" action="{{'/party/createParty'}}">
-                @csrf
-                <button dusk="party-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                    {{ __('Create Party') }}
-                </button>
-            </form>
+            <div class="grid grid-cols-10">
+                <div>
+                    <form method="POST" action="{{'/party/createParty'}}">
+                        @csrf
+                        <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                            {{ __('Create Party') }}
+                        </button>
+                    </form>
+                </div>
+                <div class="col-start-2 col-end-5">
+                    <form method="POST" action="{{ route('/party/joinWithCode') }}">
+                        @csrf
+                        <div class="grid grid-cols-2">
+                            <div>
+                                <button dusk="join-with-code-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                    {{__('Join Party With This Code')}}
+                                </button>
+                            </div>
+                            <div>
+                                <label for="party_join_code" class="sr-only">Party Join Code</label>
+                                <input id="party_join_code" class="placeholder-white block mt-1 w-full bg-transparent text-gray-200" type="text" name="party_join_code" placeholder="Party Join Code*" required />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         @endif
         @if ($party)
             @if ($party[0]['joinCode'] == null)
                 @if ($party[0]['partyCreator'] == Auth::user()->id)
+                    <div>
                         <form method="GET" action="{{'/party/createJoinCode'}}">
                             <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                 {{ __('Create Join Code') }}
                             </button>
                         </form>
+                    </div>
                 @endif
             @endif
             @if ($party[0]['joinCode'] != null)

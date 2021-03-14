@@ -31,6 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/party', 'App\Http\Control
 
 Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('/party/createParty');
 
+Route::post('/party/joinWithCode', 'App\Http\Controllers\PartyController@joinWithCode')->name('/party/joinWithCode');
+
 Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
 
 Route::post('/dashboard/rateTrack/{track_id}', [LeaderboardController::class, 'rate'])->name('rateTrack');

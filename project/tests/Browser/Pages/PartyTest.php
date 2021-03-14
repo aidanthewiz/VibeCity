@@ -75,6 +75,7 @@ class PartyTest extends DuskTestCase
                 ->assertPresent('@party-button');
         });
     }
+
     public function testClosePartyPresent()
     {
         // assemble a user
@@ -100,12 +101,28 @@ class PartyTest extends DuskTestCase
             'password' => bcrypt('test2WEB!'),
         ]);
 
-        // assert that the Create Party button is present
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/party')
                 ->press('@party-button')
                 ->assertPresent('@join-code-button');
+        });
+    }
+
+    public function testJoinPartyWithCodeButtonPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the Join Party with a code button is present
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/party')
+                ->assertPresent('@join-with-code-button');
+
         });
     }
 }
