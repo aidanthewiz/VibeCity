@@ -45,13 +45,11 @@
             @endif
             @if ($party[0]['joinCode'] == null)
                 @if ($party[0]['partyCreator'] == Auth::user()->id)
-                    <div>
-                        <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">
-                            <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                                {{ __('Create Join Code') }}
-                            </button>
-                        </form>
-                    </div>
+                    <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">
+                        <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                            {{ __('Create Join Code') }}
+                        </button>
+                    </form>
                 @endif
             @endif
             @if ($party[0]['joinCode'] != null)
