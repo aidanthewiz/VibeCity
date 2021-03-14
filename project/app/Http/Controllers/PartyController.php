@@ -25,6 +25,22 @@ class PartyController extends Controller
     }
 
     /**
+     * Close the party the user leads
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function closeParty()
+    {
+        // create a party
+        Party::updateOrCreate([
+            'partyCreator' => Auth::user()->id,
+            'partyOpen' => false,
+        ]);
+
+        // show the party page
+        return back()->withInput();
+    }
+
+    /**
      * Show the user's party page
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
