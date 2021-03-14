@@ -14,5 +14,6 @@ class Party extends Model
     protected $fillable = [
         'partyCreator',
         'joinCode',
+        'partyOpen',
     ];
 }

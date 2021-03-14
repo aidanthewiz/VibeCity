@@ -1,4 +1,9 @@
 <x-app-layout>
+    <style>
+        .closeAndOpenButton{
+            float: right;
+        }
+    </style>
 <div class="flex min-w-full min-h-full p-4 justify-center items-center content-center align-content justify-self-center align-center self-center">
     <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
         <div class="border-b-2 border-white">
@@ -24,6 +29,15 @@
                     <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                         {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                     </button>
+                    @if($party[0]['partyOpen'] == true)
+                    <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                        {{ __('Close Party') }}
+                    </button>
+                        @elseif($party[0]['partyOpen'] == false)
+                        <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                            {{ __('Open Party') }}
+                        </button>
+                    @endif
             @endif
         @endif
         </div>

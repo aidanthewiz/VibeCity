@@ -17,6 +17,7 @@ class PartyController extends Controller
         // create a party
         Party::updateOrCreate([
             'partyCreator' => Auth::user()->id,
+            'partyOpen' => true,
         ]);
 
         // show the party page
