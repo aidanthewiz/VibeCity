@@ -32,11 +32,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/party', 'App\Http\Control
 
 Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('/party/createParty');
 
-<<<<<<< HEAD
 Route::post('/party/joinWithCode', 'App\Http\Controllers\PartyController@joinWithCode')->name('/party/joinWithCode');
-=======
+
 Route::post('/party/closeParty', 'App\Http\Controllers\PartyController@closeParty')->name('/party/closeParty');
->>>>>>> master
 
 Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
 
