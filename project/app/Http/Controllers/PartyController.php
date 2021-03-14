@@ -88,7 +88,7 @@ class PartyController extends Controller
             }
 
             // show the party page
-            return view('/party', ['party' => $usersParty->toArray()]);
+            return back()->withInput();
         }
 
         // failed to find a party with the specified code
