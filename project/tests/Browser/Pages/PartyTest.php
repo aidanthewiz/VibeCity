@@ -77,6 +77,7 @@ class PartyTest extends DuskTestCase
     }
 
 
+
     public function testClosePartyPresent()
     {
         // assemble a user
