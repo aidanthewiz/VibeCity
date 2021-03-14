@@ -65,11 +65,11 @@ Our system component diagram splits up the VibeCity system into vital components
 
 ![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/FINALfinalControlDiagramRevision1.PNG)
 
-The user in the class diagram should hold the users ID, the users Password, the users Email, and the users spotify
-account link. The user shall be able to modify there information. The users should be able to create private parties
-that have a party ID, party passcode, party members, and assign a party leader. In the party class the user can create,
+The user in the class diagram should hold the users ID, the users Password, the users Email, the users two factor authentication, and the users spotify
+account link. The user shall be able to modify their information. The users should be able to create private parties
+that have a party ID, party join code, party members, the state of the party being open or closed, and assign a party leader. In the party class the user can create,
 close, share the party information, and set the song to listen to. Users can vote on tracks that they like. The tracks
-are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened. In
+are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened to. In
 the comment class the user can write content, give a rating, list who made the comment, and show what song these
 comments were applied to.
 
@@ -81,7 +81,6 @@ comments were applied to.
 | Party Controller          |  004, 006, 007, 019      |
 | Email Model               |  003, 015, 17            |
 | User Model                |  000, 001, 002           |
-| Leaderboard Model         |  008, 009, 010, 013      |
 | Track Model               |  008, 009, 010, 013      |
 | Comment Model             |  008, 009, 010, 013      |
 | Party Model               |  004, 005, 006, 007, 014 |
@@ -99,9 +98,9 @@ actions. Finally, the system ends with the user logging out.
 
 ![Database ER Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/Database%20ER%20Diagram.png)
 
-The user should be able to join a party and add comments to tracks. Partys should be able to listen to tracks. Tracks
-should be able to have comments on them and have rankings on the leaderboards. The Party should leader should be able to kick people from the party.
-The party leader is able to select which strong can be played. The leaderboard gives users the options to see which songs are trending and to vote songs to get on the leaderboard.
+The user should be able to join a party and add comments to tracks. Parties should be able to listen to tracks. Tracks
+should be able to have comments on them. The Party should leader should be able to kick people from the party.
+The party leader is able to select which strong can be played. 
 
 # Business Rules
 
