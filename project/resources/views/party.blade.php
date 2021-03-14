@@ -34,7 +34,7 @@
                         {{ __('Close Party') }}
                     </button>
                         @elseif($party[0]['partyOpen'] == false)
-                        <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                        <button dusk="open-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                             {{ __('Open Party') }}
                         </button>
                     @endif
