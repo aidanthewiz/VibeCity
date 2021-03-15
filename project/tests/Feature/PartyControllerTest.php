@@ -90,6 +90,7 @@ class PartyControllerTest extends TestCase
         $party = Party::create([
             'partyCreator'=> $user->id,
             'joinCode' => $joinCode->id,
+            'partyOpen'=> true,
         ]);
 
         // create a second user
@@ -123,11 +124,87 @@ class PartyControllerTest extends TestCase
         $party = Party::create([
             'partyCreator'=> $user->id,
         ]);
-        
+
         // delete the party
         PartyController::deleteParty($party->id);
-        
+
         // check that the party does not exist
         $this->assertDatabaseMissing('parties', ['id'=>$party->id]);
+    }
+
+    /**
+     * Tests that a user can join an opened party
+     *
+     * @return void
+     */
+    public function test_join_party_when_party_open()
+    {
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+            'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party thats open
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+            'joinCode' => $joinCode->id,
+        ]);
+
+        PartyController::openParty($party->id);
+
+        // create a second user
+        $this->actingAs($user2 = User::factory()->create());
+
+        // create a request to pass the party code as input
+        $request = request();
+        $request->merge([
+            'party_join_code' => $joinCode->code,
+        ]);
+
+        // join the party
+        PartyController::joinWithCode($request);
+
+        // check user 2 has joined the party
+        $this->assertNotNull($user2->party_id);
+    }
+
+    /**
+     * Tests that a user cannot join a closed party
+     *
+     * @return void
+     */
+    public function test_join_party_when_party_closed()
+    {
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+            'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+            'joinCode' => $joinCode->id,
+        ]);
+
+        PartyController::closeParty($party->id);
+
+        // create a second user
+        $this->actingAs($user2 = User::factory()->create());
+
+        // create a request to pass the party code as input
+        $request = request();
+        $request->merge([
+            'party_join_code' => $joinCode->code,
+        ]);
+
+        // join the party
+        PartyController::joinWithCode($request);
+
+        // check that a use cannot join a closed party
+        $this->assertNull($user2->party_id);
     }
 }
