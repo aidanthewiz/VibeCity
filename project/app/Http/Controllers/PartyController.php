@@ -50,7 +50,7 @@ class PartyController extends Controller
 
     /**
      * Show the user's party page
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show()
     {
@@ -59,7 +59,11 @@ class PartyController extends Controller
 
         // retrieve user's spotify token
         $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
-        $spotify_token = (array) Socialite::driver('spotify')->scopes(["streaming", "user-read-email", "user-read-private"])->userFromToken($spotify_login_token);
+        if ($spotify_login_token) {
+            $spotify_token = (array) Socialite::driver('spotify')->scopes(["streaming", "user-read-email", "user-read-private"])->userFromToken($spotify_login_token);
+        } else {
+            return redirect()->route('profile.show')->with('error', 'Please connect your spotify premium account to use the party feature.');
+        }
 
         // show the party page
         return view('/party', ['party' => $usersParty, 'spotify_token' => $spotify_token['token'] ?? '']);
