@@ -34,13 +34,13 @@
             </div>
         @endif
         @if ($party)
-            <!-- Delete party button --> 
+            <!-- Delete party button -->
             @if($party[0]['partyCreator'] == Auth::user()->id)
             <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
                     @csrf
                     <button dusk="delete-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
                         {{ __('Delete Party') }}
-                    </button>                    
+                    </button>
                 </form>
             @endif
             @if ($party[0]['joinCode'] == null)
@@ -56,15 +56,20 @@
                     <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                         {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                     </button>
-                    
-                    @if($party[0]['partyOpen'] == true)
-                    <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                        {{ __('Close Party') }}
-                    </button>
-                        @elseif($party[0]['partyOpen'] == false)
-                        <button dusk="open-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                            {{ __('Open Party') }}
-                        </button>
+                    @if($party[0]['partyOpen'] == true && $party[0]['partyCreator'] == Auth::user()->id)
+                        <form method="POST" action="{{ route('/party/closeParty', [$party[0]['id']]) }}" class="closeAndOpenButton inline-block">
+                            @csrf
+                            <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                {{ __('Close Party') }}
+                            </button>
+                        </form>
+                    @elseif($party[0]['partyOpen'] == false && $party[0]['partyCreator'] == Auth::user()->id)
+                        <form method="POST" action="{{ route('/party/openParty', [$party[0]['id']]) }}" class="closeAndOpenButton inline-block">
+                            @csrf
+                            <button dusk="open-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                {{ __('Open Party') }}
+                            </button>
+                        </form>
                     @endif
             @endif
         @endif

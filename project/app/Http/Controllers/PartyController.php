@@ -82,16 +82,34 @@ class PartyController extends Controller
             $userArray = array(Auth::user());
 
             foreach($usersParty as $party){
+                if($party->partyOpen == false)
+                {
+                    return back()->withInput();
+                }
                 $party->users()->saveMany($userArray);
             }
 
             // show the party page
-            return view('/party', ['party' => $usersParty->toArray()]);
+            return back()->withInput();
         }
 
         // failed to find a party with the specified code
         return back()->withInput();
 
     }
+    public static function openParty($party_id)
+    {
+        $party = Party::where('id', '=', $party_id)->first();
+        $party->partyOpen = true;
+        $party->save();
+        return back()->withInput();
 
+    }
+    public static function closeParty($party_id)
+    {
+        $party = Party::where('id', '=', $party_id)->first();
+        $party->partyOpen = false;
+        $party->save();
+        return back()->withInput();
+    }
 }

@@ -41,3 +41,8 @@ Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@cre
 Route::post('/dashboard/rateTrack/{track_id}', [LeaderboardController::class, 'rate'])->name('rateTrack');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/spotifyDashboard', [LeaderboardController::class, 'showSpotify'])->name('spotifyDashboard');
+
+Route::post('/party/closeParty/{party_id}', 'App\Http\Controllers\PartyController@closeParty')->name('/party/closeParty');
+
+Route::post('/party/openParty/{party_id}', 'App\Http\Controllers\PartyController@openParty')->name('/party/openParty');
+
