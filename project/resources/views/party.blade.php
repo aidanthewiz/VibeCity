@@ -74,6 +74,19 @@
             @endif
         @endif
         </div>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+        window.onSpotifyWebPlaybackSDKReady = () => {
+          var player = new Spotify.Player({
+              name: 'Spotify Player',
+              getOAuthToken: callback => {
+                //TODO: import spotify access token
+                callback('access token here');
+              },
+              volume: 1.0
+            });
+        };
+    </script>
     <div class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
             <!-- Grid for song and party -->
             <div class="min-w-full min-h-full">
