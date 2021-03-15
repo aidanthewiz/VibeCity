@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\JoinCode;
 use App\Models\Party;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Input;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 
 class PartyController extends Controller
 {
@@ -55,8 +57,12 @@ class PartyController extends Controller
         // retrieve user's party
         $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->get()->toArray();
 
+        // retrieve user's spotify token
+        $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
+        $spotify_token = (array) Socialite::driver('spotify')->scopes(["streaming", "user-read-email", "user-read-private"])->userFromToken($spotify_login_token);
+
         // show the party page
-        return view('/party', ['party' => $usersParty]);
+        return view('/party', ['party' => $usersParty, 'spotify_token' => $spotify_token['token'] ?? '']);
     }
 
     /**
