@@ -129,14 +129,24 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
-- Automated Tests
-- Product Demonstration
+- [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
+- [Product Demonstration](https://www.youtube.com/watch?v=J3n6-uaLa4w)
 
-## Task Allocation
+## Task Allocation / Responsibilities
 
-Member 1 - main tasking
+- Aidan Artherton (aidanthewiz):
+    - Fixed email routes, which fixes the ability for buttons in the app to work
+    - Adding ability to listen to music with friends in a party. This adds one of the apps 2 main functionalities.
+- Matthew Cooper (GTMcooper)
+    - Added the ability to delete parties. This adds the ability for party owners to destroy parties so they can start new ones or join others'.
+- Timothy Ford (CarriedCoin)
+    - Added the ability for users to join parties. This adds a main functionality of the party, so that it is not just the owner and can have many users to listen to music with.
+- Alexandra French (xar-tol)
+   - Added the ability to rate up tracks on the leaderboard. Each user can only rate a track once. This allows for VibeCity users to have their own rankings of tracks, which is one of the leaderboards' main functionalities.
+   - Added a spotify leaderboard that updates the top 50 live from spotify. This adds the spotify leaderboard functionality.
+- Jason Masri (A90Jason)
+    - Added the ability for users to open and close a party to new users. This makes it so that party owners can control if more users can join the party.
 
-Member 2 - main tasking
 
 
 # Sprint 7
