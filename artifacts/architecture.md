@@ -164,7 +164,7 @@ leaderboard through the Spotify Leaderboard link.
 
 
 ### Spotify Leaderboard
-![Spotify Leaderboard](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/spotifyDashboardPage.png)
+![Spotify Leaderboard](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/spotifyLeaderboardPage.png)
 
 This is the spotify leaderboard, which contains a live list of the top 50 tracks on spotify today. Users can go to the 
 party page to host and join parties through the party button. They can view their profile through the profile button. 
