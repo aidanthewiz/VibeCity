@@ -43,6 +43,16 @@
                         </button>
                     </form>
                 @endif
+                <!-- Leave Party button -->
+                @if($party[0]['partyCreator'] != Auth::user()->id)
+                    <form method="POST" action="{{ route('/party/leaveParty') }}" class="inline-block">
+                        @csrf
+                        <button dusk="leave-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                            {{ __('Leave Party') }}
+                        </button>
+                    </form>
+                @endif
+
                 @if ($party[0]['joinCode'] == null)
                     @if ($party[0]['partyCreator'] == Auth::user()->id)
                         <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">

@@ -49,10 +49,24 @@ class PartyController extends Controller
     }
 
     /**
+     * Delete a user from a party if they want to leave
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public static function leaveParty()
+    {
+        // remove party id from the user in the database
+        Auth::user()->party_id = null;
+        Auth::user()->save();
+
+        // show the party page
+        return back()->withInput();
+    }
+
+    /**
      * Show the user's party page
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function show()
+    public static function show()
     {
         // retrieve user's party
         $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->get()->toArray();

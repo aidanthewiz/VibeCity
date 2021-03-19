@@ -207,4 +207,42 @@ class PartyControllerTest extends TestCase
         // check that a use cannot join a closed party
         $this->assertNull($user2->party_id);
     }
+
+    public function test_leave_party()
+    {
+        // create a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+            'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party thats open
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+            'joinCode' => $joinCode->id,
+        ]);
+
+        // create second user
+        $this->actingAs($user2 = User::factory()->create());
+
+        // create a request to pass the party code as input
+        $request = request();
+        $request->merge([
+            'party_join_code' => $joinCode->code,
+        ]);
+
+        // ensure party is open
+        PartyController::openParty($party->id);
+
+        // join the party
+        PartyController::joinWithCode($request);
+
+        // leave the party
+        PartyController::leaveParty($party->id);
+
+        // check that the user is not in a party
+        $this->assertNull($user2->party_id);
+    }
 }
