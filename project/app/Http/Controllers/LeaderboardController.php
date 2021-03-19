@@ -103,7 +103,7 @@ class LeaderboardController extends Controller
             ->where('user_id', '=', Auth::user()->id)
             ->first();
 
-        // if no rating for this track & user combo
+        // if no rating for this track & user combo, upvote. Otherwise, downvote
         if (!$rating) {
             // create a new rating for the user/track
             Rating::Create([
@@ -116,6 +116,11 @@ class LeaderboardController extends Controller
             $track = Track::query()->where('id', '=', $trackId)->first();
             $track->rating = $track->rating + 1;
             $track->save();
+        } else {
+            $track = Track::query()->where('id', '=', $rating->track->id)->first();
+            $track->rating = $track->rating - 1;
+            $track->save();
+            $rating->delete();
         }
 
         // return to the dashboard screen
