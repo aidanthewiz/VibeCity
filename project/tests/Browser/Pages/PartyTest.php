@@ -2,6 +2,9 @@
 
 namespace Tests\Browser;
 
+use App\Http\Controllers\PartyController;
+use App\Models\JoinCode;
+use App\Models\Party;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
@@ -134,13 +137,47 @@ class PartyTest extends DuskTestCase
             'email' => 'testduskuser@dusk.com',
             'password' => bcrypt('test2WEB!'),
         ]);
-        
+
         // assert that the Delete Party button is present once a party is created
         $this->browse(function (Browser $browser) use($user) {
             $browser->loginAs($user)
                 ->visit('/party')
                 ->press('@party-button')
                 ->assertPresent('@delete-party-button');
+        });
+    }
+
+    public function testLeavePartyPresent()
+    {
+        // create a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+            'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party thats open
+        $party = Party::create([
+            'partyCreator'=> $user->id,
+            'joinCode' => $joinCode->id,
+        ]);
+
+        // assemble a user
+        $user2 = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the Leave Party button is present once a party is created and the user
+        // is not the host
+        $this->browse(function (Browser $browser) use($user2, $joinCode) {
+            $browser->loginAs($user2)
+                ->visit('/party')
+                ->click('party_join_code')
+                ->type($joinCode->code)
+                ->press('@join-with-code-button')
+                ->assertPresent('@leave-party-button');
         });
     }
 }
