@@ -182,11 +182,11 @@ class LeaderboardControllerTest extends TestCase
     }
 
     /**
-     * Tests that tracks with a rating by the user cant be rated twice
+     * Tests that tracks with a rating by the user are undone when rated again
      *
      * @return void
      */
-    public function test_leaderboard_no_double_rating()
+    public function test_leaderboard_undo_rating()
     {
         // assemble a user
         $this->actingAs($user = User::factory()->create());
@@ -204,6 +204,6 @@ class LeaderboardControllerTest extends TestCase
         LeaderboardController::rate($track->id);
 
         // assert that the track has only gained 1 point of rating
-        $this->assertDatabaseHas('tracks', ['name' => 'TestyMcTestTract', 'rating' => 1]);
+        $this->assertDatabaseHas('tracks', ['name' => 'TestyMcTestTract', 'rating' => 0]);
     }
 }
