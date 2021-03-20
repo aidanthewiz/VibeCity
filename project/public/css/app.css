@@ -1,4 +1,4 @@
-/*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -32717,35 +32717,21 @@ select {
           animation: bounce 1s infinite;
 }
 
-body{
-  padding: 0;
-  margin: 0;
-}
-
-.middle{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-}
-
 .btn{
-  display: inline-block;
-  width: 90px;
-  height: 90px;
-  background: #f1f1f1;
+  width: 30px;
+  height: 30px;
+  background: transparent;
   margin: 10px;
   border-radius: 30%;
-  box-shadow: 0 5px 15px -5px #0000070;
+  box-shadow: 0 5px 15px -5px black;
   color: #3498db;
   overflow: hidden;
   position: relative;
 }
 
 .btn i{
-  line-height: 90px;
-  font-size: 26px;
+  line-height: 30px;
+  font-size: 22px;
   transition: 0.2s linear;
 }
 
@@ -32754,22 +32740,24 @@ body{
   color: #f1f1f1;
 }
 
-.btn::before{
-  content: "";
-  position: absolute;
-  width: 120%;
-  height: 120%;
-  background: #3498db;
-  transform: rotate(45deg);
-  left: -110%;
-  top: 90%;
-}
-
 .btn:hover::before{
   -webkit-animation: aaa 0.7s 1;
           animation: aaa 0.7s 1;
   top: -10%;
   left: -10%;
+}
+
+.min-h-screen {
+  display:flex;
+  flex-direction:column;
+}
+
+main {
+  flex-grow:1;
+}
+
+main .full-page-container {
+  height:100%;
 }
 
 @-webkit-keyframes aaa {
@@ -192265,5 +192253,4 @@ body{
             animation: bounce 1s infinite;
   }
 }
-
 

@@ -1,3 +1,7 @@
+@if(config('app.dusk_testing') != "true")
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script src="{{ mix('/js/spotify.js') }}"></script>
+@endif
 <x-app-layout>
     <head>
         <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
@@ -150,38 +154,8 @@
                     @endif
                 @endif
             </div>
-            @if(config('app.dusk_testing') != "true")
-            <script src="https://sdk.scdn.co/spotify-player.js"></script>
-            <script>
-                window.onSpotifyWebPlaybackSDKReady = () => {
-                    var player = new Spotify.Player({
-                        name: 'VibeCity',
-                        getOAuthToken: callback => {
-                        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                        fetch("/refreshSpotifyToken", {
-                            headers: {
-                                "Accept": "text/plain",
-                                "X-Requested-With": "XMLHttpRequest",
-                                "X-CSRF-Token": csrfToken
-                            },
-                            method: "get",
-                            credentials: "same-origin"
-                        }).then(res => {
-                            callback(res.text());
-                        });
-                        },
-                        volume: 1.0
-                    });
-                    
-                    player.connect().then(success => {
-                        if (success) {
-                            console.log('The Web Playback SDK successfully connected to Spotify!');
-                        }
-                    })
-                };
-            </script>
-            @endif
-            <div class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
+{{--            Temp styles--}}
+            <div  class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
                 <!-- Grid for song and party -->
                 <div class="min-w-full min-h-full">
                     <div class="grid grid-cols-3 min-h-full min-w-full items-center justify-center sm:items-center text-center align-content content-center">
