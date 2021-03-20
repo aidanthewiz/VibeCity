@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JoinCode;
 use App\Models\Party;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
