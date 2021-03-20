@@ -3,28 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\JoinCode;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Models\Party;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 
 class JoinCodeController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @return string
-     */
-    public function createCode(): string
-    {
-        return Str::random(8);
-    }
-    /**
      * Create a party for the user
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     *
+     * @return RedirectResponse
      */
-    public function createJoinCode()
+    public function createJoinCode(): RedirectResponse
     {
         $joinCode = JoinCode::create([
             'code' => $this->createCode()
@@ -38,5 +30,15 @@ class JoinCodeController extends Controller
 
         // show the party page
         return back()->withInput();
+    }
+
+    /**
+     * Create a random uppercase code of length 8
+     *
+     * @return string
+     */
+    public function createCode(): string
+    {
+        return Str::upper(Str::random(8));
     }
 }

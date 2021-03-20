@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaderboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PartyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/spotifyDashboard', [LeaderboardController::class, 'showSpotify'])->name('spotifyDashboard');
     Route::get('/party', 'App\Http\Controllers\PartyController@show')->name('party');
     Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
+    Route::get('/refreshSpotifyToken', [UserController::class, 'refreshSpotifyToken'])->name('refreshSpotifyToken');
     Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('/party/createParty');
     Route::post('/party/joinWithCode', 'App\Http\Controllers\PartyController@joinWithCode')->name('/party/joinWithCode');
     Route::post('/party/deleteParty/{partyID}', 'App\Http\Controllers\PartyController@deleteParty')->name('/party/deleteParty');
@@ -34,3 +37,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/party/closeParty/{party_id}', 'App\Http\Controllers\PartyController@closeParty')->name('/party/closeParty');
     Route::post('/party/openParty/{party_id}', 'App\Http\Controllers\PartyController@openParty')->name('/party/openParty');
 });
+
+Route::get('/linkSpotify', [UserController::class, 'linkSpotify'])->name('linkSpotify');

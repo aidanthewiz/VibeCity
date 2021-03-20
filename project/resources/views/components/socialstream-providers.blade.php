@@ -48,7 +48,7 @@
     @endif
 
     @if (JoelButcher\Socialstream\Socialstream::hasSupportFor('spotify'))
-        <a href="{{ route('oauth.redirect', ['provider' => 'spotify']) }}">
+        <a href="/linkSpotify">
             <x-spotify-icon class="h-6 w-6 mx-2" />
         </a>
     @endif

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\JoinCodeController;
 use App\Http\Controllers\PartyController;
 use App\Models\JoinCode;
 use App\Models\Party;
@@ -29,7 +28,7 @@ class PartyControllerTest extends TestCase
         $response = $this->get('/party');
 
         // assert page loads
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     /**
@@ -83,14 +82,14 @@ class PartyControllerTest extends TestCase
 
         // create a join code for the party
         $joinCode = JoinCode::create([
-           'code' => 'ABCDEFGH'
+            'code' => 'ABCDEFGH'
         ]);
 
         // create a party
         $party = Party::create([
-            'partyCreator'=> $user->id,
+            'partyCreator' => $user->id,
             'joinCode' => $joinCode->id,
-            'partyOpen'=> true,
+            'partyOpen' => true,
         ]);
 
         // create a second user
@@ -122,14 +121,14 @@ class PartyControllerTest extends TestCase
 
         // create a party
         $party = Party::create([
-            'partyCreator'=> $user->id,
+            'partyCreator' => $user->id,
         ]);
 
         // delete the party
         PartyController::deleteParty($party->id);
 
         // check that the party does not exist
-        $this->assertDatabaseMissing('parties', ['id'=>$party->id]);
+        $this->assertDatabaseMissing('parties', ['id' => $party->id]);
     }
 
     /**
@@ -148,7 +147,7 @@ class PartyControllerTest extends TestCase
 
         // create a party thats open
         $party = Party::create([
-            'partyCreator'=> $user->id,
+            'partyCreator' => $user->id,
             'joinCode' => $joinCode->id,
         ]);
 
@@ -186,7 +185,7 @@ class PartyControllerTest extends TestCase
 
         // create a party
         $party = Party::create([
-            'partyCreator'=> $user->id,
+            'partyCreator' => $user->id,
             'joinCode' => $joinCode->id,
         ]);
 

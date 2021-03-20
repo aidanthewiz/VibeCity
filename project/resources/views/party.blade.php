@@ -134,15 +134,26 @@
             @if(config('app.dusk_testing') != "true")
             <script src="https://sdk.scdn.co/spotify-player.js"></script>
             <script>
-                console.log('<?php echo $spotify_token ?? '' ?>')
                 window.onSpotifyWebPlaybackSDKReady = () => {
                     var player = new Spotify.Player({
                         name: 'VibeCity',
                         getOAuthToken: callback => {
-                            callback('<?php echo $spotify_token ?? '' ?>');
+                        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        fetch("/refreshSpotifyToken", {
+                            headers: {
+                                "Accept": "text/plain",
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRF-Token": csrfToken
+                            },
+                            method: "get",
+                            credentials: "same-origin"
+                        }).then(res => {
+                            callback(res.text());
+                        });
                         },
                         volume: 1.0
                     });
+                    
                     player.connect().then(success => {
                         if (success) {
                             console.log('The Web Playback SDK successfully connected to Spotify!');

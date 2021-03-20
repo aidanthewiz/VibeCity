@@ -21,7 +21,7 @@ class JoinCodeTest
     public function test_code_creation()
     {
         // create a code
-        $code = 'ABc123j9';
+        $code = 'ABC123J9';
 
 
         JoinCode::create([
@@ -40,7 +40,7 @@ class JoinCodeTest
     public function test_code_deletion()
     {
         // create a code
-        $code = 'ABc123j9';
+        $code = 'ABC123J9';
 
         // create a code
         $joinCode = JoinCode::create([
