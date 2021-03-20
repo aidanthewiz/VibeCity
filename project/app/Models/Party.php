@@ -16,6 +16,7 @@ class Party extends Model
         'joinCode',
         'partyOpen',
         'users',
+        'kickEnabled',
     ];
 
     /**

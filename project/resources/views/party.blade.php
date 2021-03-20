@@ -76,7 +76,7 @@
                     </div>
                 @endif
                 @if ($party)
-                <!-- Delete party button -->
+                <!-- Delete party button && Kick User Button -->
                     @if($party[0]['partyCreator'] == Auth::user()->id)
                         <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
                             @csrf
@@ -84,6 +84,21 @@
                                 {{ __('Delete Party') }}
                             </button>
                         </form>
+                        @if($party[0]['kickEnabled'] == false && $party[0]['joinCode'] != null)
+                            <form method="POST" action="{{ route('/party/enableKick', [$party[0]['id']]) }}" class="inline-block">
+                                @csrf
+                                <button dusk="kick-user-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                                    Show Kick
+                                </button>
+                            </form>
+                        @elseif($party[0]['joinCode'] != null)
+                            <form method="POST" action="{{ route('/party/disableKick', [$party[0]['id']]) }}" class="inline-block">
+                                @csrf
+                                <button dusk="hide-kick-user-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                    Hide Kick
+                                </button>
+                            </form>
+                        @endif
                     @endif
                 <!-- Leave Party button -->
                     @if($party[0]['partyCreator'] != Auth::user()->id)
@@ -105,9 +120,13 @@
                         @endif
                     @endif
                     @if ($party[0]['joinCode'] != null)
+
+                        <!-- Join Code Button -->
                         <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                             {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                         </button>
+
+                        <!-- Twitter Button -->
                         <div dusk="twitterButton" class="closeAndOpenButton">
                              <a class="btn" href="https://twitter.com/intent/tweet?text=Hey%20join%20my%20VibeCity%20Party%20.%20The%20code%20is -> {{\App\Models\JoinCode::query()->where('id','=',$party[0]['joinCode'])->first()->code}}%20vibecity.us" target="_blank">
                                  <i class="fab fa-twitter"></i>
@@ -193,6 +212,15 @@
                                     @foreach ($party[0]['users'] as $user)
                                         <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
                                             {{$user['name']}}
+                                            @if($party[0]['kickEnabled'] == true && $party[0]['partyCreator'] != $user['id'])
+                                            <form method="POST" action="{{ route('/party/kickUser', [$user['id']])}}" class="inline-block">
+                                                @csrf
+                                                <input type="hidden" id="user-kicking" name="user-kicking" value="{{ $user['id'] }}">
+                                                <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
+                                                    X
+                                                </button>
+                                            </form>
+                                            @endif
                                         </div>
                                     @endforeach
                                 @endif

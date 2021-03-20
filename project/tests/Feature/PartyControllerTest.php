@@ -249,4 +249,49 @@ class PartyControllerTest extends TestCase
         // check that the user is not in a party
         $this->assertNull($user2->party_id);
     }
+
+    /**
+     * Tests that a user can kick another user from their party
+     *
+     * @return void
+     */
+    public function test_kick_user()
+    {
+        // create a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a join code for the party
+        $joinCode = JoinCode::create([
+            'code' => 'ABCDEFGH'
+        ]);
+
+        // create a party
+        $party = Party::create([
+            'partyCreator' => $user->id,
+            'joinCode' => $joinCode->id,
+            'partyOpen' => true,
+        ]);
+
+        // create a second user
+        $this->actingAs($user2 = User::factory()->create());
+
+        // create a request to pass the party code as input
+        $request = request();
+        $request->merge([
+            'party_join_code' => $joinCode->code,
+        ]);
+
+        // join the party
+        PartyController::joinWithCode($request);
+        
+        // switch to party leader
+        $this->actingAs($user);
+        
+        // kick user 2
+        PartyController::kickUser($user2->id);
+        $user2->refresh();
+
+        // check that the user is not in a party
+        $this->assertNull($user2->party_id);
+    }
 }

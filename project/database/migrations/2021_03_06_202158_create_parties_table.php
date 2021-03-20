@@ -19,6 +19,7 @@ class CreatePartiesTable extends Migration
             $table->foreignId('joinCode')->nullable();
             $table->timestamps();
             $table->boolean('partyOpen')->nullable();
+            $table->boolean('kickEnabled')->default(false);
         });
     }
 

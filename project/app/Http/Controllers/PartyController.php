@@ -109,6 +109,7 @@ class PartyController extends Controller
         $party = Party::updateOrCreate([
             'partyCreator' => Auth::user()->id,
             'partyOpen' => true,
+            'kickEnabled' => false,
         ]);
         $userArray = array(Auth::user());
 
@@ -137,5 +138,47 @@ class PartyController extends Controller
 
         // show the party page
         return view('/party', ['party' => $usersParty]);
+    }
+
+    /**
+     * Enable kick functionality
+     * 
+     * @return RedirectResponse
+     */
+    public static function enableKick($party_id)
+    {
+        $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->first();
+        $usersParty->kickEnabled = true;
+        $usersParty->save();
+        return back()->withInput();
+    }
+
+    /**
+     * Disable kick functionality
+     * 
+     * @return RedirectResponse
+     */
+    public static function disableKick($party_id)
+    {
+        $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->first();
+        $usersParty->kickEnabled = false;
+        $usersParty->save();
+        return back()->withInput();
+    }
+
+    /**
+     * Remove user from party
+     * 
+     * @return RedirectResponse
+     */
+    public static function kickUser($user_id)
+    {
+        // remove party id from the user in the database
+        $user = User::where('id', '=', $user_id)->first();
+        $user->party_id = null;
+        $user->save();
+
+        // show the party page
+        return back()->withInput();
     }
 }
