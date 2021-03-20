@@ -154,4 +154,38 @@ class DashboardTest extends DuskTestCase
                 ->assertSee('Spotify Leaderboard');
         });
     }
+
+    public function testCommentSectionPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the spotify leaderboard link is visible
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->press('@track-comments-btn')
+                ->assertSee('Comments');
+        });
+    }
+
+    public function testAddCommentPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the spotify leaderboard link is visible
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->press('@track-comments-btn')
+                ->assertSee('Leave a Comment');
+        });
+    }
 }

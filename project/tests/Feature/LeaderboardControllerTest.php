@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\LeaderboardController;
+use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Track;
 use App\Models\User;
@@ -205,5 +206,72 @@ class LeaderboardControllerTest extends TestCase
 
         // assert that the track has only gained 1 point of rating
         $this->assertDatabaseHas('tracks', ['name' => 'TestyMcTestTract', 'rating' => 0]);
+    }
+
+    /**
+     * Tests that tracks have comments when they are made
+     *
+     * @return void
+     */
+    public function test_leaderboard_comment()
+    {
+        // assemble a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a track that will be commented on
+        $track = Track::create([
+            'name' => 'TestyMcTestTract',
+            'artist' => 'TestyMcTestRapper',
+        ]);
+
+        // create a request to pass the track id as input
+        $commentContent = "I love this track more than my child";
+        $request = request();
+        $request->merge([
+            'comment-content' => $commentContent,
+            'comment-track-id' => $track->id
+        ]);
+
+        // add a comment to the track
+        LeaderboardController::addTrackComment($request);
+
+        // assert that the database has a comment with the track id
+        $this->assertDatabaseHas('comments', ['content' => $commentContent, 'track_id' => $track->id]);
+    }
+
+    /**
+     * Tests that tracks no longer have comments when they are deleted
+     *
+     * @return void
+     */
+    public function test_leaderboard_comment_delete()
+    {
+        // assemble a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a track that will be commented on
+        $track = Track::create([
+            'name' => 'TestyMcTestTract',
+            'artist' => 'TestyMcTestRapper',
+        ]);
+
+        // create a comment to be deleted
+         $comment = Comment::create([
+            'user_id' => $user->id,
+            'track_id' => $track->id,
+            'content' => "I love this track more than my child",
+        ]);
+
+        // create a request to delete the comment
+        $request = request();
+        $request->merge([
+            'comment-id' => $comment->id
+        ]);
+
+        // delete the comment
+        LeaderboardController::deleteTrackComment($request);
+
+        // assert that the database no longer has the comment
+        $this->assertDatabaseMissing('comments', [ 'id' => $comment->id]);
     }
 }
