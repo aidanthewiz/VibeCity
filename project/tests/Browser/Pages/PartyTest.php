@@ -161,6 +161,7 @@ class PartyTest extends DuskTestCase
         $party = Party::create([
             'partyCreator'=> $user->id,
             'joinCode' => $joinCode->id,
+            'partyOpen' => true
         ]);
 
         // assemble a user
@@ -174,8 +175,7 @@ class PartyTest extends DuskTestCase
         $this->browse(function (Browser $browser) use($user2, $joinCode) {
             $browser->loginAs($user2)
                 ->visit('/party')
-                ->click('party_join_code')
-                ->type($joinCode->code)
+                ->type('party_join_code', 'ABCDEFGH')
                 ->press('@join-with-code-button')
                 ->assertPresent('@leave-party-button');
         });
