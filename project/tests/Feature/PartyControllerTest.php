@@ -208,6 +208,11 @@ class PartyControllerTest extends TestCase
         $this->assertNull($user2->party_id);
     }
 
+    /**
+     * Tests that a user can leave a party
+     *
+     * @return void
+     */
     public function test_leave_party()
     {
         // create a user
