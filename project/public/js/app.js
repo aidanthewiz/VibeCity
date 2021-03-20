@@ -3802,16 +3802,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-function copyToClipboard(text) {
-  var input = document.createElement('input');
-  input.setAttribute('value', text);
-  document.body.appendChild(input);
-  input.select();
-  var result = document.execCommand('copy');
-  document.body.removeChild(input);
-  return result;
-}
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

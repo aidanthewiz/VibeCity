@@ -1,71 +1,118 @@
 <x-app-layout>
-    <style>
-        .closeAndOpenButton{
-            float: right;
-        }
-    </style>
+    <head>
+        <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
+        <style>
+            .closeAndOpenButton{
+                float: right;
+            }
+            .btn{
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                margin: 10px;
+                border-radius: 30%;
+                box-shadow: 0 5px 15px -5px black;
+                color: #3498db;
+                overflow: hidden;
+                position: relative;
+            }
+            .btn i{
+                line-height: 30px;
+                font-size: 22px;
+                transition: 0.2s linear;
+            }
+            .btn:hover i{
+                transform: scale(1.3);
+                color: #f1f1f1;
+            }
+            .btn:hover::before{
+                animation: aaa 0.7s 1;
+                top: -10%;
+                left: -10%;
+            }
+            @keyframes aaa {
+                0% {
+                    left: -110%;
+                    top: 90%;
+                }
+                50% {
+                    left: 10%;
+                    top: -20%;
+                }
+                100% {
+                    left: -10%;
+                    top: -10%;
+                }
+            }
+        </style>
+    </head>
     <div class="flex min-w-full min-h-full p-4 justify-center items-center content-center align-content justify-self-center align-center self-center">
         <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
             <div class="border-b-2 border-white">
-            @if (!$party)
-                <div class="grid grid-cols-10">
-                    <form method="POST" action="{{'/party/createParty'}}">
-                        @csrf
-                        <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                            {{ __('Create Party') }}
-                        </button>
-                    </form>
-                    <div class="col-start-2 col-end-5">
-                        <form method="POST" action="{{ route('/party/joinWithCode') }}">
+                @if (!$party)
+                    <div class="grid grid-cols-10">
+                        <form method="POST" action="{{'/party/createParty'}}">
                             @csrf
-                            <div class="grid grid-cols-2">
-                                <div>
-                                    <button dusk="join-with-code-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                                        {{__('Join Party With This Code')}}
-                                    </button>
-                                </div>
-                                <div>
-                                    <label for="party_join_code" class="sr-only">Party Join Code</label>
-                                    <input id="party_join_code" class="placeholder-white block mt-1 w-full bg-transparent text-gray-200" type="text" name="party_join_code" placeholder="Party Join Code*" required />
-                                </div>
-                            </div>
+                            <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                {{ __('Create Party') }}
+                            </button>
                         </form>
+                        <div class="col-start-2 col-end-5">
+                            <form method="POST" action="{{ route('/party/joinWithCode') }}">
+                                @csrf
+                                <div class="grid grid-cols-2">
+                                    <div>
+                                        <button dusk="join-with-code-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                            {{__('Join Party With This Code')}}
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <label for="party_join_code" class="sr-only">Party Join Code</label>
+                                        <input id="party_join_code" class="placeholder-white block mt-1 w-full bg-transparent text-gray-200" type="text" name="party_join_code" placeholder="Party Join Code*" required />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            @endif
-            @if ($party)
+                @endif
+                @if ($party)
                 <!-- Delete party button -->
-                @if($party[0]['partyCreator'] == Auth::user()->id)
-                <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
-                        @csrf
-                        <button dusk="delete-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
-                            {{ __('Delete Party') }}
-                        </button>
-                    </form>
-                @endif
-                <!-- Leave Party button -->
-                @if($party[0]['partyCreator'] != Auth::user()->id)
-                    <form method="POST" action="{{ route('/party/leaveParty') }}" class="inline-block">
-                        @csrf
-                        <button dusk="leave-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
-                            {{ __('Leave Party') }}
-                        </button>
-                    </form>
-                @endif
-
-                @if ($party[0]['joinCode'] == null)
-                    @if ($party[0]['partyCreator'] == Auth::user()->id)
-                        <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">
-                            <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                                {{ __('Create Join Code') }}
+                    @if($party[0]['partyCreator'] == Auth::user()->id)
+                        <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
+                            @csrf
+                            <button dusk="delete-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                                {{ __('Delete Party') }}
                             </button>
                         </form>
                     @endif
-                @endif
-                @if ($party[0]['joinCode'] != null)
+                <!-- Leave Party button -->
+                    @if($party[0]['partyCreator'] != Auth::user()->id)
+                        <form method="POST" action="{{ route('/party/leaveParty') }}" class="inline-block">
+                            @csrf
+                            <button dusk="leave-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                                {{ __('Leave Party') }}
+                            </button>
+                        </form>
+                    @endif
+
+                    @if ($party[0]['joinCode'] == null)
+                        @if ($party[0]['partyCreator'] == Auth::user()->id)
+                            <form method="GET" action="{{'/party/createJoinCode'}}" class="inline-block">
+                                <button dusk="join-code-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                    {{ __('Create Join Code') }}
+                                </button>
+                            </form>
+                        @endif
+                    @endif
+                    @if ($party[0]['joinCode'] != null)
                         <button dusk="copy-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                             {{\App\Models\JoinCode::where('id', $party[0]['joinCode'])->get()->toArray()[0]['code']}}
                         </button>
+                        <div dusk="twitterButton" class="closeAndOpenButton">
+                             <a class="btn" href="https://twitter.com/intent/tweet?text=Hey%20join%20my%20VibeCity%20Party%20.%20The%20code%20is -> {{\App\Models\JoinCode::query()->where('id','=',$party[0]['joinCode'])->first()->code}}%20vibecity.us" target="_blank">
+                                 <i class="fab fa-twitter"></i>
+                             </a>
+                        </div>
                         @if($party[0]['partyOpen'] == true && $party[0]['partyCreator'] == Auth::user()->id)
                             <form method="POST" action="{{ route('/party/closeParty', [$party[0]['id']]) }}" class="closeAndOpenButton inline-block">
                                 @csrf
@@ -81,27 +128,29 @@
                                 </button>
                             </form>
                         @endif
+                    @endif
                 @endif
-            @endif
             </div>
+            @if(config('app.dusk_testing') != "true")
             <script src="https://sdk.scdn.co/spotify-player.js"></script>
             <script>
                 console.log('<?php echo $spotify_token ?? '' ?>')
                 window.onSpotifyWebPlaybackSDKReady = () => {
-                  var player = new Spotify.Player({
-                      name: 'VibeCity',
-                      getOAuthToken: callback => {
-                        callback('<?php echo $spotify_token ?? '' ?>');
-                      },
-                      volume: 1.0
+                    var player = new Spotify.Player({
+                        name: 'VibeCity',
+                        getOAuthToken: callback => {
+                            callback('<?php echo $spotify_token ?? '' ?>');
+                        },
+                        volume: 1.0
                     });
-                  player.connect().then(success => {
-                      if (success) {
-                        console.log('The Web Playback SDK successfully connected to Spotify!');
-                      }
-                  })
+                    player.connect().then(success => {
+                        if (success) {
+                            console.log('The Web Playback SDK successfully connected to Spotify!');
+                        }
+                    })
                 };
             </script>
+            @endif
             <div class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
                 <!-- Grid for song and party -->
                 <div class="min-w-full min-h-full">
