@@ -32747,19 +32747,6 @@ select {
   left: -10%;
 }
 
-.min-h-screen {
-  display:flex;
-  flex-direction:column;
-}
-
-main {
-  flex-grow:1;
-}
-
-main .full-page-container {
-  height:100%;
-}
-
 @-webkit-keyframes aaa {
   0% {
     left: -110%;
