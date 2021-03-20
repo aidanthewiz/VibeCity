@@ -71,12 +71,15 @@ class PartyController extends Controller
         // retrieve user's party
         $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->get()->toArray();
 
-        // retrieve user's spotify token
-        $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
-        if ($spotify_login_token) {
-            $spotify_token = (array) Socialite::driver('spotify')->scopes(["streaming", "user-read-email", "user-read-private"])->userFromToken($spotify_login_token);
-        } else {
-            return redirect()->route('profile.show')->with('error', 'Please connect your spotify premium account to use the party feature.');
+        // ignore the spotify requirement when running dusk tests
+        if(config('app.dusk_testing') != "true"){
+            // retrieve user's spotify token
+            $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
+            if ($spotify_login_token) {
+                $spotify_token = (array)Socialite::driver('spotify')->scopes(["streaming", "user-read-email", "user-read-private"])->userFromToken($spotify_login_token);
+            } else {
+                return redirect()->route('profile.show')->with('error', 'Please connect your spotify premium account to use the party feature.');
+            }
         }
 
         // show the party page

@@ -233,4 +233,6 @@ return [
 
     ],
 
+    'dusk_testing' => env('DUSK_TESTING'),
+
 ];
