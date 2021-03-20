@@ -27,13 +27,23 @@ class Track extends Model
     ];
 
     /**
-     * Gives the track many rantings
+     * Gives the track many ratings
      *
      */
     public function ratings()
     {
         // ensures tracks have many ratings
         return $this->hasMany(Rating::class);
+    }
+
+    /**
+     * Gives the track many comments
+     *
+     */
+    public function comments()
+    {
+        // ensures tracks have many ratings
+        return $this->hasMany(Comment::class);
     }
 
     /**

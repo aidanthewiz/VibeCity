@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Aerni\Spotify\Facades\SpotifyFacade;
+use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Track;
 use Database\Seeders\SeedTracks;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LeaderboardController extends Controller
@@ -21,13 +23,13 @@ class LeaderboardController extends Controller
         $this->populatePredetermined50();
 
         // order the tracks by their names, then sort by descending rating so highest track with first name is at top
-        $tracks = Track::all()->sortby('name')->sortByDesc('rating');
+        $tracks = Track::with('comments')->with('ratings')->get()->sortby('name')->sortByDesc('rating');
 
         // counter to help keep track of color swapping
         $count = 0;
 
         // show the dashboard page with the tracks
-        return view('dashboard', ['tracks' => $tracks, 'count' => $count]);
+        return view('dashboard', ['tracks' => $tracks, 'count' => $count, 'track_comments_id' => null]);
     }
 
     /**
@@ -125,5 +127,62 @@ class LeaderboardController extends Controller
 
         // return to the dashboard screen
         return back()->withInput();
+    }
+
+    /**
+     * Shows a comment modal on the screen
+     * @param $trackId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public static function showTrackComments($trackId)
+    {
+        // order the tracks by their names, then sort by descending rating so highest track with first name is at top
+        $tracks = Track::with('comments')->with('ratings')->get()->sortby('name')->sortByDesc('rating');
+
+        // counter to help keep track of color swapping
+        $count = 0;
+
+        // return the dashboard with the track comment id
+        return view('dashboard', ['tracks' => $tracks, 'count' => $count, 'track_comments_id' => $trackId]);
+    }
+
+    /**
+     * Shows a comment modal on the screen
+     * @param $request
+     *  @return \Illuminate\Http\RedirectResponse
+     */
+    public static function addTrackComment(Request $request)
+    {
+        // comment content and track id
+        $commentContent = $request->input('comment-content');
+        $track_id = $request->input('comment-track-id');
+
+        // create a new comment for the user on the track
+        Comment::Create([
+            'content' => $commentContent,
+            'user_id' => Auth::user()->id,
+            'track_id' => $track_id,
+        ]);
+
+        // return the dashboard
+        return back()->withInput();
+    }
+
+    /**
+     * Shows a comment modal on the screen
+     * @param $request
+     *  @return \Illuminate\Http\RedirectResponse
+     */
+    public static function deleteTrackComment(Request $request)
+    {
+        // get the comment id and track id from the request
+        $commentId = $request->input('comment-id');
+
+        // find the comment and delete it
+        $comment = Comment::query()->where('id', '=', $commentId)->first();
+        $comment->delete();
+
+        // return the dashboard
+        return back();
     }
 }

@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [LeaderboardController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/dashboard/{track_id}', [LeaderboardController::class, 'showTrackComments'])->name('trackComments');
+    Route::post('/dashboard/addComment', [LeaderboardController::class, 'addTrackComment'])->name('addTrackComment');
+    Route::post('/dashboard/deleteComment', [LeaderboardController::class, 'deleteTrackComment'])->name('deleteTrackComment');
     Route::get('/spotifyDashboard', [LeaderboardController::class, 'showSpotify'])->name('spotifyDashboard');
     Route::get('/party', 'App\Http\Controllers\PartyController@show')->name('party');
     Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
