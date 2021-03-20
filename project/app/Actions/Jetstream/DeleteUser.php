@@ -38,7 +38,7 @@ class DeleteUser implements DeletesUsers
         }
 
         // get the users' party and delete it
-        $party = Party::query()->where('user_id', '=', $user->id)->first();
+        $party = Party::query()->where('partyCreator', '=', $user->id)->first();
         if ($party != null) {
             $party->delete();
         }
