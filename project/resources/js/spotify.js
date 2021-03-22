@@ -113,9 +113,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 this.player.togglePlay().then(() => {
                     console.log('Toggled playback!');
                     if (this.playing) {
-                        this.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
-                    } else {
                         this.spotifyPlayPauseButton.className = "far fa-play-circle fa-3x";
+                    } else {
+                        this.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
                     }
                     this.playing = !this.playing;
                 });
