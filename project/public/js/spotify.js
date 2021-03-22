@@ -2953,61 +2953,216 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// https://github.com/jmperez/spotify-web-api-js
 var SpotifyWebApi = __webpack_require__(/*! spotify-web-api-js */ "./node_modules/spotify-web-api-js/src/spotify-web-api.js");
 
 window.onSpotifyWebPlaybackSDKReady = function () {
-  var spotifyAPI = new SpotifyWebApi();
-  var player = new Spotify.Player({
-    name: 'VibeCity',
-    getOAuthToken: function getOAuthToken(callback) {
-      var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      fetch("/refreshSpotifyToken", {
-        headers: {
-          "Accept": "text/plain",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-Token": csrfToken
-        },
-        method: "get",
-        credentials: "same-origin"
-      }).then( /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(res) {
-          var token;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+  var VCSpotify = function () {
+    return {
+      init: function init() {
+        var _this = this;
+
+        this.spotifyAPI = new SpotifyWebApi();
+        this.token = null;
+        this.prevSearch = null;
+        this.playing = true;
+        this.currentSong = 'spotify:track:4kzvAGJirpZ9ethvKZdJtg';
+        this.player = new Spotify.Player({
+          name: 'VibeCity',
+          getOAuthToken: function () {
+            var _getOAuthToken = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(callback) {
+              var response;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return fetch("/refreshSpotifyToken", {
+                        headers: {
+                          "Accept": "text/plain",
+                          "X-Requested-With": "XMLHttpRequest",
+                          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        method: "get",
+                        credentials: "same-origin"
+                      });
+
+                    case 2:
+                      response = _context.sent;
+                      _context.next = 5;
+                      return response.text();
+
+                    case 5:
+                      _this.token = _context.sent;
+                      console.log("Spotify Token: " + _this.token);
+                      callback(_this.token);
+
+                    case 8:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee);
+            }));
+
+            function getOAuthToken(_x) {
+              return _getOAuthToken.apply(this, arguments);
+            }
+
+            return getOAuthToken;
+          }(),
+          volume: 1.0
+        });
+        this.connectPlayer();
+        var x = setInterval(function () {
+          if (_this.token !== null) {
+            clearInterval(x);
+
+            _this.spotifyAPI.setAccessToken(_this.token);
+
+            document.getElementById('loader').style.display = 'none';
+          }
+        }, 100);
+        this.cacheDOM();
+        this.bindEvents();
+      },
+      cacheDOM: function cacheDOM() {
+        // this.addSongStartButton = document.getElementById("addSongStart");
+        // this.closeSearchButton = document.getElementById("closeSearchButton");
+        // this.spotifySearchButton = document.getElementById("spotifySearch");
+        this.spotifyPlayPauseButton = document.getElementById("togglePlayPause");
+        this.albumArt = document.getElementById("albumArt");
+      },
+      bindEvents: function bindEvents() {
+        var _this2 = this;
+
+        // this.addSongStartButton.addEventListener("click", this.addSongStart.bind(this));
+        // this.closeSearchButton.addEventListener("click", this.closeSearchModal.bind(this));
+        // this.spotifySearchButton.addEventListener('input', this.spotifySearch.bind(this));
+        this.spotifyPlayPauseButton.addEventListener('click', this.togglePlayPause.bind(this));
+        this.player.addListener('ready', function (_ref) {
+          var device_id = _ref.device_id;
+          _this2.device_id = device_id;
+          console.log('Device ID: ' + device_id);
+
+          _this2.spotifyAPI.transferMyPlayback([_this2.device_id], {
+            play: false
+          }).then(function (_) {
+            _this2.playSong(_this2.currentSong);
+          });
+        });
+      },
+      connectPlayer: function connectPlayer() {
+        var iframe = document.querySelector('iframe[src="https://sdk.scdn.co/embedded/index.html"]');
+
+        if (iframe) {
+          iframe.style.display = 'block';
+          iframe.style.position = 'absolute';
+          iframe.style.top = '-1000px';
+          iframe.style.left = '-1000px';
+        }
+
+        this.player.connect().then(function (success) {
+          if (success) {
+            console.log('The Web Playback SDK successfully connected to Spotify!');
+          }
+        });
+      },
+      getCurrentSong: function getCurrentSong() {},
+      getPlaybackInfo: function getPlaybackInfo() {
+        var _this3 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+          var info;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
-              switch (_context.prev = _context.next) {
+              switch (_context2.prev = _context2.next) {
                 case 0:
-                  _context.next = 2;
-                  return res.text();
+                  _context2.next = 2;
+                  return _this3.spotifyAPI.getMyCurrentPlaybackState();
 
                 case 2:
-                  token = _context.sent;
-                  spotifyAPI.setAccessToken(token);
-                  callback(token);
+                  info = _context2.sent;
+                  return _context2.abrupt("return", info);
 
-                case 5:
+                case 4:
                 case "end":
-                  return _context.stop();
+                  return _context2.stop();
               }
             }
-          }, _callee);
-        }));
+          }, _callee2);
+        }))();
+      },
+      addSongStart: function addSongStart() {
+        console.log('adding song');
+        document.getElementById('searchModal').style.display = "block";
+      },
+      closeSearchModal: function closeSearchModal() {
+        document.getElementById('searchModal').style.display = "";
+      },
+      spotifySearch: function spotifySearch(query) {
+        var _this4 = this;
 
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }());
-    },
-    volume: 1.0
-  });
-  player.connect().then(function (success) {
-    if (success) {
-      console.log('The Web Playback SDK successfully connected to Spotify!');
-      spotifyAPI.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function (err, data) {
-        if (err) console.error(err);else console.log('Artist albums', data);
-      });
-    }
-  });
+        this.prevSearch = this.spotifyAPI.searchTracks(query, {
+          limit: 5
+        });
+        this.prevSearch.then(function (data) {
+          _this4.prevSearch = null;
+          console.log(data);
+        }, function (err) {
+          _this4.prevSearch.abort();
+
+          console.error(err);
+        });
+      },
+      playSong: function playSong(uri) {
+        var _arguments = arguments,
+            _this5 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+          var position;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  position = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : 0;
+                  _context3.next = 3;
+                  return _this5.spotifyAPI.play({
+                    uris: [uri],
+                    position_ms: position
+                  }).then(function () {
+                    _this5.getPlaybackInfo().then(function (res) {
+                      _this5.albumArt.style = "background-image:url('".concat(res.item.album.images[0].url, "')");
+                    });
+                  });
+
+                case 3:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }))();
+      },
+      togglePlayPause: function togglePlayPause() {
+        var _this6 = this;
+
+        this.player.togglePlay().then(function () {
+          console.log('Toggled playback!');
+
+          if (_this6.playing) {
+            _this6.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
+          } else {
+            _this6.spotifyPlayPauseButton.className = "far fa-play-circle fa-3x";
+          }
+
+          _this6.playing = !_this6.playing;
+        });
+      }
+    };
+  }();
+
+  var spotify = VCSpotify;
+  spotify.init();
 };
 })();
 

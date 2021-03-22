@@ -130,11 +130,13 @@ class PartyController extends Controller
         // retrieve user's party
         $usersParty = Party::where('id', '=', Auth::user()->party_id)->with('users')->get()->toArray();
 
-        // retrieve user's spotify token
-        $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
+        if (config('app.dusk_testing') != "true") {
+            // retrieve user's spotify token
+            $spotify_login_token = DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
 
-        if (!$spotify_login_token) {
-            return redirect()->route('profile.show')->with('error', 'Please connect your spotify premium account to use the party feature.');
+            if (!$spotify_login_token) {
+                return redirect()->route('profile.show')->with('error', 'Please connect your spotify premium account to use the party feature.');
+            }
         }
 
         // show the party page
@@ -143,7 +145,7 @@ class PartyController extends Controller
 
     /**
      * Enable kick functionality
-     * 
+     *
      * @return RedirectResponse
      */
     public static function enableKick($party_id)
@@ -156,7 +158,7 @@ class PartyController extends Controller
 
     /**
      * Disable kick functionality
-     * 
+     *
      * @return RedirectResponse
      */
     public static function disableKick($party_id)
@@ -169,7 +171,7 @@ class PartyController extends Controller
 
     /**
      * Remove user from party
-     * 
+     *
      * @return RedirectResponse
      */
     public static function kickUser($user_id)

@@ -3,56 +3,34 @@
 <script src="{{ mix('/js/spotify.js') }}"></script>
 @endif
 <x-app-layout>
-    <head>
-        <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
-        <style>
-            .closeAndOpenButton{
-                float: right;
-            }
-            .btn{
-                width: 30px;
-                height: 30px;
-                background: transparent;
-                margin: 10px;
-                border-radius: 30%;
-                box-shadow: 0 5px 15px -5px black;
-                color: #3498db;
-                overflow: hidden;
-                position: relative;
-            }
-            .btn i{
-                line-height: 30px;
-                font-size: 22px;
-                transition: 0.2s linear;
-            }
-            .btn:hover i{
-                transform: scale(1.3);
-                color: #f1f1f1;
-            }
-            .btn:hover::before{
-                animation: aaa 0.7s 1;
-                top: -10%;
-                left: -10%;
-            }
-            @keyframes aaa {
-                0% {
-                    left: -110%;
-                    top: 90%;
-                }
-                50% {
-                    left: 10%;
-                    top: -20%;
-                }
-                100% {
-                    left: -10%;
-                    top: -10%;
-                }
-            }
-        </style>
-    </head>
-    <div class="flex min-w-full min-h-full p-4 justify-center items-center content-center align-content justify-self-center align-center self-center">
-        <div class="grid grid-rows-1 bg-gray-900 min-h-full min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg self-center align-center items-center align-content content-center">
-            <div class="border-b-2 border-white">
+    <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
+    <style>
+        #loader {
+            position:absolute;
+            top:0;
+            left:0;
+            background-color:rgb(17, 24, 39);
+            width:100vw;
+            height:100vh;
+            z-index:100;
+            color:white;
+            font-size:20px;
+            display:flex;
+            align-items:center;
+            text-align:center;
+        }
+        #loader div {
+            width:100%;
+        }
+    </style>
+    @if(config('app.dusk_testing') != "true")
+    <div id="loader">
+        <div>LOADING...</div>
+    </div>
+    @endif
+    <div class="flex flex-1 flex-col min-w-full p-4 items-center">
+        <div class="flex-1 flex flex-col bg-gray-900 min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg">
+            <div>
                 @if (!$party)
                     <div class="grid grid-cols-10">
                         <form method="POST" action="{{'/party/createParty'}}">
@@ -154,52 +132,132 @@
                     @endif
                 @endif
             </div>
-{{--            Temp styles--}}
-            <div  class="flex min-h-full min-w-full justify-center align-content content-center items-center sm:items-center md:rounded-tr-lg md:rounded-br-lg justify-self-center">
-                <!-- Grid for song and party -->
-                <div class="min-w-full min-h-full">
-                    <div class="grid grid-cols-3 min-h-full min-w-full items-center justify-center sm:items-center text-center align-content content-center">
-                        <!-- Current Song -->
-                        <div class="col-span-2 md:p-12 min-h-full min-w-full items-center justify-center sm:items-center text-center content-center">
-                            <div class="grid grid-rows-1 min-h-full min-w-full md:m-12 h-full w-full items-center justify-center sm:items-center text-center content-center align-center align-content">
-                                <div class="min-h-full min-w-full pt-20 pb-20">
-                                    <div class="text-white md:text-2xl text-lg">
-                                        Current Song:
-                                    </div>
-                                    <div class="border-b-2 h-2 w-full border-white align-bottom"></div>
-                                    <div class="text-yellow-600 md:text-2xl text-lg">
-                                        Pending
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <style>
+                .host-controls {
+                    display:flex;
+                    position:relative;
+                    padding:0;
+                }
+                .host-controls .song-cover {
+                    width:100px;
+                    height:100px;
+                    background-color:rgb(17, 24, 39);
+                    background-position:center;
+                    background-size:cover;
+                }
+                .host-controls .controls {
+                    display:flex;
+                    flex:1;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+                .progress-bar {
+                    height:5px;
+                    width:calc(100% - 100px);
+                    position:absolute;
+                    left:100px;
+                    bottom:0;
+                }
+                .progress-bar .progress {
+                    width:50%;
+                    max-width:100;
+                    min-width:0%;
+                    height:100%;
+                    background-color:rgb(217, 119, 6);
+                }
+                .add-song {
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    height:100vh;
+                    width:100vw;
+                    background-color:#00000000;
+                    display:none;
+                }
+                #spotifySearch {
 
-                        <!-- In Party -->
-                        <div class="grid grid-rows-4 min-h-full">
-                            <div class="flex text-white md:text-4xl text-lg border-l-2 border-b-2 border-white items-center align-center justify-center content-center">
-                                <div class="md:ml-4 md:mr-4 md:mb-2">
-                                    In Party
+                }
+                #searchResults {
+
+                }
+            </style>
+            <div class="flex flex-1 min-w-full">
+                <!-- Grid for song and party -->
+                <!-- Current Song -->
+                <div class="flex-grow-4 min-h-full items-center justify-center sm:items-center text-center content-center">
+                    <div class="flex flex-col min-h-full">
+                        <!-- Host Controls -->
+                        <div id="searchModal" class="add-song">
+                            <div class="fixed z-10 inset-0 overflow-y-auto">
+                                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
+                                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                            <div class="sm:flex sm:items-start">
+                                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                                                        Search Song
+                                                    </h3>
+                                                    <div>
+                                                        <input type="text" id="spotifySearch" palceholde="Search...">
+                                                    </div>
+                                                    <div id="searchResults">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                            <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                                Add
+                                            </button>
+                                            <button id="closeSearchButton" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row-span-3 text-yellow-600 border-l-2 border-white">
-                                @if ($party)
-                                    @foreach ($party[0]['users'] as $user)
-                                        <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
-                                            {{$user['name']}}
-                                            @if($party[0]['kickEnabled'] == true && $party[0]['partyCreator'] != $user['id'])
-                                            <form method="POST" action="{{ route('/party/kickUser', [$user['id']])}}" class="inline-block">
-                                                @csrf
-                                                <input type="hidden" id="user-kicking" name="user-kicking" value="{{ $user['id'] }}">
-                                                <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
-                                                    X
-                                                </button>
-                                            </form>
-                                            @endif
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
                         </div>
+                        <div class="host-controls">
+                            <!-- song cover -->
+                            <div class="song-cover" id="albumArt"></div>
+                            <div class="controls">
+                                <a class="far fa-pause-circle fa-3x" href="javascript:void(0);" id="togglePlayPause"></a>
+{{--                                <a href="javascript:void(0);" id="addSongStart">Search Song</a>--}}
+                            </div>
+{{--                            <div class="progress-bar"><div class="progress"></div></div>--}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In Party -->
+                <div class="flex-grow grid grid-rows-4 min-h-full">
+                    <div class="flex text-white md:text-4xl text-lg border-l-2 border-b-2 border-white items-center align-center justify-center content-center">
+                        <div class="md:ml-4 md:mr-4 md:mb-2">
+                            In Party
+                        </div>
+                    </div>
+                    <div class="row-span-3 text-yellow-600 border-l-2 border-white">
+                        @if ($party)
+                            @foreach ($party[0]['users'] as $user)
+                                <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
+                                    {{$user['name']}}
+                                    @if($party[0]['kickEnabled'] == true && $party[0]['partyCreator'] != $user['id'])
+                                    <form method="POST" action="{{ route('/party/kickUser', [$user['id']])}}" class="inline-block">
+                                        @csrf
+                                        <input type="hidden" id="user-kicking" name="user-kicking" value="{{ $user['id'] }}">
+                                        <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
+                                            X
+                                        </button>
+                                    </form>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
