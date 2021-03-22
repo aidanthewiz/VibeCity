@@ -159,12 +159,21 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
 - Product Demonstration
 
-## Task Allocation
+## Task Allocation / Responsibilities
 
-Member 1 - main tasking
-
-Member 2 - main tasking
-
+- Aidan Artherton (aidanthewiz):
+    - Adding the ability to listen to music in parties with the spotify SDK.
+- Matthew Cooper (GTMcooper)
+    - Added the ability for hosts to kick users from parties. This addresses any issues hosts may have with members.
+    - Fixed the class/database diagrams, which keeps our architecture up to date.
+- Timothy Ford (CarriedCoin)
+    - Added the ability for users to join parties. This adds a main functionality of the party, so that it is not just the owner and can have many users to listen to music with.
+- Alexandra French (xar-tol)
+   - Added the ability to rate up view comments, comment, and delete your own comments to the main leaderboard. This adds one of the main portions of the vision for the leaderboard and allows users to interact socially.
+   - Added the ability for users to undo track ratings, which allows users to take back their ratings if they don't like tracks.
+   - Adjusted the ui and component diagrams. This keeps our architecture up to date.
+- Jason Masri (A90Jason)
+    - Added the ability for users to share their join code to Twitter. This adds some more social media capabilities for the app.
 
 # Sprint 8
 
