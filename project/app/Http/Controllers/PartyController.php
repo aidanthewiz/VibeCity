@@ -59,24 +59,26 @@ class PartyController extends Controller
         // search for this party
         $joinCodeInDB = JoinCode::query()->where('code', '=', $partyJoinCode)->first();
 
-        // get the party based on the join code id
-        $usersParty = Party::where('joinCode', '=', $joinCodeInDB->id)->with('users')->get();
+        // only look for the party if the join code is valid
+        if($joinCodeInDB) {
+            // get the party based on the join code id
+            $usersParty = Party::where('joinCode', '=', $joinCodeInDB->id)->with('users')->get();
 
-        if ($usersParty) {
-            // add user to party
-            $userArray = array(Auth::user());
+            if ($usersParty) {
+                // add user to party
+                $userArray = array(Auth::user());
 
-            foreach ($usersParty as $party) {
-                if ($party->partyOpen == false) {
-                    return back()->withInput();
+                foreach ($usersParty as $party) {
+                    if ($party->partyOpen == false) {
+                        return back()->withInput();
+                    }
+                    $party->users()->saveMany($userArray);
                 }
-                $party->users()->saveMany($userArray);
+
+                // show the party page
+                return back()->withInput();
             }
-
-            // show the party page
-            return back()->withInput();
         }
-
         // failed to find a party with the specified code
         return back()->withInput();
 
