@@ -3150,9 +3150,9 @@ window.onSpotifyWebPlaybackSDKReady = function () {
           console.log('Toggled playback!');
 
           if (_this6.playing) {
-            _this6.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
-          } else {
             _this6.spotifyPlayPauseButton.className = "far fa-play-circle fa-3x";
+          } else {
+            _this6.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
           }
 
           _this6.playing = !_this6.playing;
