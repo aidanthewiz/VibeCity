@@ -23,7 +23,7 @@
         <!-- banner -->
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-800">
+        <div class="flex flex-col page-container min-h-screen bg-gray-800">
             <!-- menu routes -->
             @livewire('navigation-menu')
 
@@ -37,7 +37,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex flex-col flex-1">
                 {{ $slot }}
             </main>
         </div>

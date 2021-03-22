@@ -20,6 +20,7 @@ class CreatePartiesTable extends Migration
             $table->timestamps();
             $table->boolean('partyOpen')->nullable();
             $table->boolean('kickEnabled')->default(false);
+            $table->integer('song_start_time')->nullable();
         });
     }
 

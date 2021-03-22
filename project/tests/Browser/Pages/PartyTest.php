@@ -47,22 +47,6 @@ class PartyTest extends DuskTestCase
         });
     }
 
-    public function testSeesCurrentSong()
-    {
-        // assemble a user
-        $user = User::factory(User::class)->create([
-            'email' => 'testduskuser@dusk.com',
-            'password' => bcrypt('test2WEB!'),
-        ]);
-
-        // assert that the words "Current Song" are present
-        $this->browse(function (Browser $browser) use($user) {
-            $browser->loginAs($user)
-                ->visit('/party')
-                ->assertSee('Current Song');
-        });
-    }
-
     public function testCreatePartyButtonPresent()
     {
         // assemble a user

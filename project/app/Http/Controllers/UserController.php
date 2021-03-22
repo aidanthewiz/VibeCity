@@ -38,4 +38,14 @@ class UserController extends Controller
 
         return json_decode($response->body(), true)['access_token'] ?? '';
     }
+
+     /**
+     * Gets the user's spotify token.
+     *
+     * @return string
+     */
+    public function getSpotifyToken()
+    {
+        return DB::table('connected_accounts')->where('user_id', '=', Auth::user()->id)->value('token');
+    }
 }

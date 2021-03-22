@@ -32717,6 +32717,10 @@ select {
           animation: bounce 1s infinite;
 }
 
+.closeAndOpenButton{
+  float: right;
+}
+
 .btn{
   width: 30px;
   height: 30px;
@@ -32745,6 +32749,14 @@ select {
           animation: aaa 0.7s 1;
   top: -10%;
   left: -10%;
+}
+
+.flex-grow-4 {
+  flex-grow:4
+}
+
+.host-controls {
+  background-color:navajowhite;
 }
 
 @-webkit-keyframes aaa {
