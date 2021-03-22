@@ -246,13 +246,13 @@
                             @foreach ($party[0]['users'] as $user)
                                 <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
                                     {{$user['name']}}
-                                    @if($party[0]['kickEnabled'] == true && $party[0]['partyCreator'] != $user['id'])
+                                    @if($party[0]['kickEnabled'] == true && $party[0]['partyCreator'] != $user['id'] && Auth::user()->id == $party[0]['partyCreator'])
                                     <form method="POST" action="{{ route('/party/kickUser', [$user['id']])}}" class="inline-block">
                                         @csrf
                                         <input type="hidden" id="user-kicking" name="user-kicking" value="{{ $user['id'] }}">
-                                        <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
-                                            X
-                                        </button>
+                                            <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
+                                                X
+                                            </button>
                                     </form>
                                     @endif
                                 </div>
