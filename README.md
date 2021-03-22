@@ -157,7 +157,7 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
-- Product Demonstration
+- [Product Demonstration](https://youtu.be/iH3RHRDiDPs)
 
 ## Task Allocation / Responsibilities
 
