@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpotifyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\UserController;
@@ -30,6 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/party/createJoinCode', 'App\Http\Controllers\JoinCodeController@createJoinCode')->name('/party/createJoinCode');
     Route::get('/refreshSpotifyToken', [UserController::class, 'refreshSpotifyToken'])->name('refreshSpotifyToken');
     Route::get('/getSpotifyToken', [UserController::class, 'getSpotifyToken'])->name('getSpotifyToken');
+    Route::get('/getSpotifyState', [SpotifyController::class, 'getState'])->name('getSpotifyState');
+    Route::post('/setSpotifyState', [SpotifyController::class, 'setState'])->name('setSpotifyState');
     Route::post('/party/createParty', 'App\Http\Controllers\PartyController@createParty')->name('/party/createParty');
     Route::post('/party/joinWithCode', 'App\Http\Controllers\PartyController@joinWithCode')->name('/party/joinWithCode');
     Route::post('/party/deleteParty/{partyID}', 'App\Http\Controllers\PartyController@deleteParty')->name('/party/deleteParty');

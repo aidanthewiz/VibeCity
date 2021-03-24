@@ -32,6 +32,7 @@
         <div class="flex-1 flex flex-col bg-gray-900 min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg">
             <div>
                 @if (!$party)
+                    <meta name="inParty" content="false">
                     <div class="grid grid-cols-10">
                         <form method="POST" action="{{'/party/createParty'}}">
                             @csrf
@@ -58,7 +59,8 @@
                     </div>
                 @endif
                 @if ($party)
-                <!-- Delete party button && Kick User Button -->
+                    <meta name="inParty" content="true">
+                    <!-- Delete party button && Kick User Button -->
                     @if($party[0]['partyCreator'] == Auth::user()->id)
                         <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
                             @csrf
@@ -82,7 +84,7 @@
                             </form>
                         @endif
                     @endif
-                <!-- Leave Party button -->
+                    <!-- Leave Party button -->
                     @if($party[0]['partyCreator'] != Auth::user()->id)
                         <form method="POST" action="{{ route('/party/leaveParty') }}" class="inline-block">
                             @csrf
@@ -153,14 +155,18 @@
                 }
                 .progress-bar {
                     height:5px;
-                    width:calc(100% - 100px);
+                    width:100%;
                     position:absolute;
-                    left:100px;
+                    left:0;
                     bottom:0;
+                    transition: height 0.5s;
+                }
+                .progress-bar:hover {
+                    height:15px;
                 }
                 .progress-bar .progress {
-                    width:50%;
-                    max-width:100;
+                    width:0%;
+                    max-width:100%;
                     min-width:0%;
                     height:100%;
                     background-color:rgb(217, 119, 6);
@@ -174,11 +180,84 @@
                     background-color:#00000000;
                     display:none;
                 }
+                .alt-controls {
+                    width:100px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                }
                 #spotifySearch {
 
                 }
+                .search-bar-container {
+                    margin: 0 0 5px 0;
+                    width:100%;
+                }
+                .search-bar-container input {
+                    border-radius:5px;
+                    border:1px solid #ccc;
+                    width:100%;
+                }
                 #searchResults {
-
+                    display:flex;
+                    flex-direction: column;
+                }
+                .single-search-result {
+                    display:flex;
+                    margin:5px 0;
+                    align-items: center;
+                }
+                .song-cover {
+                    width:69px;
+                    height:69px;
+                    background-size: cover;
+                    background-position: center;
+                    margin-right:10px;
+                }
+                #searchResults h2 {
+                    margin-top:5px;
+                    font-size:24px;
+                    font-weight:bold
+                }
+                #searchResults h2.all {
+                    margin-top:15px;
+                }
+                .song-info {
+                    flex:1
+                }
+                .top-result .song-info .name {
+                    font-size:25px;
+                }
+                .top-result .song-info .artist {
+                    font-size:16px;
+                }
+                .top-result .song-cover {
+                    width:100px;
+                    height:100px;
+                }
+                .queue-song {
+                    display:flex;
+                    margin:5px 0;
+                    align-items: center;
+                    color:white;
+                    border-top:2px solid #ccc;
+                    padding:15px 0;
+                }
+                .queue-song .song-info{
+                    text-align:left;
+                }
+                .queue-song:first-of-type {
+                    border-top:0;
+                }
+                #displayQueue h2 {
+                    color:white;
+                    font-size:24px;
+                    text-align:left;
+                    font-weight:bold;
+                    margin-top:5px;
+                }
+                .host-controls {
+                    background-color:rgba(217, 119, 6, 0.5);
                 }
             </style>
             <div class="flex flex-1 min-w-full">
@@ -196,26 +275,43 @@
                                     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
                                     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                            <div class="sm:flex sm:items-start">
-                                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                                                        Search Song
-                                                    </h3>
-                                                    <div>
-                                                        <input type="text" id="spotifySearch" palceholde="Search...">
-                                                    </div>
-                                                    <div id="searchResults">
-
-                                                    </div>
-                                                </div>
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline" style="margin-bottom:10px;font-weight:bold;font-size:24px;">
+                                                Search For A Song
+                                            </h3>
+                                            <div class="search-bar-container">
+                                                <input type="text" id="spotifySearch" palceholde="Search...">
                                             </div>
+                                            <div id="searchResults">
+
+                                            </div>
+                                            <template id="topSearchResultTemplate">
+                                                <h2>Top Result</h2>
+                                                <div class="single-search-result top-result">
+                                                    <div class="song-cover"></div>
+                                                    <div class="song-info">
+                                                        <div class="name"></div>
+                                                        <div class="artist"></div>
+                                                        <div class="runtime"></div>
+                                                    </div>
+                                                    <div class="searchControls"><a title="Add Song" class="fas fa-plus fa-3x add-to-queue" href="javascript:void(0);" id="addSongStart"></a></div>
+                                                </div>
+                                                <h2 class="all">All Results</h2>
+                                            </template>
+                                            <template id="singleSearchResultTemplate">
+                                                <div class="single-search-result">
+                                                    <div class="song-cover"></div>
+                                                    <div class="song-info">
+                                                        <div class="name"></div>
+                                                        <div class="artist"></div>
+                                                        <div class="runtime"></div>
+                                                    </div>
+                                                    <div class="searchControls"><a title="Add Song" class="fas fa-plus fa-3x add-to-queue" href="javascript:void(0);" id="addSongStart"></a></div>
+                                                </div>
+                                            </template>
                                         </div>
                                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                            <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                                Add
-                                            </button>
                                             <button id="closeSearchButton" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                                Close
+                                                Done
                                             </button>
                                         </div>
                                     </div>
@@ -226,11 +322,29 @@
                             <!-- song cover -->
                             <div class="song-cover" id="albumArt"></div>
                             <div class="controls">
-                                <a class="far fa-pause-circle fa-3x" href="javascript:void(0);" id="togglePlayPause"></a>
-{{--                                <a href="javascript:void(0);" id="addSongStart">Search Song</a>--}}
+                                <a title="Back" class="fas fa-backward fa-3x" href="javascript:void(0);" id="spotifyPreviousButton"></a>
+                                <a class="far fa-play-circle fa-3x" href="javascript:void(0);" id="togglePlayPause"></a>
+                                <a title="Forward" class="fas fa-forward fa-3x" href="javascript:void(0);" id="spotifyNextButton"></a>
                             </div>
-{{--                            <div class="progress-bar"><div class="progress"></div></div>--}}
+                            <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
+                            <div class="alt-controls">
+                                <a title="Add Song" class="fas fa-plus fa-3x" href="javascript:void(0);" id="addSongStart"></a>
+                            </div>
                         </div>
+                        <div id="displayQueue">
+
+                        </div>
+                        <template id="queueItem">
+                            <div class="queue-song">
+                                <div class="song-cover"></div>
+                                <div class="song-info">
+                                    <div class="name"></div>
+                                    <div class="artist"></div>
+                                    <div class="runtime"></div>
+                                </div>
+                                <div class="searchControls"></div>
+                            </div>
+                        </template>
                     </div>
                 </div>
 

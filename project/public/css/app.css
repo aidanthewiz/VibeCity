@@ -16,7 +16,7 @@ Use a better box model (opinionated).
 *::after {
   box-sizing: border-box;
 }
-
+ 
 /**
 Use a more readable tab size (opinionated).
 */
@@ -32753,10 +32753,6 @@ select {
 
 .flex-grow-4 {
   flex-grow:4
-}
-
-.host-controls {
-  background-color:navajowhite;
 }
 
 @-webkit-keyframes aaa {

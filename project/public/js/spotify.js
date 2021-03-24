@@ -2964,8 +2964,14 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         this.spotifyAPI = new SpotifyWebApi();
         this.token = null;
         this.prevSearch = null;
-        this.playing = true;
-        this.currentSong = 'spotify:track:4kzvAGJirpZ9ethvKZdJtg';
+        this.startTime = null;
+        this.playing = null;
+        this.position = null;
+        this.duration = null;
+        this.updateTime = null;
+        this.previousState = null;
+        this.inParty = document.querySelector('meta[name=inParty]').content == 'true';
+        this.currentSong = null;
         this.player = new Spotify.Player({
           name: 'VibeCity',
           getOAuthToken: function () {
@@ -3010,7 +3016,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
 
             return getOAuthToken;
           }(),
-          volume: 1.0
+          volume: 0.5
         });
         this.connectPlayer();
         var x = setInterval(function () {
@@ -3024,30 +3030,94 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         }, 100);
         this.cacheDOM();
         this.bindEvents();
+        setInterval(this.setProgessBarPosFunc, 1000);
       },
       cacheDOM: function cacheDOM() {
-        // this.addSongStartButton = document.getElementById("addSongStart");
-        // this.closeSearchButton = document.getElementById("closeSearchButton");
-        // this.spotifySearchButton = document.getElementById("spotifySearch");
+        this.addSongStartButton = document.getElementById("addSongStart");
+        this.closeSearchButton = document.getElementById("closeSearchButton");
+        this.spotifySearchButton = document.getElementById("spotifySearch");
         this.spotifyPlayPauseButton = document.getElementById("togglePlayPause");
+        this.spotifyNextButton = document.getElementById("spotifyNextButton");
+        this.spotifyPreviousButton = document.getElementById("spotifyPreviousButton");
         this.albumArt = document.getElementById("albumArt");
+        this.searchResults = document.getElementById("searchResults");
+        this.progressBar = document.getElementById("progressBar");
+        this.progressBarParent = document.getElementById("progressBar").parentElement;
+        this.displayQueue = document.getElementById("displayQueue");
+        this.queueItemTemplate = document.getElementById("queueItem");
       },
       bindEvents: function bindEvents() {
         var _this2 = this;
 
-        // this.addSongStartButton.addEventListener("click", this.addSongStart.bind(this));
-        // this.closeSearchButton.addEventListener("click", this.closeSearchModal.bind(this));
-        // this.spotifySearchButton.addEventListener('input', this.spotifySearch.bind(this));
+        this.setProgessBarPosFunc = this.setProgressBarPos.bind(this);
+        this.addSongStartButton.addEventListener("click", this.addSongStart.bind(this));
+        this.spotifyNextButton.addEventListener("click", this.nextSong.bind(this));
+        this.spotifyPreviousButton.addEventListener("click", this.previousSong.bind(this));
+        this.closeSearchButton.addEventListener("click", this.closeSearchModal.bind(this));
+        this.spotifySearchButton.addEventListener('input', this.spotifySearch.bind(this));
         this.spotifyPlayPauseButton.addEventListener('click', this.togglePlayPause.bind(this));
+        this.progressBarParent.addEventListener('click', this.seek.bind(this));
         this.player.addListener('ready', function (_ref) {
           var device_id = _ref.device_id;
           _this2.device_id = device_id;
           console.log('Device ID: ' + device_id);
 
-          _this2.spotifyAPI.transferMyPlayback([_this2.device_id], {
-            play: false
-          }).then(function (_) {
-            _this2.playSong(_this2.currentSong);
+          _this2.transferPlayback(false).then(function (_) {
+            _this2.loadCurrentPlaybackState();
+          });
+        });
+        this.player.addListener('player_state_changed', function (state) {
+          console.log("Player State Changed: ");
+          console.table({
+            "previousState": _this2.previousState,
+            "newState": state
+          });
+
+          if (state === null && _this2.previousState !== null) {
+            console.log("Switched playback to another device.");
+
+            _this2.transferPlayback(true).then(function (_) {
+              console.log("Switched playback back to VibeCity.");
+            });
+
+            return;
+          }
+
+          if (_this2.playing !== !state.paused) {
+            _this2.playing = !state.paused;
+
+            _this2.saveCurrentPlaybackState();
+          }
+
+          _this2.position = state.position;
+          _this2.duration = state.duration;
+          _this2.startTime = Math.floor((Date.now() - _this2.position) / 1000);
+          _this2.updateTime = performance.now();
+          _this2.spotifyPlayPauseButton.className = "far fa-" + (_this2.playing ? "pause" : "play") + "-circle fa-3x";
+          _this2.albumArt.style = "background-image:url('".concat(state.track_window.current_track.album.images[0].url, "')");
+
+          if (_this2.currentSong !== state.track_window.current_track.uri) {
+            _this2.currentSong = state.track_window.current_track.uri;
+
+            _this2.saveCurrentPlaybackState();
+          }
+
+          _this2.previousState = state; //set queue 
+
+          _this2.displayQueue.innerHTML = '<h2>Upcoming Songs</h2>';
+          state.track_window.next_tracks.forEach(function (element) {
+            var clone = _this2.queueItemTemplate.content.cloneNode(true);
+
+            var topSongCover = clone.querySelectorAll(".song-cover")[0];
+            var topSongName = clone.querySelectorAll(".name")[0];
+            var topSongArtist = clone.querySelectorAll(".artist")[0];
+            var topSongRuntime = clone.querySelectorAll(".runtime")[0];
+            topSongCover.style.backgroundImage = "url('" + element.album.images[1].url + "')";
+            topSongName.textContent = element.name;
+            topSongArtist.textContent = element.artists[0].name;
+            topSongRuntime.textContent = new Date(element.duration_ms / 1000 * 1000).toISOString().substr(14, 5);
+
+            _this2.displayQueue.appendChild(clone);
           });
         });
       },
@@ -3067,29 +3137,49 @@ window.onSpotifyWebPlaybackSDKReady = function () {
           }
         });
       },
-      getCurrentSong: function getCurrentSong() {},
-      getPlaybackInfo: function getPlaybackInfo() {
+      transferPlayback: function transferPlayback(play) {
         var _this3 = this;
 
         return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-          var info;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
                   _context2.next = 2;
-                  return _this3.spotifyAPI.getMyCurrentPlaybackState();
+                  return _this3.spotifyAPI.transferMyPlayback([_this3.device_id], {
+                    play: play
+                  });
 
                 case 2:
-                  info = _context2.sent;
-                  return _context2.abrupt("return", info);
-
-                case 4:
                 case "end":
                   return _context2.stop();
               }
             }
           }, _callee2);
+        }))();
+      },
+      getPlaybackInfo: function getPlaybackInfo() {
+        var _this4 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+          var info;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return _this4.spotifyAPI.getMyCurrentPlaybackState();
+
+                case 2:
+                  info = _context3.sent;
+                  return _context3.abrupt("return", info);
+
+                case 4:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
         }))();
       },
       addSongStart: function addSongStart() {
@@ -3099,64 +3189,350 @@ window.onSpotifyWebPlaybackSDKReady = function () {
       closeSearchModal: function closeSearchModal() {
         document.getElementById('searchModal').style.display = "";
       },
-      spotifySearch: function spotifySearch(query) {
-        var _this4 = this;
+      spotifySearch: function spotifySearch(eve) {
+        var _this5 = this;
 
+        var query = eve.target.value;
         this.prevSearch = this.spotifyAPI.searchTracks(query, {
           limit: 5
         });
         this.prevSearch.then(function (data) {
-          _this4.prevSearch = null;
-          console.log(data);
+          _this5.prevSearch = null;
+          console.log(data.tracks.items);
+          _this5.searchResults.innerHTML = ''; //top result
+
+          var topTemplate = document.getElementById('topSearchResultTemplate');
+          var clone = topTemplate.content.cloneNode(true);
+          var topSongCover = clone.querySelectorAll(".song-cover")[0];
+          var topSongName = clone.querySelectorAll(".name")[0];
+          var topSongArtist = clone.querySelectorAll(".artist")[0];
+          var topSongRuntime = clone.querySelectorAll(".runtime")[0];
+          var topSongAddButton = clone.querySelectorAll(".add-to-queue")[0];
+          topSongCover.style.backgroundImage = "url('" + data.tracks.items[0].album.images[1].url + "')";
+          topSongName.textContent = data.tracks.items[0].name;
+          topSongArtist.textContent = data.tracks.items[0].artists[0].name;
+          topSongRuntime.textContent = new Date(data.tracks.items[0].duration_ms / 1000 * 1000).toISOString().substr(14, 5);
+          topSongAddButton.addEventListener('click', _this5.addToQueue.bind(_this5));
+          topSongAddButton.setAttribute('spotify-uri', data.tracks.items[0].uri);
+
+          _this5.searchResults.appendChild(clone); //the rest
+
+
+          data.tracks.items.forEach(function (element) {
+            var singleTemplate = document.getElementById('singleSearchResultTemplate');
+            var cloneSingle = singleTemplate.content.cloneNode(true);
+            var singleSongCover = cloneSingle.querySelectorAll(".song-cover")[0];
+            var singleSongName = cloneSingle.querySelectorAll(".name")[0];
+            var singleSongArtist = cloneSingle.querySelectorAll(".artist")[0];
+            var singleSongRuntime = cloneSingle.querySelectorAll(".runtime")[0];
+            var singleSongAddButton = cloneSingle.querySelectorAll(".add-to-queue")[0];
+            singleSongCover.style.backgroundImage = "url('" + element.album.images[2].url + "')";
+            singleSongName.textContent = element.name;
+            singleSongArtist.textContent = element.artists[0].name;
+            console.log('asdfasdfasdf');
+            singleSongRuntime.textContent = new Date(element.duration_ms / 1000 * 1000).toISOString().substr(14, 5);
+            singleSongAddButton.addEventListener('click', _this5.addToQueue.bind(_this5));
+            singleSongAddButton.setAttribute('spotify-uri', element.uri);
+
+            _this5.searchResults.appendChild(cloneSingle); // this.searchResults.innerHTML += `
+            //     <div class="single-search-result">
+            //         <div class="song-cover" style="background-image:url('`+element.album.images[1].url+`')"></div>
+            //         <div class="song-info">` + element.name + `</div>
+            //     </div>`;
+
+          });
         }, function (err) {
-          _this4.prevSearch.abort();
+          _this5.prevSearch.abort();
 
           console.error(err);
         });
       },
       playSong: function playSong(uri) {
         var _arguments = arguments,
-            _this5 = this;
+            _this6 = this;
 
-        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
           var position;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
                   position = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : 0;
-                  _context3.next = 3;
-                  return _this5.spotifyAPI.play({
+                  _context4.next = 3;
+                  return _this6.spotifyAPI.play({
                     uris: [uri],
                     position_ms: position
                   }).then(function () {
-                    _this5.getPlaybackInfo().then(function (res) {
-                      _this5.albumArt.style = "background-image:url('".concat(res.item.album.images[0].url, "')");
-                    });
+                    console.log("Played song!");
                   });
 
                 case 3:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee3);
+          }, _callee4);
+        }))();
+      },
+      previousSong: function previousSong() {
+        var _this7 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return _this7.player.previousTrack().then(function () {
+                    console.log('Set to previous track!');
+                  });
+
+                case 2:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }))();
+      },
+      nextSong: function nextSong() {
+        var _this8 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return _this8.player.nextTrack().then(function () {
+                    console.log('Skipped to next track!');
+                  });
+
+                case 2:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6);
+        }))();
+      },
+      addToQueue: function addToQueue(eve) {
+        var _this9 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+          var uri;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  uri = eve.target.getAttribute('spotify-uri');
+                  _context7.next = 3;
+                  return _this9.spotifyAPI.queue(uri).then(function () {
+                    console.log('Added item to queue: ' + uri);
+                  });
+
+                case 3:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7);
+        }))();
+      },
+      seekToPosition: function seekToPosition(pos) {
+        var _this10 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
+          var newPosition;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  newPosition = pos * _this10.duration;
+                  _context8.next = 3;
+                  return _this10.player.seek(newPosition).then(function () {
+                    console.log('Changed position!');
+                    _this10.position = newPosition;
+
+                    _this10.saveCurrentPlaybackState();
+                  });
+
+                case 3:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8);
         }))();
       },
       togglePlayPause: function togglePlayPause() {
-        var _this6 = this;
+        var _this11 = this;
 
-        this.player.togglePlay().then(function () {
-          console.log('Toggled playback!');
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return _this11.player.togglePlay().then(function () {
+                    console.log('Toggled playback!');
+                  });
 
-          if (_this6.playing) {
-            _this6.spotifyPlayPauseButton.className = "far fa-play-circle fa-3x";
-          } else {
-            _this6.spotifyPlayPauseButton.className = "far fa-pause-circle fa-3x";
-          }
+                case 2:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9);
+        }))();
+      },
+      saveCurrentPlaybackState: function saveCurrentPlaybackState() {
+        var _this12 = this;
 
-          _this6.playing = !_this6.playing;
-        });
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
+          var data;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  if (!_this12.inParty) {
+                    _context10.next = 6;
+                    break;
+                  }
+
+                  data = {
+                    "song_uri": _this12.currentSong,
+                    "song_start_time": _this12.startTime,
+                    "playing": _this12.playing,
+                    "position": _this12.position
+                  };
+                  _context10.next = 4;
+                  return fetch("/setSpotifyState", {
+                    headers: {
+                      "Content-Type": "application/json",
+                      "X-Requested-With": "XMLHttpRequest",
+                      "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    method: "post",
+                    credentials: "same-origin",
+                    body: JSON.stringify(data)
+                  });
+
+                case 4:
+                  _context10.next = 7;
+                  break;
+
+                case 6:
+                  console.log("Not in party, playback state not saved.");
+
+                case 7:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10);
+        }))();
+      },
+      loadCurrentPlaybackState: function loadCurrentPlaybackState() {
+        var _this13 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
+          var response, res, songPosition;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  if (!_this13.inParty) {
+                    _context11.next = 15;
+                    break;
+                  }
+
+                  _context11.next = 3;
+                  return fetch("/getSpotifyState", {
+                    headers: {
+                      "Accepts": "application/json",
+                      "X-Requested-With": "XMLHttpRequest",
+                      "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    method: "get",
+                    credentials: "same-origin"
+                  });
+
+                case 3:
+                  response = _context11.sent;
+                  _context11.next = 6;
+                  return response.json();
+
+                case 6:
+                  res = _context11.sent;
+                  console.log("INIT SONG POS: ");
+                  console.log(songPosition);
+                  console.log("INIT SONG URI: ");
+                  console.log(res.song_uri);
+
+                  if (res.playing == 1) {
+                    songPosition = (Math.floor(Date.now() / 1000) - res.song_start_time) * 1000;
+                  } else {
+                    songPosition = res.position;
+                  }
+
+                  _this13.playSong(res.song_uri, songPosition).then(function () {
+                    if (res.playing == 0) {
+                      _this13.togglePlayPause();
+                    }
+                  });
+
+                  _context11.next = 16;
+                  break;
+
+                case 15:
+                  console.log("Not in party, playback state not recieved.");
+
+                case 16:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11);
+        }))();
+      },
+      getPlaybackPosition: function getPlaybackPosition() {
+        if (!this.playing) {
+          return (this.position ? this.position : 0) / this.duration;
+        }
+
+        var position = this.position + (performance.now() - this.updateTime);
+        return (position > this.duration ? this.duration : position) / this.duration;
+      },
+      setProgressBarPos: function setProgressBarPos() {
+        console.log(1);
+        var currentProgress = this.getPlaybackPosition();
+        this.progressBar.style.width = currentProgress * 100 + '%';
+      },
+      seek: function seek(eve) {
+        var _this14 = this;
+
+        return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12() {
+          var barWidth, clickPos, percent;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  console.log(eve);
+                  barWidth = parseInt(window.getComputedStyle(_this14.progressBarParent).width);
+                  clickPos = eve.offsetX;
+                  percent = clickPos / barWidth;
+                  console.log(percent);
+                  _context12.next = 7;
+                  return _this14.seekToPosition(percent);
+
+                case 7:
+                case "end":
+                  return _context12.stop();
+              }
+            }
+          }, _callee12);
+        }))();
       }
     };
   }();
