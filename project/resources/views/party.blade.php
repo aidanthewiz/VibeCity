@@ -29,27 +29,30 @@
     </div>
     @endif
     <div class="flex flex-1 flex-col min-w-full p-4 items-center">
-        <div class="flex-1 flex flex-col bg-gray-900 min-w-full md:p-7 pt-3 pb-3 rounded sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg">
-            <div>
+        <div class="flex-1 flex flex-col bg-gray-900 sm:min-w-full md:p-7 pt-3 pb-3 rounded sm:m-8 md:m-4 bg-gray-900 shadow-md sm:rounded-lg">
+            <div class="pl-2 md:pl-0 border-b-2 mb-3 md:mb-0">
                 @if (!$party)
                     <meta name="inParty" content="false">
-                    <div class="grid grid-cols-10">
-                        <form method="POST" action="{{'/party/createParty'}}">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-12">
+                        <form method="POST" action="{{'/party/createParty'}}" class="block col-span-2 md:col-span-1">
                             @csrf
-                            <button dusk="party-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                            <button dusk="party-button" class="sm:mt-2 sm:mb-4 pl-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                 {{ __('Create Party') }}
                             </button>
                         </form>
-                        <div class="col-start-2 col-end-5">
-                            <form method="POST" action="{{ route('/party/joinWithCode') }}">
+                        <div class="sm:mt-2 sm:mb-4 text-white col-span-2 md:col-span-1 pr-5 text-left sm:text-center font-bold">
+                            OR
+                        </div>
+                        <div class="col-span-2 md:col-span-4">
+                            <form method="POST" action="{{ route('/party/joinWithCode') }}" class="block float-left">
                                 @csrf
-                                <div class="grid grid-cols-2">
-                                    <div>
-                                        <button dusk="join-with-code-button" class="mt-2 mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
-                                            {{__('Join Party With This Code')}}
+                                <div class="grid grid-cols-3">
+                                    <div class="col-span-1">
+                                        <button dusk="join-with-code-button" class="mt-2 mb-4 pl-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                            {{__('Join Party')}}
                                         </button>
                                     </div>
-                                    <div>
+                                    <div class="ml-2 col-span-2">
                                         <label for="party_join_code" class="sr-only">Party Join Code</label>
                                         <input id="party_join_code" class="placeholder-white block mt-1 w-full bg-transparent text-gray-200" type="text" name="party_join_code" placeholder="Party Join Code*" required />
                                     </div>
@@ -64,21 +67,21 @@
                     @if($party[0]['partyCreator'] == Auth::user()->id)
                         <form method="POST" action="{{ route('/party/deleteParty', [$party[0]['id']]) }}" class="inline-block">
                             @csrf
-                            <button dusk="delete-party-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                            <button dusk="delete-party-button" class="md:mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
                                 {{ __('Delete Party') }}
                             </button>
                         </form>
                         @if($party[0]['kickEnabled'] == false && $party[0]['joinCode'] != null)
                             <form method="POST" action="{{ route('/party/enableKick', [$party[0]['id']]) }}" class="inline-block">
                                 @csrf
-                                <button dusk="kick-user-button" class="mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
+                                <button dusk="kick-user-button" class="md:mb-4 ml-2 bg-red-600 hover:bg-red-800 text-black font-bold py-1 px-4 rounded">
                                     Show Kick
                                 </button>
                             </form>
                         @elseif($party[0]['joinCode'] != null)
                             <form method="POST" action="{{ route('/party/disableKick', [$party[0]['id']]) }}" class="inline-block">
                                 @csrf
-                                <button dusk="hide-kick-user-button" class="mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                <button dusk="hide-kick-user-button" class="md:mb-4 ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                     Hide Kick
                                 </button>
                             </form>
@@ -111,22 +114,22 @@
                         </button>
 
                         <!-- Twitter Button -->
-                        <div dusk="twitterButton" class="closeAndOpenButton">
+                        <div dusk="twitterButton" class="md:float-right inline-block">
                              <a class="btn" href="https://twitter.com/intent/tweet?text=Hey%20join%20my%20VibeCity%20Party%20.%20The%20code%20is -> {{\App\Models\JoinCode::query()->where('id','=',$party[0]['joinCode'])->first()->code}}%20vibecity.us" target="_blank">
                                  <i class="fab fa-twitter"></i>
                              </a>
                         </div>
                         @if($party[0]['partyOpen'] == true && $party[0]['partyCreator'] == Auth::user()->id)
-                            <form method="POST" action="{{ route('/party/closeParty', [$party[0]['id']]) }}" class="closeAndOpenButton inline-block">
+                            <form method="POST" action="{{ route('/party/closeParty', [$party[0]['id']]) }}" class="md:float-right inline-block">
                                 @csrf
-                                <button dusk="close-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                <button dusk="close-party-button" class=" ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                     {{ __('Close Party') }}
                                 </button>
                             </form>
                         @elseif($party[0]['partyOpen'] == false && $party[0]['partyCreator'] == Auth::user()->id)
-                            <form method="POST" action="{{ route('/party/openParty', [$party[0]['id']]) }}" class="closeAndOpenButton inline-block">
+                            <form method="POST" action="{{ route('/party/openParty', [$party[0]['id']]) }}" class="md:float-right inline-block">
                                 @csrf
-                                <button dusk="open-party-button" class="closeAndOpenButton ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
+                                <button dusk="open-party-button" class=" ml-2 bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-1 px-4 rounded">
                                     {{ __('Open Party') }}
                                 </button>
                             </form>
@@ -260,10 +263,10 @@
                     background-color:rgba(217, 119, 6, 0.5);
                 }
             </style>
-            <div class="flex flex-1 min-w-full">
+            <div class="flex flex-1 min-w-full grid grid-cols-1 sm:grid-cols-5">
                 <!-- Grid for song and party -->
                 <!-- Current Song -->
-                <div class="flex-grow-4 min-h-full items-center justify-center sm:items-center text-center content-center">
+                <div class="flex-grow-4 min-h-full items-center justify-center sm:items-center text-center content-center col-span-1 sm:col-span-3">
                     <div class="flex flex-col min-h-full">
                         <!-- Host Controls -->
                         <div id="searchModal" class="add-song">
@@ -279,7 +282,8 @@
                                                 Search For A Song
                                             </h3>
                                             <div class="search-bar-container">
-                                                <input type="text" id="spotifySearch" palceholde="Search...">
+                                                <label class="sr-only" for="spotifySearch">Search Spotify Songs</label>
+                                                <input type="text" id="spotifySearch" placeholder="Search...">
                                             </div>
                                             <div id="searchResults">
 
@@ -349,13 +353,14 @@
                 </div>
 
                 <!-- In Party -->
-                <div class="flex-grow grid grid-rows-4 min-h-full">
-                    <div class="flex text-white md:text-4xl text-lg border-l-2 border-b-2 border-white items-center align-center justify-center content-center">
+                <div class="mt-2 md:mt-0 md:flex-grow grid grid-rows-6 min-h-full col-span-1 sm:col-span-2">
+                    <div class="flex text-white md:text-4xl text-lg border-t-2 md:border-t-0 md:border-l-2 border-b-2 border-white items-center align-center justify-center content-center
+                                   row-span-1">
                         <div class="md:ml-4 md:mr-4 md:mb-2">
                             In Party
                         </div>
                     </div>
-                    <div class="row-span-3 text-yellow-600 border-l-2 border-white">
+                    <div class="row-span-5 text-yellow-600 md:border-l-2 border-white">
                         @if ($party)
                             @foreach ($party[0]['users'] as $user)
                                 <div class="ml-4 mr-4 mt-2 md:text-xl text-md p-3">
@@ -364,9 +369,9 @@
                                     <form method="POST" action="{{ route('/party/kickUser', [$user['id']])}}" class="inline-block">
                                         @csrf
                                         <input type="hidden" id="user-kicking" name="user-kicking" value="{{ $user['id'] }}">
-                                            <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
-                                                X
-                                            </button>
+                                        <button dusk="kick-individual-button" class="ml-1 text-red-500 hover:text-red-800 font-bold">
+                                            X
+                                        </button>
                                     </form>
                                     @endif
                                 </div>
