@@ -1,4 +1,6 @@
 <x-app-layout>
+    <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
+
     <!-- page header -->
     <x-slot name="header sr-only">
         <h2 class="font-semibold text-xl text-yellow-600 leading-tight">
@@ -50,12 +52,18 @@
                     @endif
                 @endif
                     <div class="grid grid-cols-3 md:grid-cols-5 text-base md:text-lg col-span-2">
-                        <!-- rating -->
+                        <!-- rating, tweet, comments -->
                         @if ($count%2 == 0)
                             <div class="font-bold text-red-500 col-span-1 md:col-span-1">
                         @else
                             <div class="font-bold text-yellow-600 col-span-1 md:col-span-1">
                         @endif
+                            <!-- tweet -->
+                            <div dusk="tweetButton" class="inline-block">
+                                <a class="btn" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20song,%20{{$track->name}},%20it's%20got%20{{$track->rating}}%20upvotes%20on%20vibecity.us" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
                             @if ($track_comments_id != $track->id)
                                 <form method="GET" class="inline-block" action="{{ route('trackComments', [$track->id]) }}">
                                     <button dusk="track-comments-btn">&#128172;</button>

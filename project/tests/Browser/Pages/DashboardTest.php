@@ -188,4 +188,20 @@ class DashboardTest extends DuskTestCase
                 ->assertSee('Leave a Comment');
         });
     }
+
+    public function testTweetButtonPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the spotify leaderboard link is visible
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->assertPresent('@tweetButton');
+        });
+    }
 }
