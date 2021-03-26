@@ -274,4 +274,30 @@ class LeaderboardControllerTest extends TestCase
         // assert that the database no longer has the comment
         $this->assertDatabaseMissing('comments', [ 'id' => $comment->id]);
     }
+
+    public function test_sorted_leaderboard_comment()
+    {
+        // assemble a user
+        $this->actingAs($user = User::factory()->create());
+
+        // create a track that will be commented on
+        $track = Track::create([
+            'name' => 'TestyMcTestTract',
+            'artist' => 'TestyMcTestRapper',
+        ]);
+
+        // create a request to pass the track id as input
+        $commentContent = "I love this track more than my child";
+        $request = request();
+        $request->merge([
+            'comment-content' => $commentContent,
+            'comment-track-id' => $track->id
+        ]);
+
+        // add a comment to the track
+        LeaderboardController::addTrackComment($request);
+
+        // assert that the database has a comment with the track id
+        $this->assertDatabaseHas('comments', ['content' => $commentContent, 'track_id' => $track->id]);
+    }
 }

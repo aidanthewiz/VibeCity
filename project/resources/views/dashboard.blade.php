@@ -1,5 +1,7 @@
 <x-app-layout>
     <script src="https://kit.fontawesome.com/d29e89fb40.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
 
     <!-- page header -->
     <x-slot name="header sr-only">
@@ -66,6 +68,8 @@
                             </div>
                             @if ($track_comments_id != $track->id)
                                 <form method="GET" class="inline-block" action="{{ route('trackComments', [$track->id]) }}">
+                                    <input class="timezone" type="hidden" name="timezone" id="timezone">
+
                                     <button dusk="track-comments-btn">&#128172;</button>
                                 </form>
                             @else
@@ -96,4 +100,18 @@
             </div>
         </div>
     </div>
+{{--                            <script>--}}
+{{--                                $( document ).ready(function() {--}}
+{{--                                    $('input#timezone29').val(moment.utcOffset())--}}
+{{--                                });--}}
+{{--                            </script>--}}
+    <script>
+        //$timezone = document.getElementById("timezone");
+        timezones = document.getElementsByClassName("timezone");
+        for(i = 0; i < timezones.length; i++)
+        {
+            timezones[i].value = moment.tz.guess();
+        }
+
+    </script>
 </x-app-layout>

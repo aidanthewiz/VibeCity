@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
+        "moment": "^2.29.1",
         "spotify-web-api-js": "^1.5.1"
     }
 }

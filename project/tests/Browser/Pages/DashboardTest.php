@@ -189,6 +189,25 @@ class DashboardTest extends DuskTestCase
         });
     }
 
+    public function testTimestampsPresent()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that a timestamp shows up when a user creates a comment
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/dashboard')
+                ->press('@track-comments-btn')
+                ->type('comment-content', 'Song good')
+                ->press('@comment-track-btn')
+                ->assertPresent(":");
+        });
+    }
+
     public function testTweetButtonPresent()
     {
         // assemble a user

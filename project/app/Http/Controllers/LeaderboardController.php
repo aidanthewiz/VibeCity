@@ -6,6 +6,7 @@ use Aerni\Spotify\Facades\SpotifyFacade;
 use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Track;
+use Carbon\Carbon;
 use Database\Seeders\SeedTracks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -132,18 +133,21 @@ class LeaderboardController extends Controller
     /**
      * Shows a comment modal on the screen
      * @param $trackId
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public static function showTrackComments($trackId)
+    public static function showTrackComments($trackId, Request $request)
     {
         // order the tracks by their names, then sort by descending rating so highest track with first name is at top
         $tracks = Track::with('comments')->with('ratings')->get()->sortby('name')->sortByDesc('rating');
+
+        $timezone = $request->input('timezone');
 
         // counter to help keep track of color swapping
         $count = 0;
 
         // return the dashboard with the track comment id
-        return view('dashboard', ['tracks' => $tracks, 'count' => $count, 'track_comments_id' => $trackId]);
+        return view('dashboard', ['tracks' => $tracks, 'count' => $count, 'track_comments_id' => $trackId, 'timezone' => $timezone]);
     }
 
     /**
@@ -185,4 +189,15 @@ class LeaderboardController extends Controller
         // return the dashboard
         return back();
     }
+
+    /**
+     * @param $value
+     * @return Carbon
+     */
+    public static function getCreatedAtAttribute($value, $timezone)
+    {
+        $newTimezone = optional(auth()->user())->timezone ?? $timezone;
+        return Carbon::parse($value)->timezone($newTimezone);
+    }
+
 }
