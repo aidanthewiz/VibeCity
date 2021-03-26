@@ -44,7 +44,11 @@
                         }
                     </script>
                     <div id="date" class="col-span-1 text-right text-white">
-                        {{$date->hour}}:{{$date->minute}} {{$date->month}}-{{$date->day}}-{{$date->year}}
+                        @if($date->minute < 10)
+                            {{$date->hour}}:0{{$date->minute}} {{$date->month}}-{{$date->day}}-{{$date->year}}
+                        @else
+                            {{$date->hour}}:{{$date->minute}} {{$date->month}}-{{$date->day}}-{{$date->year}}
+                        @endif
                     </div>
 
 
