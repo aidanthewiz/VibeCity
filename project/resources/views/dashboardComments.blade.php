@@ -35,8 +35,6 @@
                         <div class="col-span-1 text-left text-red-500">{{ $comment->user->name }}</div>
                     @endif
                     <script>
-                        import moment from "moment";
-
                         function changeTimeZone(created_at) {
                             let date;
                             date = document.getElementById("date");

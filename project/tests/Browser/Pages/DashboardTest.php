@@ -204,7 +204,7 @@ class DashboardTest extends DuskTestCase
                 ->press('@track-comments-btn')
                 ->type('comment-content', 'Song good')
                 ->press('@comment-track-btn')
-                ->assertPresent(":");
+                ->assertSee(":");
         });
     }
 
