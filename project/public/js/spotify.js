@@ -3045,6 +3045,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         this.progressBarParent = document.getElementById("progressBar").parentElement;
         this.displayQueue = document.getElementById("displayQueue");
         this.queueItemTemplate = document.getElementById("queueItem");
+        this.twitterLink = document.getElementById('twitterLink');
       },
       bindEvents: function bindEvents() {
         var _this2 = this;
@@ -3095,6 +3096,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
           _this2.updateTime = performance.now();
           _this2.spotifyPlayPauseButton.className = "far fa-" + (_this2.playing ? "pause" : "play") + "-circle fa-3x";
           _this2.albumArt.style = "background-image:url('".concat(state.track_window.current_track.album.images[0].url, "')");
+          _this2.twitterLink.href = "https://twitter.com/intent/tweet?text=Vibing%20with%20my%20VibeCity%20party%20to%20" + state.track_window.current_track.name + "%0Avibecity.us";
 
           if (_this2.currentSong !== state.track_window.current_track.uri) {
             _this2.currentSong = state.track_window.current_track.uri;
@@ -3102,7 +3104,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
             _this2.saveCurrentPlaybackState();
           }
 
-          _this2.previousState = state; //set queue 
+          _this2.previousState = state; //set queue
 
           _this2.displayQueue.innerHTML = '<h2>Upcoming Songs</h2>';
           state.track_window.next_tracks.forEach(function (element) {

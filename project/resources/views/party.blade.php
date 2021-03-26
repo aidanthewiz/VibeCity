@@ -215,7 +215,7 @@
                     height:69px;
                     background-size: cover;
                     background-position: center;
-                    margin-right:10px;
+                    margin-right:0px;
                 }
                 #searchResults h2 {
                     margin-top:5px;
@@ -325,14 +325,23 @@
                         <div class="host-controls">
                             <!-- song cover -->
                             <div class="song-cover" id="albumArt"></div>
+                            <a class="bg-blue-500 mr-8" id="twitterLink" style="width:18px;" href="javascript:void(0);" target="_blank">
+                                <div class="grid grid-rows-1 text-sm font-bold font-sans text-white">
+                                    <div>T</div>
+                                    <div>W</div>
+                                    <div>E</div>
+                                    <div>E</div>
+                                    <div>T</div>
+                                </div>
+                            </a>
                             <div class="controls">
-                                <a title="Back" class="fas fa-backward fa-3x" href="javascript:void(0);" id="spotifyPreviousButton"></a>
-                                <a class="far fa-play-circle fa-3x" href="javascript:void(0);" id="togglePlayPause"></a>
-                                <a title="Forward" class="fas fa-forward fa-3x" href="javascript:void(0);" id="spotifyNextButton"></a>
+                                <a title="Back" class="fas fa-backward fa-2x" href="javascript:void(0);" id="spotifyPreviousButton"></a>
+                                <a class="far fa-play-circle fa-2x" href="javascript:void(0);" id="togglePlayPause"></a>
+                                <a title="Forward" class="fas fa-forward fa-2x" href="javascript:void(0);" id="spotifyNextButton"></a>
                             </div>
                             <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
                             <div class="alt-controls">
-                                <a title="Add Song" class="fas fa-plus fa-3x" href="javascript:void(0);" id="addSongStart"></a>
+                                <a title="Add Song" class="fas fa-plus fa-2x" href="javascript:void(0);" id="addSongStart"></a>
                             </div>
                         </div>
                         <div id="displayQueue">

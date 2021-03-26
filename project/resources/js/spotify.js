@@ -59,7 +59,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 this.progressBarParent = document.getElementById("progressBar").parentElement;
                 this.displayQueue = document.getElementById("displayQueue");
                 this.queueItemTemplate = document.getElementById("queueItem");
-                
+                this.twitterLink = document.getElementById('twitterLink');
             },
             bindEvents() {
                 this.setProgessBarPosFunc = this.setProgressBarPos.bind(this);
@@ -100,13 +100,15 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                     this.updateTime = performance.now();
                     this.spotifyPlayPauseButton.className = "far fa-" + (this.playing ? "pause" : "play") + "-circle fa-3x";
                     this.albumArt.style = `background-image:url(\'${state.track_window.current_track.album.images[0].url}\')`;
+                    this.twitterLink.href = "https://twitter.com/intent/tweet?text=Vibing%20with%20my%20VibeCity%20party%20to%20" + state.track_window.current_track.name + "%0Avibecity.us";
+
                     if (this.currentSong !== state.track_window.current_track.uri) {
                         this.currentSong = state.track_window.current_track.uri;
                         this.saveCurrentPlaybackState();
                     }
                     this.previousState = state;
-                    
-                    //set queue 
+
+                    //set queue
                     this.displayQueue.innerHTML = '<h2>Upcoming Songs</h2>';
                     state.track_window.next_tracks.forEach(element => {
                         let clone = this.queueItemTemplate.content.cloneNode(true);
@@ -120,7 +122,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                         topSongRuntime.textContent = new Date((element.duration_ms/1000) * 1000).toISOString().substr(14, 5);
                         this.displayQueue.appendChild(clone);
                     });
-                    
+
                 });
             },
             connectPlayer() {
@@ -316,8 +318,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 let clickPos = eve.offsetX;
                 let percent = clickPos / barWidth;
                 console.log(percent);
-                await this.seekToPosition(percent); 
-            }
+                await this.seekToPosition(percent);
+            },
         }
     })();
 

@@ -16,7 +16,7 @@ Use a better box model (opinionated).
 *::after {
   box-sizing: border-box;
 }
- 
+
 /**
 Use a more readable tab size (opinionated).
 */
