@@ -178,12 +178,12 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 # Sprint 8
 
 - [Trello Board](https://trello.com/b/kGzEyCXd/vibecity-agile-sprint-board) (Backlogs and Requirements)
-- Burndown Chart
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1yGEEeqyzDLCN3nBeql7lhTqB4HA2KVkY/edit#gid=204468031)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/1GKN8_5S4X79EVxwuFSKg9TUB2OMMhvmx/edit#gid=67228042)
 - [System Architecture](https://github.com/aidanthewiz/VibeCity/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/aidanthewiz/VibeCity/tree/master/project)
-- Automated Tests
-- Product Demonstration
+- [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
+- [Product Demonstration](https://www.youtube.com/watch?v=rvR2obV3NKY)
 
 ## Task Allocation
 

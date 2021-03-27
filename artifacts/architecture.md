@@ -13,7 +13,7 @@ parties, and track ratings.
 |     Context       |     User Story ID         |
 |-------------------|:-------------------------:|
 |   VibeCity User   |      000 - 001, 002, 015  |
-|  VibeCity System  |      000 - 026            |
+|  VibeCity System  |      000 - 029            |
 |  Database System  |      000-010, 013-023, 024-026 |
 
 ## Container Diagram
@@ -28,27 +28,28 @@ the amazon email server, which is used to send emails like reset password.
 |     Container               |     User Story ID        |
 |-----------------------------|:------------------------:|
 |   VibeCity User             |      000 - 026           |
-|   Application               | 004, 005 - 011, 013-026  |
-|    VibeCity API Application | 000 - 003, 008 - 026     |
+|   Application               | 004, 005 - 011, 013-029  |
+|    VibeCity API Application | 000 - 003, 008 - 029     |
 | Email System                |  003,                    |
-| Database System             |  000-010, 013-023, 024-026 |
-| Spotify System              |  004, 007, 013, 019      | 
+| Database System             |  000-010, 013-023, 024, 026 |
+| Spotify System              |  004, 007, 013, 019, 025, 029   | 
 
 ## Component Diagram
 
-![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/componentDiagram.png)
+![Component Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/compDiagram.png)
 
 Our system component diagram splits up the VibeCity system into vital components. First there is the application layer, which lalows users to interact with our party and rating systems, hosted on our backend server. The application will communicate with the server through API calls and it interacts with controllers for each task needed. For example, it interacts with the user controlled to achieve registration and login for users, while the party controller achieves placing a group of users together to listen to music. The respective models that the controllers access will give any information needed to process the request. The models communicate with the database system or expernel APIs to retrieve information necessary, such as a spotify song or user password. The external APIs for this system are an email server, AWS SES, our database system (MySQL), and the Spotify API.
 
 
 |          Context          |     User Story ID        |
 |---------------------------|:------------------------:|
-|    Application            |      000 - 026           |
+|    Application            |      000 - 029           |
 | User Controller           |  000, 001, 002, 015      |
 | Profile Controller        |     002, 011, 012, 018   |
 | Leaderboard Controller    |  008, 009, 010, 013, 023, 024, 026 |
-| Spotify Controller          |  004, 007, 013 |
-| Party Controller          |  004, 006, 007, 019, 021, 022, 025 |
+| Spotify Controller        |  004, 007, 013           |
+| Party Controller          |  004, 006, 007, 019, 021, 022, 025, 027-028 |
+| Connected Account Model   |  025, 029                 |
 | Email Model               |  003, 015, 17            |
 | User Model                |  000, 001, 002           |
 | Track Model               |  008, 009, 010           |
@@ -58,14 +59,14 @@ Our system component diagram splits up the VibeCity system into vital components
 | Join Code Model           |  005                     |
 | Email System              |  003, 017                |
 | Database System           |  000-010, 013-023, 024-026 |
-| Spotify System (API)      |  004, 007, 013           | 
+| Spotify System (API)      |  004, 007, 013, 025, 029           | 
 
 
 # Code Design UML Diagram
 
 ## Class Diagram
 
-![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ClassDiagram.png)
+![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ClassDiagram1.png)
 
 The user in the class diagram should hold the users ID, the users Password, the users Email, the users two factor authentication, and the users spotify
 account link. The user shall be able to modify their information. The users should be able to create private parties
@@ -81,8 +82,9 @@ comments were applied to.
 | User Controller           |  000, 001, 002, 015      |
 | Profile Controller        |     002, 011, 012, 018   |
 | Leaderboard Controller    |  008, 009, 010, 013, 023, 024, 026 |
-| Spotify Controller          |  004, 007, 013 |
-| Party Controller          |  004, 006, 007, 019, 021, 022, 025 |
+| Spotify Controller        |  004, 007, 013           |
+| Party Controller          |  004, 006, 007, 019, 021, 022, 025, 027-028 |
+| Connected Account Model   |  025, 029                 |
 | Email Model               |  003, 015, 17            |
 | User Model                |  000, 001, 002           |
 | Track Model               |  008, 009, 010           |
@@ -158,7 +160,7 @@ page by clicking "already registered". The user can also register with spotify.
 
 ### Home Page
 
-![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/dashboardPage.png)
+![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/mainDashboard.png)
 
 This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
 Users are be able to press the rating buttons to rate up the tracks. They can also comment by pressing the comment
@@ -218,13 +220,12 @@ enter the password and press delete account, then they are rerouted to the regis
 ![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/firstPartyPage.png)
 
 The party page contains the ability to create a party using the create party button. This leads to the party page the user made.
-There is also a join party with code button and input, which leads to the party code host's party page if the code if valid. The 
-home page button goes to the home page. The profile button goes to the user's profile.
+There is also a join party with code button and input, which leads to the party code host's party page if the code if valid. Finally, the user can listen to music. Pressing play plays the users' current track, rewind plays the previous, fastforward plays the next, sync will sync with a party host (if in a party), and + will open a add song screen to search and select a song. The home page button goes to the home page. The profile button goes to the user's profile.
 
 
 ### Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/secondPartyPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/finalPartyPage.png)
 
 The party page contains the song the party is listening to and a join code button to get a code to join/invite to the party. 
 The home page button goes to the home page. The profile button goes to the user's profile. The delete party button appears for
@@ -233,11 +234,11 @@ for the party. After the join code button appears, the host will see a 'close pa
 can join the party. If the party is closed, an 'open party' button will appear that lets the host open to party so new users
 can join. The host can also see a 'show kick' button, which makes 'x's appear by each user that can be kicked and makes a 'hide kick'
 button appear to end this stage. The host can also delete their party via 'delete party'. There is also a button to share the join
-code to twitter. If the person on this page is a party member but not a host, they will only see the join code, twitter share, and a 'leave party' button. This page will also allow for controlling the party music - the user can play/pause songs and they can search songs on spotify.
+code to twitter. If the person on this page is a party member but not a host, they will only see the join code, twitter share, and a 'leave party' button. Finally, the user can listen to music. Pressing play plays the users' current track, rewind plays the previous, fastforward plays the next, sync will sync with a party host (if in a party), and + will open a add song screen to search and select a song.
 
 ## UI Flow Chart with Images
 
-![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uiFlowDiagram.png)
+![UI Flow Chart](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/uiDiagram.png)
 
 This is the flow of a normal user throughout the website pages. At the start, the user is compelled to either login,
 register, or reset their password through the first screens. Then, the user is directed to the homepage which shows tracks.
