@@ -23,21 +23,21 @@ class LoginTest extends DuskTestCase
         });
     }
 
-    public function testTowersPresent()
+    public function testTowerPresent()
     {
         // assert that the towers class is present, representing the tower logo
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->assertVisible('.towers');
+                ->assertVisible('.tower');
         });
     }
 
-    public function testTowersaPresentLogin()
+    public function testToweraPresentLogin()
     {
         // assert that the towersa class is present, representing the tower logo pt.2
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->assertVisible('.towersa');
+                ->assertVisible('.towera');
         });
     }
 
