@@ -185,8 +185,20 @@ For friends, hobbists, and acquaintances who want to listen to music together wh
 - [Automated Tests](https://github.com/aidanthewiz/VibeCity/tree/master/project/tests)
 - [Product Demonstration](https://www.youtube.com/watch?v=rvR2obV3NKY)
 
-## Task Allocation
+## Task Allocation / Responsibilities
 
-Member 1 - main tasking
-
-Member 2 - main tasking
+- Aidan Artherton (aidanthewiz):
+    - Ensured user data is encrypted, which ensures the security of our password system.
+    - Added a preview of song info to the spotify search results. This ensures that song searching is as intuitive as possible.
+    - Ensured that playback syncs for host and party members with sync button. This ensures a key capability of the musical listening.
+- Matthew Cooper (GTMcooper)
+    - Added an animated logo to the login/register pages. This helps make the app look more enticing to new users.
+- Timothy Ford (CarriedCoin)
+    - Made user comments show time in users' timezone. This lets users know when comments are made.
+    - Adjusted architecture database and class diagrams, ensuring architecture is up to date.
+- Alexandra French (xar-tol)
+   - Added the ability to share musical tracks on the dashboard and to share the current track playing on the party page. This allows for more social media components to the app.
+   - Adjusted ui and component diagrams in architecture, ensuring the architecture is up to date.
+- Jason Masri (A90Jason)
+    - Ensured main page links visible in mobile. This lets mobile users fully navigate the site.
+    - Ensured banner shows for mobile that the party page is not fully optimized for mobile. This helps prevent confusion by mobile users on the party page due to how the spotify SDK works.
