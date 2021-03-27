@@ -32,7 +32,7 @@ class RegisterTest extends DuskTestCase
         });
     }
     
-    public function testTowersPresent()
+    public function testTowersaPresentRegister()
     {
         // assert that the towersa class is present, representing the tower logo pt.2
         $this->browse(function (Browser $browser) {

@@ -32,7 +32,7 @@ class LoginTest extends DuskTestCase
         });
     }
 
-    public function testTowersaPresent()
+    public function testTowersaPresentLogin()
     {
         // assert that the towersa class is present, representing the tower logo pt.2
         $this->browse(function (Browser $browser) {
