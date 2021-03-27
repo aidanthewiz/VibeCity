@@ -217,4 +217,21 @@ class PartyTest extends DuskTestCase
                 ->assertPresent('@hide-kick-user-button');
         });
     }
+    public function testMobileBannerNotPresentOnDesktop()
+    {
+        // assemble a user
+        $user = User::factory(User::class)->create([
+            'email' => 'testduskuser@dusk.com',
+            'password' => bcrypt('test2WEB!'),
+        ]);
+
+        // assert that the Create Party button is present
+        $this->browse(function (Browser $browser) use($user) {
+            $browser->loginAs($user)
+                ->visit('/party')
+                ->press('@party-button')
+                ->press('@join-code-button')
+                ->assertNotPresent('mobileView');
+        });
+    }
 }

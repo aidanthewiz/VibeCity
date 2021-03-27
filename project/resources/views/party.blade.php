@@ -62,7 +62,7 @@
                     </div>
                 @endif
                 @if ($party)
-                        <div class="md:invisible mb-2 md:mb-0 mr-2 md:mr-0 ml-2 bg-red-600 text-black font-bold py-1 px-2 rounded">
+                        <div dusk="mobileView" class="md:invisible mb-2 md:mb-0 mr-2 md:mr-0 ml-2 bg-red-600 text-black font-bold py-1 px-2 rounded">
                             <p style="text-align:center">PARTY PAGE IS NOT OPTIMIZED FOR MOBILE</p>
                         </div>
                     <meta name="inParty" content="true">
