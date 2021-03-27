@@ -341,6 +341,7 @@
                                 <a title="Back" class="fas fa-backward fa-2x" href="javascript:void(0);" id="spotifyPreviousButton"></a>
                                 <a class="far fa-play-circle fa-2x" href="javascript:void(0);" id="togglePlayPause"></a>
                                 <a title="Forward" class="fas fa-forward fa-2x" href="javascript:void(0);" id="spotifyNextButton"></a>
+                                <a class="fas fa-sync fa-2x" href="javascript:void(0);" id="spotifySyncButton"></a>
                             </div>
                             <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
                             <div class="alt-controls">

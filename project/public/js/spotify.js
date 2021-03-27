@@ -3039,6 +3039,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         this.spotifyPlayPauseButton = document.getElementById("togglePlayPause");
         this.spotifyNextButton = document.getElementById("spotifyNextButton");
         this.spotifyPreviousButton = document.getElementById("spotifyPreviousButton");
+        this.spotifySyncButton = document.getElementById("spotifySyncButton");
         this.albumArt = document.getElementById("albumArt");
         this.searchResults = document.getElementById("searchResults");
         this.progressBar = document.getElementById("progressBar");
@@ -3054,6 +3055,7 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         this.addSongStartButton.addEventListener("click", this.addSongStart.bind(this));
         this.spotifyNextButton.addEventListener("click", this.nextSong.bind(this));
         this.spotifyPreviousButton.addEventListener("click", this.previousSong.bind(this));
+        this.spotifySyncButton.addEventListener("click", this.loadCurrentPlaybackState.bind(this));
         this.closeSearchButton.addEventListener("click", this.closeSearchModal.bind(this));
         this.spotifySearchButton.addEventListener('input', this.spotifySearch.bind(this));
         this.spotifyPlayPauseButton.addEventListener('click', this.togglePlayPause.bind(this));
@@ -3200,7 +3202,6 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         });
         this.prevSearch.then(function (data) {
           _this5.prevSearch = null;
-          console.log(data.tracks.items);
           _this5.searchResults.innerHTML = ''; //top result
 
           var topTemplate = document.getElementById('topSearchResultTemplate');
@@ -3507,7 +3508,6 @@ window.onSpotifyWebPlaybackSDKReady = function () {
         return (position > this.duration ? this.duration : position) / this.duration;
       },
       setProgressBarPos: function setProgressBarPos() {
-        console.log(1);
         var currentProgress = this.getPlaybackPosition();
         this.progressBar.style.width = currentProgress * 100 + '%';
       },
@@ -3520,15 +3520,13 @@ window.onSpotifyWebPlaybackSDKReady = function () {
             while (1) {
               switch (_context12.prev = _context12.next) {
                 case 0:
-                  console.log(eve);
                   barWidth = parseInt(window.getComputedStyle(_this14.progressBarParent).width);
                   clickPos = eve.offsetX;
                   percent = clickPos / barWidth;
-                  console.log(percent);
-                  _context12.next = 7;
+                  _context12.next = 5;
                   return _this14.seekToPosition(percent);
 
-                case 7:
+                case 5:
                 case "end":
                   return _context12.stop();
               }

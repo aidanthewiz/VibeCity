@@ -53,6 +53,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 this.spotifyPlayPauseButton = document.getElementById("togglePlayPause");
                 this.spotifyNextButton = document.getElementById("spotifyNextButton");
                 this.spotifyPreviousButton = document.getElementById("spotifyPreviousButton");
+                this.spotifySyncButton = document.getElementById("spotifySyncButton");
                 this.albumArt = document.getElementById("albumArt");
                 this.searchResults = document.getElementById("searchResults");
                 this.progressBar = document.getElementById("progressBar");
@@ -66,6 +67,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 this.addSongStartButton.addEventListener("click", this.addSongStart.bind(this));
                 this.spotifyNextButton.addEventListener("click", this.nextSong.bind(this));
                 this.spotifyPreviousButton.addEventListener("click", this.previousSong.bind(this));
+                this.spotifySyncButton.addEventListener("click", this.loadCurrentPlaybackState.bind(this));
                 this.closeSearchButton.addEventListener("click", this.closeSearchModal.bind(this));
                 this.spotifySearchButton.addEventListener('input', this.spotifySearch.bind(this));
                 this.spotifyPlayPauseButton.addEventListener('click', this.togglePlayPause.bind(this));
@@ -160,7 +162,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 this.prevSearch = this.spotifyAPI.searchTracks(query, { limit: 5 });
                 this.prevSearch.then((data) => {
                     this.prevSearch = null;
-                    console.log(data.tracks.items);
                     this.searchResults.innerHTML = '';
 
 
@@ -308,16 +309,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 return (position > this.duration ? this.duration : position) / this.duration;
             },
             setProgressBarPos() {
-                console.log(1);
                 let currentProgress = this.getPlaybackPosition();
                 this.progressBar.style.width = (currentProgress * 100) + '%';
             },
             async seek(eve) {
-                console.log(eve);
                 let barWidth = parseInt(window.getComputedStyle(this.progressBarParent).width);
                 let clickPos = eve.offsetX;
                 let percent = clickPos / barWidth;
-                console.log(percent);
                 await this.seekToPosition(percent);
             },
         }
