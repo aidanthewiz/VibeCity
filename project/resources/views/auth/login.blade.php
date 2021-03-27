@@ -3,7 +3,7 @@
         <div class="min-h-screen md:min-h-0 w-full sm:max-w-4xl sm:m-8 md:m-4 bg-gray-900 shadow-md overflow-hidden sm:rounded-lg grid md:grid-cols-2 gap-4">
             <div class="h-full md:h-auto bg-gradient-to-t from-red-700 to-yellow-400 justify-center align-content content-center items-center md:rounded-tr-lg md:rounded-br-lg grid grid-rows-2 gap-1">
                 <!-- tagline words -->
-                <div class="social-text text-center">
+                <div class="social-text text-center z-10">
                     <div class="text-2xl font-bold pb-2">SOCIALLY DISTANCED</div>
                     <div class="text-2xl font-bold">MUSICAL LISTENING</div>
                 </div>
