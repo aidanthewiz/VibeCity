@@ -68,14 +68,7 @@ Our system component diagram splits up the VibeCity system into vital components
 
 ![Code Design UML Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/ClassDiagram1.png)
 
-The user in the class diagram should hold the users ID, the users Password, the users Email, the users two factor authentication, and the users spotify
-account link. The user shall be able to modify their information. The users should be able to create private parties
-that have a party ID, party join code, party members, the state of the party being open or closed, and assign a party leader. In the party class the user can create,
-close, share the party information, and set the song to listen to. The spotify controller controls the spotify actions
-for these parties. Users can vote on tracks that they like. The tracks
-are listed on a leaderboard. The comment class allows the users to comment on certain tracks that they have listened to. In
-the comment class the user can write content, give a rating, list who made the comment, and show what song these
-comments were applied to.
+The user in the class diagram should hold the users ID, the users Password, the users Email, the users two factor authentication, and the users spotify account link. The profile controller allows users to be able to modify their information. The users should be able to create private parties that have a party ID, party join code, party members, the state of the party being open or closed, and assign a party leader through the party controller. In the party model class statuses can be set such as creating, closing, and kicking abilities. The spotify controller controls the spotify actions for these parties. The join code controller generates join codes for parties. Users can vote on tracks that they like and comment on them using the leaderboard controller, which lists all tracks are listed on a leaderboard. Data for these are stored in the track, comment, and rating models. The email model stores email data for email integration. The Connected Account model stores data related to connected spotify accounts.
 
 | Classes                   |      User Story ID       |
 |---------------------------|:------------------------:|
@@ -106,9 +99,7 @@ actions. Finally, the system ends with the user logging out.
 
 ![Database ER Diagram](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/DatabaseDiagram.png)
 
-The user should be able to join a party and add comments to tracks. Parties should be able to listen to tracks. Tracks
-should be able to have comments on them. The Party should leader should be able to kick people from the party.
-The party leader is able to select which strong can be played. 
+The user should be able to join a party and add comments to tracks. A user should als obe able to connect a spotify account. Parties should be able to listen to tracks. Tracks should be able to have comments and ratings on them. The Party should be able to have leaders that can kick users, open/close the party, and create join codes.
 
 # Business Rules
 
@@ -162,11 +153,7 @@ page by clicking "already registered". The user can also register with spotify.
 
 ![Home Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/mainDashboard.png)
 
-This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users.
-Users are be able to press the rating buttons to rate up the tracks. They can also comment by pressing the comment
-button to load a comment area for that track, which then shows all the past comments and allows for leading / deleting
-comments for the current user.  They can go to the party page to host and join
-parties through the party button. They can view their profile through the profile button. They can also view the spotify
+This is the homepage after logging in as an existing user. This page includes the rankings of tracks by VibeCity users. Users are be able to press the rating buttons to rate up the tracks. They can also comment by pressing the comment button to load a comment area for that track, which then shows all the past comments and allows for leading / deleting comments for the current user. Finally, they can share any track to twitter throug hthe twitter button. They can go to the party page to host and join parties through the party button. They can view their profile through the profile button. They can also view the spotify
 leaderboard through the Spotify Leaderboard link.
 
 
@@ -217,7 +204,7 @@ enter the password and press delete account, then they are rerouted to the regis
 
 ### Create Party Page
 
-![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/firstPartyPage.png)
+![Party Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/initPartyPage.png)
 
 The party page contains the ability to create a party using the create party button. This leads to the party page the user made.
 There is also a join party with code button and input, which leads to the party code host's party page if the code if valid. Finally, the user can listen to music. Pressing play plays the users' current track, rewind plays the previous, fastforward plays the next, sync will sync with a party host (if in a party), and + will open a add song screen to search and select a song. The home page button goes to the home page. The profile button goes to the user's profile.
