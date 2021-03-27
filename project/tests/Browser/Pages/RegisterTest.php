@@ -31,6 +31,15 @@ class RegisterTest extends DuskTestCase
                 ->assertVisible('.towers');
         });
     }
+    
+    public function testTowersPresent()
+    {
+        // assert that the towersa class is present, representing the tower logo pt.2
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->assertVisible('.towersa');
+        });
+    }
 
     public function testEmailInputPresent()
     {

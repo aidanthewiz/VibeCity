@@ -32,6 +32,15 @@ class LoginTest extends DuskTestCase
         });
     }
 
+    public function testTowersaPresent()
+    {
+        // assert that the towersa class is present, representing the tower logo pt.2
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                ->assertVisible('.towersa');
+        });
+    }
+
     public function testEmailInputPresent()
     {
         // assert that the email input box id is present

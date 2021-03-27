@@ -7,23 +7,75 @@
                     <div class="text-2xl font-bold pb-2">SOCIALLY DISTANCED</div>
                     <div class="text-2xl font-bold">MUSICAL LISTENING</div>
                 </div>
-                <!-- Towers screen -->
-                <div class="tower-logo flex justify-around">
-                    <div class="font-mono text-white text-4xl font-bold z-20 justify-center items-center text-center absolute mt-2"><a href="/" dusk="home-link">VibeCity</a></div>
-                    <div class="towers flex items-end z-0 relative">
-                        <div id="tower-1" class="w-5 h-4 bg-gradient-to-t to-red-600 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-2" class="w-5 h-10 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-3" class="w-5 h-6 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-4" class="w-5 h-12 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-5" class="w-5 h-24 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-6" class="w-5 h-9 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-7" class="w-5 h-5 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-8" class="w-5 h-9 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-9" class="w-5 h-24 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-10" class="w-5 h-12 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-11" class="w-5 h-6 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-12" class="w-5 h-10 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
-                        <div id="tower-13" class="w-5 h-4 bg-gradient-to-t to-red-500 from-yellow-200 border-2 border-yellow-100"></div>
+                <style>
+                    .tower-logo {
+                        /*align-items: flex-end;*/
+                        display: flex;
+                        /*overflow: hidden;*/
+                        /*opacity: 0.8;*/
+                    }
+                    .tower-logo .tower {
+                        flex:1;
+                        height: 100%;
+                    }
+                    .tower-logo .tower div{
+                        animation-name: city-eq-animation;
+                        animation-timing-function: linear;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
+                        /*width: 100%;*/
+                        /*height: 100%;*/
+                        bottom: 0px;
+                        transform: translateY(-50%);
+                        will-change: transform;
+                    }
+                    @keyframes city-eq-animation {
+                        0% {
+                            transform: translateY(-50%);
+                            /*transform: scaleY(1);*/
+                        }
+                        100% {
+                            /*transform: scaleY(0);*/
+                            transform: translateY(-10%);
+                        }
+                    }
+                </style>
+                <!-- Animated Towers logo -->
+                <div>
+                    <div class="tower-logo flex justify-around absolute">
+                        <div class="font-mono text-white text-4xl font-bold z-20 justify-center items-center text-center absolute mt-2"><a href="/" dusk="home-link">VibeCity</a></div>
+                        <div class="tower flex items-end z-1 relative">
+                            <div id="tower-1" class="w-5 h-4 bg-red-500 border-2 border-yellow-100" style="animation-duration: .3s"></div>
+                            <div id="tower-2" class="w-5 h-10 bg-red-500 border-2 border-yellow-100" style="animation-duration: .6s"></div>
+                            <div id="tower-3" class="w-5 h-6 bg-red-500 border-2 border-yellow-100" style="animation-duration: .4s"></div>
+                            <div id="tower-4" class="w-5 h-12 bg-red-500 border-2 border-yellow-100" style="animation-duration: .6s"></div>
+                            <div id="tower-5" class="w-5 h-24 bg-red-500 border-2 border-yellow-100" style="animation-duration: .5s"></div>
+                            <div id="tower-6" class="w-5 h-9 bg-red-500 border-2 border-yellow-100" style="animation-duration: .35s"></div>
+                            <div id="tower-7" class="w-5 h-5 bg-red-500 border-2 border-yellow-100" style="animation-duration: .4s"></div>
+                            <div id="tower-8" class="w-5 h-9 bg-red-500 border-2 border-yellow-100" style="animation-duration: .45s"></div>
+                            <div id="tower-9" class="w-5 h-24 bg-red-500 border-2 border-yellow-100" style="animation-duration: .6s"></div>
+                            <div id="tower-10" class="w-5 h-12 bg-red-500 border-2 border-yellow-100" style="animation-duration: .36s"></div>
+                            <div id="tower-11" class="w-5 h-6 bg-red-500 border-2 border-yellow-100" style="animation-duration: .26s"></div>
+                            <div id="tower-12" class="w-5 h-10 bg-red-500 border-2 border-yellow-100" style="animation-duration: .46s"></div>
+                            <div id="tower-13" class="w-5 h-4 bg-red-500 border-2 border-yellow-100" style="animation-duration: .26s"></div>
+                        </div>
+                    </div>
+                    <div class="tower-logo-a flex justify-around z-0 relative">
+                        <div class="towera flex items-end z-0 relative">
+                            <div id="tower-1a" class="w-5 h-4 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-2a" class="w-5 h-10 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-3a" class="w-5 h-6 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-4a" class="w-5 h-12 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-5a" class="w-5 h-24 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-6a" class="w-5 h-9 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-7a" class="w-5 h-5 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-8a" class="w-5 h-9 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-9a" class="w-5 h-24 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-10a" class="w-5 h-12 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-11a" class="w-5 h-6 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2border-yellow-100"></div>
+                            <div id="tower-12a" class="w-5 h-10 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                            <div id="tower-13a" class="w-5 h-4 bg-gradient-to-t to-red-500 from-yellow-200 border-l-2 border-r-2 border-b-2 border-yellow-100"></div>
+                        </div>
                     </div>
                 </div>
             </div>
