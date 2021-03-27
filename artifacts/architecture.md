@@ -166,7 +166,7 @@ They can also view the VibeCity home page leaderboard through the Leaderboard li
 
 ### Profile Page
 
-![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/profilePage.png)
+![Profile Page](https://raw.githubusercontent.com/aidanthewiz/VibeCity/master/artifacts/UiPages/profilePage2.png)
 
 This is the user profile page. It has all the user's information. The user can update their name and email.
 The user can also update their password. The user is able to sign up to TFA through the TFA area, which opens
